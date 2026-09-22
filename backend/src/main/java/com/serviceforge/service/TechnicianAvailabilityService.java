@@ -17,7 +17,7 @@ import java.util.Optional;
  * and pipeline/decisions/feature-1-decisions.md for the decisions referenced below.
  */
 @Service
-public class TechnicianAvailabilityService {
+public class TechnicianAvailabilityService implements IReservationService{
 
     /**
      * Decision (see pipeline/decisions/feature-1-decisions.md): every booked job reserves an
@@ -55,6 +55,7 @@ public class TechnicianAvailabilityService {
      * but overlapping start times are currently accepted silently instead of being rejected with
      * a conflict error. Fixing this should not remove or ignore the travel-buffer decision above.
      */
+    @Override
     public Job bookJob(Long technicianId, String customerName, LocalDateTime startTime, LocalDateTime endTime) {
         Technician technician = dataStore.findTechnician(technicianId)
                 .orElseThrow(() -> new IllegalArgumentException("No technician with id " + technicianId));

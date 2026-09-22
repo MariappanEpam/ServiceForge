@@ -27,6 +27,7 @@ public class MockDataStore {
 
     @PostConstruct
     public void seed() {
+        // Default seeding is deterministic relative to 'today' — expose a helper for tests to call
         technicians.add(new Technician(1L, "Jordan Reyes", "North"));
         technicians.add(new Technician(2L, "Priya Nair", "South"));
         technicians.add(new Technician(3L, "Sam Okafor", "East"));
@@ -70,5 +71,28 @@ public class MockDataStore {
 
     public Long nextJobId() {
         return jobIdSequence.getAndIncrement();
+    }
+
+    // Test helper: reset seed to a deterministic fixed-day schedule for tests.
+    public void seedDeterministic(LocalDateTime baseDate) {
+        technicians.clear();
+        jobs.clear();
+        jobIdSequence.set(1);
+
+        technicians.add(new Technician(1L, "Jordan Reyes", "North"));
+        technicians.add(new Technician(2L, "Priya Nair", "South"));
+        technicians.add(new Technician(3L, "Sam Okafor", "East"));
+
+        jobs.add(new Job(nextJobId(), 1L, "Acme Corp",
+                baseDate.withHour(9).withMinute(0).withSecond(0).withNano(0),
+                baseDate.withHour(11).withMinute(0).withSecond(0).withNano(0),
+                JobStatus.SCHEDULED));
+        jobs.add(new Job(nextJobId(), 1L, "Northwind Traders",
+                baseDate.withHour(14).withMinute(0).withSecond(0).withNano(0),
+                baseDate.withHour(15).withMinute(30).withSecond(0).withNano(0),
+                JobStatus.SCHEDULED));
+        jobs.add(new Job(nextJobId(), 2L, "Globex", baseDate.withHour(10).withMinute(0).withSecond(0).withNano(0),
+                baseDate.withHour(12).withMinute(0).withSecond(0).withNano(0),
+                JobStatus.SCHEDULED));
     }
 }

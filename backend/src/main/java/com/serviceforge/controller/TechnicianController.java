@@ -31,13 +31,13 @@ public class TechnicianController {
     public ResponseEntity<?> getTechnician(@PathVariable Long id) {
         return availabilityService.findTechnician(id)
                 .<ResponseEntity<?>>map(ResponseEntity::ok)
-                .orElseGet(() -> ResponseEntity.status(404).body(new ApiError("No technician with id " + id)));
+                .orElseGet(() -> ResponseEntity.status(404).body(new ApiError(404, "NOT_FOUND", "No technician with id " + id, "Technician not found", null)));
     }
 
     @GetMapping("/{id}/jobs")
     public ResponseEntity<?> getJobsForTechnician(@PathVariable Long id) {
         if (availabilityService.findTechnician(id).isEmpty()) {
-            return ResponseEntity.status(404).body(new ApiError("No technician with id " + id));
+            return ResponseEntity.status(404).body(new ApiError(404, "NOT_FOUND", "No technician with id " + id, "Technician not found", null));
         }
         List<Job> jobs = availabilityService.getJobsForTechnician(id);
         return ResponseEntity.ok(jobs);

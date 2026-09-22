@@ -32,7 +32,9 @@ class TechnicianAvailabilityServiceTest {
 
     @Test
     void booksAJobForAnAvailableTechnician() {
-        LocalDateTime start = LocalDateTime.now().withHour(16).withMinute(0).withSecond(0).withNano(0);
+        // Respect travel buffer applied to seeded jobs (seeded job ends 15:30 + 45m buffer → 16:15)
+        // choose 16:30 to ensure no overlap under the new rule
+        LocalDateTime start = LocalDateTime.now().withHour(16).withMinute(30).withSecond(0).withNano(0);
         LocalDateTime end = start.plusHours(1);
 
         Job job = service.bookJob(1L, "New Customer", start, end);
