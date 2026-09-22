@@ -1,0 +1,39 @@
+What it is: A compact Field Service Management training app called ServiceForge — a realistic boilerplate for building features like technician scheduling, work orders, and SLA tracking.
+
+Tech stack (simple):
+
+Backend: Java 17 + Spring Boot (in-memory mock data, no real DB). See ServiceForgeApplication.java.
+Frontend: Angular SPA that calls the backend REST API. See main.ts and app.module.ts.
+Purpose and constraints:
+
+Training / demo codebase — safe to modify and extend.
+No external services or real databases — all data lives in MockDataStore and is seeded at startup.
+Focus on clear feature pipelines and conventions rather than production hardening.
+One-rule workflow:
+
+Every new feature must follow the BA → Developer → Tester pipeline described in orchestration.md. Read that before starting a feature.
+Project conventions to remember:
+
+Backend: package-by-layer (model, data, service, controller), constructor injection only, controllers return ResponseEntity<T>.
+Frontend: HTTP calls centralized in services, components only render and delegate.
+Validation and error handling use ApiError DTOs.
+How to run (quick):
+
+Backend: mvn spring-boot:run (from /backend)
+Frontend: npm install && npm start (from /frontend)
+Where feature specs and decisions live:
+
+Feature specs: pipeline/features/ (example: feature-1-technician-availability.md)
+Decisions recorded per feature: pipeline/decisions/ (example: feature-1-decisions.md)
+Where to start reading:
+
+Project entry & rules: AGENTS.md
+Pipeline & roles: orchestration.md
+Backend mock data: MockDataStore under backend data/
+Example feature implementation: technician availability controllers and services under backend controller/ and service/, and the matching frontend component in technician-calendar.
+Quick checklist for contributing:
+
+Read AGENTS.md and orchestration.md.
+Create a single feature spec under pipeline/features/.
+Implement following conventions (mock data, DI, services).
+Record any long-lived decisions under pipeline/decisions/.
