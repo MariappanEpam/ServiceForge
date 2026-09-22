@@ -1,50 +1,298 @@
 # The "develop this feature" pipeline
 
-This is the single, tool-agnostic description of how any feature in this repo gets built. It exists so the same workflow can be followed whether you're driving it from Claude Code, GitHub Copilot, Codex, or reading it yourself. Every tool-specific file in this repo (`CLAUDE.md`, `.github/copilot-instructions.md`, `AGENTS.md`) points here.
+This document defines the end-to-end SDLC workflow used by all AI agents and humans contributing to this repository.
 
-## The trigger
+Trigger:
 
-Anyone — human or agent — can kick this off with a single instruction:
+> Develop this feature: <intent>
 
-> **"Develop this feature: `<intent>`"**
+Every stage must update the active handoff record before passing work to the next stage.
 
-That one line is the only input. Everything else below is how it gets turned into a shipped feature.
+---
 
-## The three steps
+# Handoff File
 
-### 1 — BA (turns intent into a spec)
+Location:
 
-- **Role definition:** `.claude/agents/ba-agent.md`
-- **Skill it loads:** `.claude/skills/spec-generation-skill/SKILL.md`
-- **What it does:** takes the raw intent, asks what it needs to (scope, dependencies on prior features, definition of done), and commits a new file at `pipeline/features/feature-N-<slug>.md` following the same template as `pipeline/features/feature-1-technician-availability.md`.
-- **What it must check first:** every existing file under `pipeline/features/` and `pipeline/decisions/`, so the new spec correctly names what it depends on instead of guessing. Ensure the rules instructed under `pipeline/rules/` is respected without fail. 
-- **Output:** one committed spec file. Nothing gets built yet.
+pipeline/handoffs/feature-N-handoff.md
 
-### 2 — Developer (turns the spec into code)
+Purpose:
 
-- **Role definition:** `.claude/agents/developer-agent.md`
-- **Skills it loads:** `.claude/skills/build-code-skill/SKILL.md` (stack conventions) and, if the change touches the data model, `.claude/skills/migration-safety-skill/SKILL.md`.
-- **Rules it must follow:** everything under `pipeline/rules/*.md` that exists at the time (there are none yet — the first one gets written the first time a shipped bug needs a standing rule against recurring).
-- **What it does:** implements the spec from step 1, in the backend and/or frontend as the spec requires, without expanding scope beyond what the spec says.
-- **Output:** working code, committed.
+- Track current feature status
+- Record decisions
+- Record approvals
+- Record blockers
+- Track current owner
+- Provide auditability
 
-### 3 — Tester (checks the code against the spec)
+Each agent must:
 
-- **Role definition:** `.claude/agents/tester-agent.md`
-- **What it does:** writes and runs tests against the Definition of Done in the spec from step 1 — not against what the code happens to do, but against what it was supposed to do.
-- **Output:** test results. If they fail, the loop returns to step 2, not step 1 — the spec doesn't change because the code didn't meet it.
+1. Read the latest handoff
+2. Complete assigned work
+3. Update handoff
+4. Transfer ownership
 
-## Safe recovery
+---
 
-If any step produces something that doesn't match its input (a spec with no Definition of Done, code that doesn't match the spec, tests that can't run), stop and surface that to a human rather than proceeding on a guess. This pipeline has no silent fallback.
+# SDLC Workflow
 
-## Human checkpoints
+## 1. BA Agent
 
-A human should look at the output of step 1 (the spec) before step 2 starts — specs are cheap to correct, code is not. Everything else can run unattended unless something trips the safe-recovery condition above.
+Role:
+- Understand feature intent
+- Analyze requirements
+- Identify dependencies
+- Define scope
+- Define acceptance criteria
 
-## Running this in each tool
+Inputs:
+- Feature intent
+- Existing features
+- Existing decisions
+- Existing rules
 
-- **Claude Code:** the three role files under `.claude/agents/` are real Claude Code subagents (they have the frontmatter Claude Code expects). Say "develop this feature: `<intent>`" and Claude Code should route through them in order, per this document.
-- **GitHub Copilot:** use the matching prompt files in `.github/prompts/` (`ba-agent.prompt.md`, `developer-agent.prompt.md`, `tester-agent.prompt.md`) as slash commands, in the order above, or paste this document into a Copilot Chat session as context.
-- **Codex / any `AGENTS.md`-reading CLI agent:** `AGENTS.md` already points here. Give the same "develop this feature" instruction; the agent should read the three role files under `.claude/agents/` as plain markdown (the YAML header is harmless to ignore) and follow the same three steps.
-- **Anyone without an agent tool:** the three role files are readable specs. Do the three steps yourself, in order.
+Outputs:
+- Feature Specification
+
+Location:
+pipeline/features/feature-N-<slug>.md
+
+Handoff Update:
+- Status = Specification Complete
+- Owner = Architecture Agent
+- Dependencies identified
+- Definition of Done recorded
+
+---
+
+## 2. Architecture Design Agent
+
+Role:
+- Design solution architecture
+- Define components
+- Define integrations
+- Define technology choices
+- Address NFRs
+
+Inputs:
+- Approved Feature Specification
+
+Outputs:
+- Architecture Document
+
+Location:
+pipeline/architecture/feature-N-architecture.md
+
+Handoff Update:
+- Status = Architecture Complete
+- Owner = Design Review Agent
+- Architecture decisions recorded
+- Risks recorded
+
+---
+
+## 3. Design Review Agent
+
+Role:
+- Review architecture
+- Verify scalability
+- Verify security
+- Verify maintainability
+- Verify standards compliance
+
+Inputs:
+- Architecture Document
+
+Outputs:
+- Design Review Report
+
+Location:
+pipeline/reviews/feature-N-review.md
+
+Handoff Update:
+- Status = Design Approved
+- Owner = Implementation Planner Agent
+- Review findings recorded
+- Approval decision recorded
+
+---
+
+## 4. Implementation Planner Agent
+
+Role:
+- Create implementation roadmap
+- Break architecture into epics
+- Create feature tasks
+- Define dependencies
+- Define implementation sequence
+
+Inputs:
+- Feature Specification
+- Approved Architecture
+
+Outputs:
+- Delivery Plan
+
+Location:
+pipeline/plans/feature-N-plan.md
+
+Handoff Update:
+- Status = Plan Approved
+- Owner = Developer Agent
+- Delivery phases recorded
+- Dependencies recorded
+
+---
+
+## 5. Developer Agent
+
+Role:
+- Implement approved design
+- Follow coding standards
+- Follow repository rules
+- Avoid scope expansion
+
+Inputs:
+- Feature Specification
+- Architecture
+- Delivery Plan
+- Repository Rules
+
+Outputs:
+- Working Code
+
+Handoff Update:
+- Status = Development Complete
+- Owner = Tester Agent
+- Changed components recorded
+- Technical notes recorded
+
+---
+
+## 6. Tester Agent
+
+Role:
+- Validate implementation
+- Create automated tests
+- Verify Definition of Done
+- Verify acceptance criteria
+
+Inputs:
+- Feature Specification
+- Code Changes
+
+Outputs:
+- Test Results
+
+Handoff Update:
+- Status = Testing Complete
+- Owner = Release Review Agent
+- Test evidence recorded
+- Defects recorded
+
+---
+
+## 7. Bug Fix Agent (Conditional)
+
+Triggered When:
+- Test failures exist
+- Production defects found
+- Regression issues detected
+
+Inputs:
+- Defect details
+- Test results
+- Code changes
+
+Outputs:
+- Fix implementation
+- Root cause analysis
+- Prevention recommendations
+
+Handoff Update:
+- Status = Bug Fixed
+- Owner = Tester Agent
+- Root cause recorded
+- Fix summary recorded
+
+Tester Agent re-runs validation.
+
+---
+
+## 8. Release Review Agent
+
+Role:
+- Verify all gates passed
+- Verify approvals exist
+- Verify documentation exists
+- Verify no blockers remain
+
+Inputs:
+- All prior artifacts
+- Handoff file
+
+Outputs:
+- Release Recommendation
+
+Handoff Update:
+- Status = Ready For Release
+- Owner = Human Approver
+- Outstanding risks recorded
+
+---
+
+# Safe Recovery
+
+Stop the workflow if:
+
+- Specification is incomplete
+- Definition of Done is missing
+- Architecture is not approved
+- Review fails
+- Plan is incomplete
+- Tests cannot execute
+- Acceptance criteria cannot be verified
+
+Never continue based on assumptions.
+
+Escalate to a human.
+
+---
+
+# Human Approval Gates
+
+Mandatory approvals:
+
+1. Specification Approval
+2. Architecture Approval
+3. Release Approval
+
+Development must not begin until architecture approval exists.
+
+Release must not occur until testing is completed.
+
+---
+
+# Handoff Ownership Rule
+
+Only one owner may exist at a time.
+
+Example:
+
+BA Agent
+    ↓
+Architecture Agent
+    ↓
+Design Review Agent
+    ↓
+Implementation Planner Agent
+    ↓
+Developer Agent
+    ↓
+Tester Agent
+    ↓
+Release Review Agent
+    ↓
+Human Approval
+
+Each agent must update the handoff file before transferring ownership.
