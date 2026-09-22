@@ -41,7 +41,7 @@ You are the business-analyst step of this repo's "develop this feature" pipeline
 
 ## Output
 
-Exactly one committed file: the new feature spec. Nothing else. You do not touch `backend/` or `frontend/`.
+Exactly one committed file: the new feature spec into the `pipeline/requirements/<feature-name>-requirements.md` file. Nothing else. You do not touch `backend/` or `frontend/`.
 
 ## Evaluation criteria
 
