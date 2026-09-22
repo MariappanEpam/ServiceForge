@@ -19,6 +19,9 @@ export class TechnicianCalendarComponent implements OnInit {
   newEndTime = '';
   errorMessage = '';
 
+  // Keep the client-side buffer in sync with backend decision (45 minutes)
+  readonly TRAVEL_BUFFER_MINUTES = 45;
+
   constructor(private technicianService: TechnicianService) {}
 
   ngOnInit(): void {
@@ -52,6 +55,29 @@ export class TechnicianCalendarComponent implements OnInit {
       return;
     }
 
+    // Basic client-side validation: end must be after start
+    const start = new Date(this.newStartTime);
+    const end = new Date(this.newEndTime);
+    if (isNaN(start.getTime()) || isNaN(end.getTime()) || end.getTime() <= start.getTime()) {
+      this.errorMessage = 'End time must be after start time.';
+      return;
+    }
+
+    // Check against already-loaded jobs for a likely conflict using the same travel-buffer rule
+    const newOccupiedStart = start.getTime();
+    const newOccupiedEndWithBuffer = end.getTime() + this.TRAVEL_BUFFER_MINUTES * 60 * 1000;
+
+    const conflict = this.jobs.some(existing => {
+      const existingStart = new Date(existing.startTime).getTime();
+      const existingEndWithBuffer = new Date(existing.endTime).getTime() + this.TRAVEL_BUFFER_MINUTES * 60 * 1000;
+      return newOccupiedStart < existingEndWithBuffer && end.getTime() > existingStart;
+    });
+
+    if (conflict) {
+      this.errorMessage = `Selected time overlaps an existing job. The system enforces a ${this.TRAVEL_BUFFER_MINUTES}-minute travel buffer — choose a different time or technician.`;
+      return;
+    }
+
     const request: BookJobRequest = {
       technicianId: this.selectedTechnicianId,
       customerName: this.newCustomerName,
@@ -68,7 +94,14 @@ export class TechnicianCalendarComponent implements OnInit {
         this.loadJobs();
       },
       error: (err) => {
-        this.errorMessage = err?.error?.message || 'Could not book this job.';
+        // Prefer server-provided message for known conflicts (409). Fall back to generic message.
+        if (err && err.status === 409) {
+          this.errorMessage = err.error?.message || 'Technician unavailable for the requested time (conflict).';
+        } else if (err && err.status === 400) {
+          this.errorMessage = err.error?.message || 'Invalid request. Check times and try again.';
+        } else {
+          this.errorMessage = err?.error?.message || 'Could not book this job.';
+        }
       }
     });
   }

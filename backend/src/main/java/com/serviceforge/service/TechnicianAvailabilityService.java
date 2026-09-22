@@ -61,15 +61,28 @@ public class TechnicianAvailabilityService {
 
         List<Job> existingJobs = dataStore.getJobsForTechnician(technicianId);
 
-        boolean hasConflict = existingJobs.stream()
-                .anyMatch(existing -> existing.getStartTime().equals(startTime));
-        // ^ Bug: this only catches an exact start-time match. It does not detect a genuine
-        //   interval overlap (e.g. an existing 9:00-11:00 job and a new 10:00-12:00 job for the
-        //   same technician), so overlapping bookings are silently accepted.
+        // Validate times
+        if (endTime.isBefore(startTime) || endTime.isEqual(startTime)) {
+            throw new IllegalArgumentException("End time must be after start time");
+        }
+
+        // New occupied window includes travel buffer after the job end, per decision/rule.
+        LocalDateTime newOccupiedStart = startTime;
+        LocalDateTime newOccupiedEndWithBuffer = endTime.plusMinutes(TRAVEL_BUFFER_MINUTES);
+
+        boolean hasConflict = existingJobs.stream().anyMatch(existing -> {
+            LocalDateTime existingStart = existing.getStartTime();
+            LocalDateTime existingEndWithBuffer = existing.getEndTime().plusMinutes(TRAVEL_BUFFER_MINUTES);
+
+            // Overlap check: if new start is before existing end-with-buffer AND new end is after existing start
+            // we consider that a conflict. Equality at the boundary is allowed (one job ending exactly when
+            // the next occupied window starts).
+            return newOccupiedStart.isBefore(existingEndWithBuffer) && endTime.isAfter(existingStart);
+        });
 
         if (hasConflict) {
-            throw new IllegalStateException(
-                    "Technician " + technician.getName() + " already has a job at " + startTime);
+            // Follow the rule's prescribed rejection message
+            throw new IllegalStateException("Technician is unavailable during the requested time slot. Select another technician or choose a different time.");
         }
 
         Job job = new Job(dataStore.nextJobId(), technicianId, customerName, startTime, endTime, JobStatus.SCHEDULED);
