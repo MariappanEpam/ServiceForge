@@ -1,6 +1,8 @@
 package com.serviceforge.controller;
 
 import com.serviceforge.dto.ApiError;
+import com.serviceforge.exception.InsufficientStockException;
+import com.serviceforge.exception.ReservationNotFoundException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,6 +26,20 @@ public class GlobalExceptionHandler {
         String requestId = resolveRequestId(request);
         ApiError error = new ApiError(HttpStatus.CONFLICT.value(), "CONFLICT", ex.getMessage(), ex.getMessage(), requestId);
         return new ResponseEntity<>(error, new HttpHeaders(), HttpStatus.CONFLICT);
+    }
+
+    @ExceptionHandler(InsufficientStockException.class)
+    public ResponseEntity<ApiError> handleInsufficientStock(InsufficientStockException ex, WebRequest request) {
+        String requestId = resolveRequestId(request);
+        ApiError error = new ApiError(HttpStatus.BAD_REQUEST.value(), "INSUFFICIENT_STOCK", ex.getMessage(), ex.getMessage(), requestId);
+        return new ResponseEntity<>(error, new HttpHeaders(), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(ReservationNotFoundException.class)
+    public ResponseEntity<ApiError> handleReservationNotFound(ReservationNotFoundException ex, WebRequest request) {
+        String requestId = resolveRequestId(request);
+        ApiError error = new ApiError(HttpStatus.NOT_FOUND.value(), "RESERVATION_NOT_FOUND", ex.getMessage(), ex.getMessage(), requestId);
+        return new ResponseEntity<>(error, new HttpHeaders(), HttpStatus.NOT_FOUND);
     }
 
     @ExceptionHandler(Exception.class)

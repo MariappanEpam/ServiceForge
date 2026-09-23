@@ -24,6 +24,8 @@ public class PartsInventoryService implements IPartsInventoryService {
         // seed minimal inventory for demo
         inventory.put("PART-001", 10);
         inventory.put("PART-002", 5);
+        // Add a demo SKU the frontend tests use so reserve requests succeed during dev
+        inventory.put("SKU-1000", 3);
     }
 
     @Override

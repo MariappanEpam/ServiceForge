@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 export interface PartReservation {
   id: number;
@@ -11,7 +12,8 @@ export interface PartReservation {
 
 @Injectable({ providedIn: 'root' })
 export class PartsService {
-  private base = '/api/parts';
+  // Use explicit backend URL so the frontend points to port 8080
+  private base = `${environment.apiBaseUrl}/parts`;
 
   constructor(private http: HttpClient) {}
 

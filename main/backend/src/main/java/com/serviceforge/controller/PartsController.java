@@ -32,8 +32,15 @@ public class PartsController {
 
     @PostMapping("/reservations")
     public ResponseEntity<?> reserve(@RequestParam String sku, @RequestParam @Min(1) int quantity, @RequestParam Long jobId) {
-        PartReservation r = inventoryService.reserve(sku, quantity, jobId);
-        return ResponseEntity.status(201).body(r);
+        try {
+            PartReservation r = inventoryService.reserve(sku, quantity, jobId);
+            return ResponseEntity.status(201).body(r);
+        } catch (com.serviceforge.exception.InsufficientStockException ex) {
+            // Defensive: return a 400 with ApiError payload so the frontend receives
+            // a structured error instead of a 500 when exception mapping is not applied.
+            ApiError err = new ApiError(400, "INSUFFICIENT_STOCK", ex.getMessage(), ex.getMessage(), null);
+            return ResponseEntity.status(400).body(err);
+        }
     }
 
     @DeleteMapping("/reservations/{id}")

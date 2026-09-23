@@ -10,10 +10,12 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         // Allow the frontend dev server(s) to call the backend during local development.
+        // Allow any localhost origin (any port) during local development so the dev server
+        // can run on an auto-assigned port. Use allowedOriginPatterns to accept patterns.
         registry.addMapping("/api/**")
-                .allowedOrigins("http://localhost:55357", "http://localhost:4200")
-                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
-                .allowedHeaders("*")
-                .allowCredentials(false);
+            .allowedOriginPatterns("http://localhost:*", "http://127.0.0.1:*")
+            .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+            .allowedHeaders("*")
+            .allowCredentials(false);
     }
 }
