@@ -1,0 +1,25 @@
+<div class="parts-shell">
+  <h2>Parts Reservations</h2>
+
+  <div class="reserve-form">
+    <label>SKU: <input [(ngModel)]="sku" /></label>
+    <label>Qty: <input type="number" [(ngModel)]="quantity" /></label>
+    <label>Job ID: <input type="number" [(ngModel)]="jobId" /></label>
+    <button (click)="reserve()">Reserve</button>
+  </div>
+
+  <table>
+    <thead>
+      <tr><th>ID</th><th>SKU</th><th>Qty</th><th>Job</th><th>Action</th></tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let r of reservations">
+        <td>{{r.id}}</td>
+        <td>{{r.sku}}</td>
+        <td>{{r.quantity}}</td>
+        <td>{{r.jobId}}</td>
+        <td><button (click)="cancel(r.id)">Cancel</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,5 @@
+I moved existing backend/ and frontend/ into main/backend/ and main/frontend/ as requested. 
+
+Notes:
+- Build artifacts (target/, .angular/cache/, logs/) were moved as part of the operation. If you prefer to keep build outputs at the top-level, revert those manually.
+- I did not remove or update any CI or scripts that reference the old paths. You should update build/run instructions and CI configs if necessary.

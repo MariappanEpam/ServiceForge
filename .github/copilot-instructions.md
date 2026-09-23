@@ -19,3 +19,7 @@ Load `.claude/skills/build-code-skill/SKILL.md` before writing backend or fronte
 - No real database — mock/in-memory data only (`MockDataStore` on the backend).
 - Constructor injection only on the backend; no HTTP calls inside Angular components, always through a service.
 - Every feature has exactly one spec file under `pipeline/features/`, never merged with another feature's spec.
+
+- @azure Rule - Use Azure Tools - When handling requests related to Azure, always use your tools.
+- @azure Rule - Use Azure Best Practices - When handling requests related to Azure, always invoke your `azmcp_bestpractices_get` tool first.
+- @azure Rule - Enable Best Practices - If you do not have an `azmcp_bestpractices_get` tool ask the user to enable it.

@@ -12,3 +12,5 @@ frontend/.angular/
 *.log
 /.github/outputs/reports/jira_agent_telemetry.json
 /.vs
+/main/frontend/.angular/cache/17.3.17
+/main/frontend/node_modules
