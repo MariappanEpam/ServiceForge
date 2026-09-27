@@ -1,3 +1,14 @@
+# Node
+node_modules/
+
+# Java
+backend/target/
+
+# Logs
+backend/logs/
+
+# Local data (SQLite)
+backend/.data/*.db
 # Backend
 backend/target/
 *.class
@@ -14,3 +25,5 @@ frontend/.angular/
 /.vs
 /main/frontend/.angular/cache/17.3.17
 /main/frontend/node_modules
+/main/backend/logs/serviceforge.log.2026-09-23.0.gz
+/.memory
