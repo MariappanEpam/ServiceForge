@@ -1,9 +1,9 @@
 package com.serviceforge.service;
 
-import com.serviceforge.data.MockDataStore;
 import com.serviceforge.model.Job;
 import com.serviceforge.model.JobStatus;
 import com.serviceforge.model.Technician;
+import com.serviceforge.persistence.ServiceForgeDataStore;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -28,9 +28,9 @@ public class TechnicianAvailabilityService implements IReservationService{
      */
     public static final int TRAVEL_BUFFER_MINUTES = 45;
 
-    private final MockDataStore dataStore;
+    private final ServiceForgeDataStore dataStore;
 
-    public TechnicianAvailabilityService(MockDataStore dataStore) {
+    public TechnicianAvailabilityService(ServiceForgeDataStore dataStore) {
         this.dataStore = dataStore;
     }
 
@@ -86,7 +86,7 @@ public class TechnicianAvailabilityService implements IReservationService{
             throw new IllegalStateException("Technician is unavailable during the requested time slot. Select another technician or choose a different time.");
         }
 
-        Job job = new Job(dataStore.nextJobId(), technicianId, customerName, startTime, endTime, JobStatus.SCHEDULED);
-        return dataStore.save(job);
+        Job job = new Job(null, technicianId, customerName, startTime, endTime, JobStatus.SCHEDULED);
+        return dataStore.saveJob(job);
     }
 }

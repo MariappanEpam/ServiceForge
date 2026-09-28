@@ -1,0 +1,18 @@
+{
+    "hooks":
+        {
+            "name": "after-developer-complete",
+            "event": "DeveloperAgentComplete",
+            "description": "When the Developer Agent finishes, kill any processes listening on ports 8080 and 4200, then start the backend and frontend dev servers.",
+            "action": {
+                "type": "run-script",
+                "script": ".github/hooks/after-developer-complete.ps1",
+                "blocking": false,
+                "warnOnly": false
+            },
+            "policy": {
+                "requiresConfirmation": false,
+                "allowOnCi": false
+            }
+        }
+}

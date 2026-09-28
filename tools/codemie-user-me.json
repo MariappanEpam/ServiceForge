@@ -1,0 +1,17 @@
+﻿{
+    "user_id":  "f65a7140-fa41-477c-b65c-0e68fb6e40be",
+    "name":  "Mariappan Ganesan",
+    "username":  "mariappan_ganesan@epam.com",
+    "email":  "mariappan_ganesan@epam.com",
+    "is_admin":  false,
+    "applications":  [
+                         "mariappan_ganesan@epam.com"
+                     ],
+    "applications_admin":  [
+
+                           ],
+    "picture":  "https://static.cdn.epam.com/avatar/38f3d1e38f2236a207db10f007661c10.jpg",
+    "knowledge_bases":  [
+
+                        ]
+}

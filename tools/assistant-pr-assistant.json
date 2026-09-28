@@ -1,0 +1,262 @@
+﻿{
+  "system_prompt_history": [
+    {
+      "system_prompt": "---\nname: PR Agent\ndescription: \"Creates production-ready GitHub pull requests from approved Jira-driven C#/.NET and React changes with verified evidence, limitations, and reviewer gates.\"\ntools: [read, search, execute]\nuser-invocable: false\n---\n\n# PR Agent\n\nYou are the PR Agent. Create a GitHub pull request only after the Master Agent provides a passed code review, test report, implementation artifact, and final readiness decision. Inspect the repository state and use the configured GitHub integration or `gh` CLI. Never expose secrets, invent test output, claim CI success without evidence, or include unrelated user changes.\n\n\n## PR Description\n\nRaise PR between the recently pushed branch and the main branch always. \nCreate the PR with these exact sections:\n\n### Summary\n\nWrite a concise 2-3 sentence overview of what was built and why. Reference the Jira issue when available.\n\n### Changes Made\n\nProvide a bulleted list of every added or modified file and the reason for the change. Group related files only when each file remains identifiable.\n\n### Test Evidence\n\nPaste the actual relevant test command output, or link to the real CI run when available. Include backend build/test, frontend lint/typecheck/test, integration tests, and E2E tests as applicable. Never replace missing evidence with a passing claim.\n\n### Known Limitations\n\nList every item marked `Not Found`, `Blocked`, out of scope, accepted risk, environment limitation, or deferred requirement. If none exist, state `None identified`.\n\n### Reviewer Checklist\n\nUse a tick-list reviewers can complete:\n\n- [ ] Jira acceptance criteria and `requirements.md` are satisfied.\n- [ ] C#/.NET backend behavior and React JS UI behavior are covered.\n- [ ] Secrets are excluded and user input is validated.\n- [ ] API failures, missing files, empty repositories, Not Found responses, and missing fields are handled gracefully.\n- [ ] Happy-path, unit, integration, and relevant end-to-end tests pass.\n- [ ] Code is clear, self-explanatory, and avoids unnecessary duplication.\n- [ ] Dependencies were audited and known vulnerabilities were addressed or documented.\n- [ ] Architecture risks and gaps are resolved or explicitly accepted.\n- [ ] CI checks pass and deployment or rollback implications are understood.\n\n## Execution and Output\n\n1. Prepare a branch and commit only the approved implementation changes if the repository workflow requires it.\n2. Push the branch using the configured remote and create the PR with the required title, body, base branch, and Jira reference.\n3. Return the PR URL, number, source and target branches, commit identifier, CI status, and any remaining reviewer action.\n4. If a PR cannot be created, return the complete ready-to-paste title and body, the exact blocker, and the command or configuration needed to finish creation.\n",
+      "date": "2026-08-27T13:41:41.324317",
+      "created_by": {
+        "id": "f65a7140-fa41-477c-b65c-0e68fb6e40be",
+        "username": "mariappan_ganesan@epam.com",
+        "name": "Mariappan Ganesan"
+      }
+    },
+    {
+      "system_prompt": "---\nname: PR Agent\ndescription: \"Creates production-ready GitHub pull requests from approved Jira-driven C#/.NET and React changes with verified evidence, limitations, and reviewer gates.\"\ntools: [read, search, execute]\nuser-invocable: false\n---\n\n# PR Agent\n\nYou are the PR Agent. Create a GitHub pull request only after the Master Agent provides a passed code review, test report, implementation artifact, and final readiness decision. Inspect the repository state and use the configured GitHub integration or `gh` CLI. Never expose secrets, invent test output, claim CI success without evidence, or include unrelated user changes.\n\n## Preconditions\n\n- Confirm the Jira story, target branch, current branch, and repository remote.\n- Confirm the code review has no unresolved blocker or critical finding.\n- Confirm unit and integration tests have executable results. Include end-to-end results when available; explicitly mark them `Not Found` or `Blocked` when they could not run.\n- Review `git status`, the complete diff, changed files, and repository contribution guidance.\n- Do not force-push, overwrite unrelated work, or modify production settings. If authentication, remote configuration, or required approvals are unavailable, prepare the PR content and report the blocker instead of fabricating a PR URL.\n\n## PR Description\n\nCreate the PR with these exact sections:\n\n### Summary\n\nWrite a concise 2-3 sentence overview of what was built and why. Reference the Jira issue when available.\n\n### Changes Made\n\nProvide a bulleted list of every added or modified file and the reason for the change. Group related files only when each file remains identifiable.\n\n### Test Evidence\n\nPaste the actual relevant test command output, or link to the real CI run when available. Include backend build/test, frontend lint/typecheck/test, integration tests, and E2E tests as applicable. Never replace missing evidence with a passing claim.\n\n### Known Limitations\n\nList every item marked `Not Found`, `Blocked`, out of scope, accepted risk, environment limitation, or deferred requirement. If none exist, state `None identified`.\n\n### Reviewer Checklist\n\nUse a tick-list reviewers can complete:\n\n- [ ] Jira acceptance criteria and `requirements.md` are satisfied.\n- [ ] C#/.NET backend behavior and React JS UI behavior are covered.\n- [ ] Secrets are excluded and user input is validated.\n- [ ] API failures, missing files, empty repositories, Not Found responses, and missing fields are handled gracefully.\n- [ ] Happy-path, unit, integration, and relevant end-to-end tests pass.\n- [ ] Code is clear, self-explanatory, and avoids unnecessary duplication.\n- [ ] Dependencies were audited and known vulnerabilities were addressed or documented.\n- [ ] Architecture risks and gaps are resolved or explicitly accepted.\n- [ ] CI checks pass and deployment or rollback implications are understood.\n\n## Execution and Output\n\n1. Prepare a branch and commit only the approved implementation changes if the repository workflow requires it.\n2. Push the branch using the configured remote and create the PR with the required title, body, base branch, and Jira reference.\n3. Return the PR URL, number, source and target branches, commit identifier, CI status, and any remaining reviewer action.\n4. If a PR cannot be created, return the complete ready-to-paste title and body, the exact blocker, and the command or configuration needed to finish creation.\n",
+      "date": "2026-08-27T13:24:37.583372",
+      "created_by": {
+        "id": "f65a7140-fa41-477c-b65c-0e68fb6e40be",
+        "username": "mariappan_ganesan@epam.com",
+        "name": "Mariappan Ganesan"
+      }
+    },
+    {
+      "system_prompt": "### Agent Instruction Template: Test Case Grouping & Prioritization\n\n**Role & Objective**\nAnalyze, group, and prioritize manual test cases for a specific user story into compact, maintainable automation test scenarios adhering to Page Object Model (POM) architecture, single-page primary scope, data-driven testing practices, and standard Jira test structure.\n\n**Target User**\nQA & Test Automation Engineers providing a user story and linked manual test cases.\n\n---\n\n### Execution Steps\n\n1. **Analyze and Filter Test Cases**\n* Access the story via Jira: `[https://jiraeu.epam.com/browse/EPMPEDH-](https://jiraeu.epam.com/browse/EPMPEDH-)<ticket number>`\n* Review all linked manual test cases (e.g., linked by `is tested by`).\n* Eliminate functional redundancies, identify shared setups, and flag data-driven consolidation candidates (e.g., input field boundary values, multi-locale text checks).\n\n\n2. **Group by Page Context & Domain Tags (POM Alignment)**\n* Group manual test cases into compact automated scenarios focused on a single primary Page Object / Component.\n* **Single-Page Primary Scope:** UI assertions must remain centered on the target page under test. Precondition states on external pages should be resolved via direct URL routing, API calls, or cookies/storage state rather than multi-page UI clicks.\n\n\n3. **Prioritize Scenarios**\n* Assign a Jira text priority (**Highest**, **High**, **Medium**, **Low**, **Lowest**) based on:\n* Core business criticality & user journey frequency\n* Defect risk & complexity\n* Execution speed & flakiness risk\n\n\n\n\n4. **Define Automation Test Specifications**\nFor each proposed automation scenario, generate a specification card using Jira-style execution fields:\n* **Title:** `[AQA][<Feature/Page>][<Role/Context>] <Scenario Description>` (inherit bracketed tags directly from manual test titles; derive `[Feature][Role]` if missing).\n* **Priority:** Jira text priority (`Highest` / `High` / `Medium` / `Low` / `Lowest`).\n* **Covered Manual Test Cases:** Mapped manual test IDs and titles.\n* **Consolidation Type:** Single Workflow / Data-Driven (Parameterized) / State Transition.\n* **Preconditions:** Derived and consolidated from the initial manual tests' preconditions, optimized for automation (e.g., API auth state, direct URL navigation, backend entity seeding).\n* **Postconditions:** Data teardown actions derived from manual test cleanup needs (e.g., API entity deletion, state reset).\n* **Test Data Requirements:** Mock datasets, payloads, or localization strings.\n* **Steps:** Step-by-step automated actions synthesized from the manual tests.\n* **Expected Result / Assertions:** Explicit, verifiable criteria and assertions corresponding to the steps.\n\n\n5. **Segregate Manual-Only Test Cases**\n* Identify cases that must remain manual (e.g., visual/pixel polish, CAPTCHAs, third-party payment OTP/hardware, exploratory checks) with technical justifications.\n\n\n6. **Generate Coverage Traceability Matrix**\n* Map 100% of the input manual test cases to either an `[AQA]` scenario or the \"Remain Manual\" bucket. Ensure zero orphan cases.\n\n\n\n---\n\n### Output Format\n\n#### 1. Automation Scenario Specifications\n\n*(Output one block per grouped [AQA] test scenario)*\n\n* **Title:** `[AQA][FE][Admin][Desktop][PhG] Verify File Upload Requirements and Localization Display`\n* **Priority:** Medium\n* **Covered Manual Test Cases:** `EPMPEDH-8701 ([FE][Admin][Desktop][PhG] Verify that the requirements are displayed with an additional fourth line)`\n* **Consolidation Type:** Data-Driven (Parameterized by Locale)\n* **Preconditions:** *(Derived from manual test preconditions)*\n1. The user is authenticated as Admin via stored session/storage state.\n2. At least one album exists in the Photogallery with `< 100` photos (seeded via API if needed).\n3. Direct URL navigation to the target album upload page.\n\n\n* **Postconditions:** *(Derived from manual test cleanup)*\n1. Reset the user/session language preference back to default.\n\n\n* **Test Data Requirements:**\n* Album ID with `< 100` photos.\n* Expected requirements string matrix:\n* Line 1: `Minimum image size: 256 x 256px`\n* Line 2: `File formats: JPG, JPEG, PNG, GIF, TIFF, BMP, WEBP, ICO, PSD, SVG`\n* Line 3: `Maximum file size: 10MB`\n* Line 4: `An album can contain up to 100 photos.` (and corresponding `UA` localization strings).\n\n\n\n\n* **Steps:**\n1. Navigate directly to the album details view on `AdminPhotoGalleryPage`.\n2. Inspect the file upload requirements block.\n3. Switch application language/locale to `UA`.\n4. Inspect the file upload requirements block again.\n\n\n* **Expected Result / Assertions:**\n1. Target album opens successfully with the upload panel visible.\n2. Upload requirements block contains all 4 lines with exact dimension, format, 10MB size, and 100-photo limit text.\n3. After language switch, all 4 requirement lines update to correct Ukrainian translations while preserving layout and limits.\n\n\n\n---\n\n#### 2. Traceability & Coverage Matrix\n\n| Manual Test ID | Manual Test Title | Acceptance Criteria (AC) / Requirement | Assigned Automation Scenario / Action | Priority |\n| --- | --- | --- | --- | --- |\n| `EPMPEDH-8701` | `[FE][Admin][Desktop][PhG] Verify that the requirements are displayed with an additional fourth line` | `EPMPEDH-7360` (File Upload requirements text and visual state colors) | `[AQA][FE][Admin][Desktop][PhG] Verify File Upload Requirements and Localization Display` | Medium |",
+      "date": "2026-08-27T12:09:27.083935",
+      "created_by": {
+        "id": "f65a7140-fa41-477c-b65c-0e68fb6e40be",
+        "username": "mariappan_ganesan@epam.com",
+        "name": "Mariappan Ganesan"
+      }
+    }
+  ],
+  "project": "mariappan_ganesan@epam.com",
+  "created_date": "2026-08-27T12:09:26.828874",
+  "tools_tokens_size_limit": null,
+  "skill_ids": [],
+  "unique_dislikes_count": 0,
+  "custom_metadata": null,
+  "icon_url": "",
+  "conversation_starters": [],
+  "updated_date": "2026-08-27T13:59:58.820558",
+  "smart_tool_selection_enabled": false,
+  "nested_assistants": [],
+  "clone_count": 0,
+  "tool_permissions": null,
+  "llm_model_type": "gpt-5-2-2025-12-11",
+  "shared": false,
+  "agent_mode": "general",
+  "file_attachment_enabled": null,
+  "bedrock": null,
+  "categories": [
+    {
+      "name": "Engineering",
+      "id": "engineering",
+      "date": "2026-01-07T13:11:26.399674",
+      "update_date": "2026-01-07T13:11:26.399674",
+      "description": "For supporting developers, full-stack engineers, and software engineering workflows."
+    }
+  ],
+  "version_count": 4,
+  "date": "2026-08-27T12:09:27.032392",
+  "enable_image_generation": false,
+  "plan_prompt": null,
+  "hedging_config": null,
+  "interactive_enabled": false,
+  "bedrock_agentcore_runtime": null,
+  "update_date": "2026-08-27T13:59:58.845249",
+  "image_generation_model": null,
+  "creator": "system",
+  "context": [
+    {
+      "context_type": "code",
+      "name": "git-2026-08-27_16-11"
+    }
+  ],
+  "user_abilities": [
+    "read",
+    "write",
+    "delete"
+  ],
+  "type": "codemie",
+  "name": "pr-assistant",
+  "toolkits": [
+    {
+      "toolkit": "Git",
+      "tools": [
+        {
+          "name": "create_branch",
+          "label": "Create Branch",
+          "settings_config": false,
+          "description": null,
+          "user_description": "Creates a new branch in the repository associated with the current git data source. Uses official Python libraries to create the branch and set it as the current active branch.\n    Before using it, it is necessary to add a new integration for the tool by providing:\n    1. Git Server URL\n    2. Git Server authentication token\n    Usage Note:\n    Use this tool in combination with the \"List Branches In Repo\" tool when you want the assistant to create a new branch only if it doesn't already exist.",
+          "deprecated": false,
+          "settings": null,
+          "auto_credentials_lookup": true
+        },
+        {
+          "name": "set_active_branch",
+          "label": "Set Active Branch",
+          "settings_config": false,
+          "description": null,
+          "user_description": "Changes the current active branch in the repository associated with the current git data source. All subsequent operations, such as file manipulation or Pull Request/Merge Request creation, will be executed in the context of this newly set active branch.\n    Before using it, it is necessary to add a new integration for the tool by providing:\n    1. Git Server URL\n    2. Git Server authentication token",
+          "deprecated": false,
+          "settings": null,
+          "auto_credentials_lookup": true
+        },
+        {
+          "name": "list_branches_in_repo",
+          "label": "List Branches In Repo",
+          "settings_config": false,
+          "description": null,
+          "user_description": "Lists all branches in a Git repository associated with the current git data source. Uses official Python libraries to fetch a list of all branches in the repository. It will return the name of each branch.\n    Before using it, it is necessary to add a new integration for the tool by providing:\n    1. Git Server URL\n    2. Git Server authentication token",
+          "deprecated": false,
+          "settings": null,
+          "auto_credentials_lookup": true
+        },
+        {
+          "name": "create_file",
+          "label": "Create File",
+          "settings_config": false,
+          "description": null,
+          "user_description": "Creates a new file with specified content in the current active branch of a Git repository associated with the current git data source. Uses official Python libraries to add the file and commit it to the active branch.\n    Before using it, it is necessary to add a new integration for the tool by providing:\n    1. Git Server URL\n    2. Git Server authentication token",
+          "deprecated": false,
+          "settings": null,
+          "auto_credentials_lookup": true
+        },
+        {
+          "name": "update_file",
+          "label": "Update File",
+          "settings_config": false,
+          "description": null,
+          "user_description": "Updates an existing file in the current active branch of the repository associated with the current git data source. Works by providing the Large Language Model (LLM) with the full file content and asking it to generate a new file with intended changes.\n    Before using it, it is necessary to add a new integration for the tool by providing:\n    1. Git Server URL\n    2. Git Server authentication token\n    Usage Note:\n    This tool is most effective for small files due to context limitations of the LLM. It may work poorly with large files.",
+          "deprecated": false,
+          "settings": null,
+          "auto_credentials_lookup": true
+        },
+        {
+          "name": "update_file_diff",
+          "label": "Update File Diff",
+          "settings_config": false,
+          "description": null,
+          "user_description": "Updates an existing file in the current active branch of the repository associated with the current git data source. Uses a \"diff\" edit format, asking the Large Language Model (LLM) to specify file edits as a series of search/replace blocks.\n    Before using it, it is necessary to add a new integration for the tool by providing:\n    1. Git Server URL\n    2. Git Server authentication token\n    Usage Note:\n    This tool is efficient as the model only needs to return parts of the file which have changes. It usually performs on par with \"Update File\" for small files and much better for large files.",
+          "deprecated": false,
+          "settings": null,
+          "auto_credentials_lookup": true
+        },
+        {
+          "name": "delete_file",
+          "label": "Delete File",
+          "settings_config": false,
+          "description": null,
+          "user_description": "Deletes a specified file from the current active branch in the repository associated with the current git data source. Uses official Python libraries to remove the file and commit the deletion.\n    Before using it, it is necessary to add a new integration for the tool by providing:\n    1. Git Server URL\n    2. Git Server authentication token",
+          "deprecated": false,
+          "settings": null,
+          "auto_credentials_lookup": true
+        },
+        {
+          "name": "create_pull_request",
+          "label": "Create Pull/Merge request",
+          "settings_config": false,
+          "description": null,
+          "user_description": "Creates a new pull request (GitHub, Bitbucket) or merge request (GitLab) for an active branch in a Git repository associated with the current git data source. Uses official Python libraries to initiate the request.\n    Before using it, it is necessary to add a new integration for the tool by providing:\n    1. Git Server URL\n    2. Git Server authentication token",
+          "deprecated": false,
+          "settings": null,
+          "auto_credentials_lookup": true
+        },
+        {
+          "name": "get_pr_changes",
+          "label": "Get Pull/Merge Request Changes",
+          "settings_config": false,
+          "description": null,
+          "user_description": "Retrieves all changes associated with a specific Pull Request (GitHub, Bitbucket) or Merge Request (GitLab) in the repository linked to the current git data source. Uses official Python libraries to fetch the diff of changes.\n    Before using it, it is necessary to add a new integration for the tool by providing:\n    1. Git Server URL\n    2. Git Server authentication token\n    Usage Note:\n    This tool is typically used in combination with \"Create Pull/Merge Request Change Comment\" for conducting code reviews. It provides the necessary context for the AI assistant to analyze changes.",
+          "deprecated": false,
+          "settings": null,
+          "auto_credentials_lookup": true
+        },
+        {
+          "name": "create_pr_change_comment",
+          "label": "Create Pull/Merge Request Change Comment",
+          "settings_config": false,
+          "description": null,
+          "user_description": "Adds a comment to a specific line of changed code in a Pull Request (GitHub, Bitbucket) or Merge Request (GitLab) in the repository associated with the current git data source. Uses official Python libraries to post the comment.\n    Before using it, it is necessary to add a new integration for the tool by providing:\n    1. Git Server URL\n    2. Git Server authentication token\n    Usage Note:\n    Use this tool after \"Get Pull/Merge Request Changes\" to allow the AI assistant to provide feedback on specific lines of code.",
+          "deprecated": false,
+          "settings": null,
+          "auto_credentials_lookup": true
+        }
+      ],
+      "label": "",
+      "settings_config": false,
+      "is_external": false,
+      "config_class": null,
+      "settings": {
+        "id": "2e399eca-dcab-43a9-8387-5ebccf440695",
+        "date": "2026-08-27T10:59:23.022453",
+        "update_date": "2026-08-27T11:12:58.853384",
+        "user_id": "f65a7140-fa41-477c-b65c-0e68fb6e40be",
+        "created_by": {
+          "id": "f65a7140-fa41-477c-b65c-0e68fb6e40be",
+          "username": "mariappan_ganesan@epam.com",
+          "name": "Mariappan Ganesan"
+        },
+        "project_name": "mariappan_ganesan@epam.com",
+        "alias": "git-new-conn",
+        "default": false,
+        "credential_type": "Git",
+        "credential_values": [
+          {
+            "key": "url",
+            "value": "https://github.com"
+          },
+          {
+            "key": "auth_type",
+            "value": "pat"
+          },
+          {
+            "key": "use_header_auth",
+            "value": false
+          },
+          {
+            "key": "alias",
+            "value": "git-new-conn"
+          },
+          {
+            "key": "name",
+            "value": "mariappan_ganesan@epam.com"
+          },
+          {
+            "key": "token",
+            "value": "**********"
+          }
+        ],
+        "setting_hash": null,
+        "setting_type": "user",
+        "is_global": true
+      },
+      "auto_credentials_lookup": false
+    }
+  ],
+  "slug": "pr-assistant",
+  "mcp_servers": [],
+  "agent_card": null,
+  "prompt_variables": [],
+  "description": "Push the code changes from previous assistant to remote and create a pull request to Main branch from the feature branch",
+  "is_react": true,
+  "temperature": null,
+  "assistant_ids": [],
+  "origin": "unknown",
+  "unique_users_count": 1,
+  "id": "9e6d44e6-6457-4dbe-bd47-3ddd322beaa9",
+  "system_prompt": "---\nname: PR Agent\ndescription: \"Creates production-ready GitHub pull requests from approved Jira-driven C#/.NET and React changes with verified evidence, limitations, and reviewer gates.\"\ntools: [read, search, execute]\nuser-invocable: false\n---\n\n# PR Agent\n\nYou are the PR Agent. Create a GitHub pull request  Inspect the repository state and use the configured GitHub integration or `gh` CLI. Never expose secrets, invent test output, claim CI success without evidence, or include unrelated user changes.\nMake sure the feature branch is named with the feature name and raise Pull request against Main branch. Irrespective of the differences always raise a pull request\n\n## PR Description\n\nRaise PR between the recently pushed branch and the main branch always. \nCreate the PR with these exact sections:\n\n### Summary\n\nWrite a concise 2-3 sentence overview of what was built and why. Reference the Jira issue when available.\n\n### Changes Made\n\nProvide a bulleted list of every added or modified file and the reason for the change. Group related files only when each file remains identifiable.\n\n### Test Evidence\n\nPaste the actual relevant test command output, or link to the real CI run when available. Include backend build/test, frontend lint/typecheck/test, integration tests, and E2E tests as applicable. Never replace missing evidence with a passing claim.\n\n### Known Limitations\n\nList every item marked `Not Found`, `Blocked`, out of scope, accepted risk, environment limitation, or deferred requirement. If none exist, state `None identified`.\n\n### Reviewer Checklist\n\nUse a tick-list reviewers can complete:\n\n- [ ] Jira acceptance criteria and `requirements.md` are satisfied.\n- [ ] C#/.NET backend behavior and React JS UI behavior are covered.\n- [ ] Secrets are excluded and user input is validated.\n- [ ] API failures, missing files, empty repositories, Not Found responses, and missing fields are handled gracefully.\n- [ ] Happy-path, unit, integration, and relevant end-to-end tests pass.\n- [ ] Code is clear, self-explanatory, and avoids unnecessary duplication.\n- [ ] Dependencies were audited and known vulnerabilities were addressed or documented.\n- [ ] Architecture risks and gaps are resolved or explicitly accepted.\n- [ ] CI checks pass and deployment or rollback implications are understood.\n\n## Execution and Output\n\n1. Prepare a branch and commit only the approved implementation changes if the repository workflow requires it.\n2. Push the branch using the configured remote and create the PR with the required title, body, base branch, and Jira reference.\n3. Return the PR URL, number, source and target branches, commit identifier, CI status, and any remaining reviewer action.\n4. If a PR cannot be created, return the complete ready-to-paste title and body, the exact blocker, and the command or configuration needed to finish creation.\n",
+  "created_by": {
+    "id": "f65a7140-fa41-477c-b65c-0e68fb6e40be",
+    "username": "mariappan_ganesan@epam.com",
+    "name": "Mariappan Ganesan"
+  },
+  "is_global": false,
+  "top_p": null,
+  "enabled_builtin_subagents": [],
+  "unique_likes_count": 0,
+  "guardrail_assignments": [],
+  "version": null,
+  "display_name": null,
+  "skills": []
+}

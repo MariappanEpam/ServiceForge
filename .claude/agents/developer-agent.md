@@ -3,6 +3,10 @@ name: developer-agent
 description: Implements a committed feature spec into working backend/frontend code, following this repo's stack conventions and any active rules. Use this agent only after a spec file already exists under pipeline/implementation-plan/. Do not use it to invent scope that isn't in the spec.
 tools: Read, Grep, Glob, Write, Edit, Bash
 model: inherit
+hooks:   
+    PostToolUse:
+    - type: command
+      command: "pwsh -File ./.github/hooks/after-developer-complete.ps1"
 ---
 
 # Developer Agent

@@ -2,6 +2,8 @@ package com.serviceforge.service;
 
 import com.serviceforge.data.MockDataStore;
 import com.serviceforge.model.Job;
+import com.serviceforge.persistence.InMemoryDataStoreAdapter;
+import com.serviceforge.persistence.ServiceForgeDataStore;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -21,13 +23,15 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 class TechnicianAvailabilityServiceTest {
 
     private MockDataStore dataStore;
+    private ServiceForgeDataStore serviceForgeDataStore;
     private TechnicianAvailabilityService service;
 
     @BeforeEach
     void setUp() {
         dataStore = new MockDataStore();
         dataStore.seed();
-        service = new TechnicianAvailabilityService(dataStore);
+        serviceForgeDataStore = new InMemoryDataStoreAdapter(dataStore);
+        service = new TechnicianAvailabilityService(serviceForgeDataStore);
     }
 
     @Test

@@ -1,0 +1,17 @@
+{
+  "name": "serviceforge-mcp-server",
+  "version": "0.1.0",
+  "description": "Lightweight MCP wrapper for ServiceForge to enable prompt-driven job booking and dispatching",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "axios": "^1.4.0",
+    "body-parser": "^1.20.2",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "zod": "^3.23.8"
+  }
+}

@@ -11,7 +11,15 @@ public interface IPartsInventoryService {
 
     void restock(String sku, int quantity);
 
-    PartReservation reserve(String sku, int quantity, Long jobId) throws InsufficientStockException;
+    /**
+     * Reserve parts from inventory.
+     * @param sku part SKU
+     * @param quantity requested quantity
+     * @param jobId job the reservation is for
+     * @param technicianId optional technician creating the reservation
+     * @return PartReservation audit record (may be full, partial, or awaiting stock)
+     */
+    PartReservation reserve(String sku, int quantity, Long jobId, Long technicianId) throws InsufficientStockException;
 
     void releaseReservation(Long reservationId) throws ReservationNotFoundException;
 

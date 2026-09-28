@@ -9,8 +9,8 @@
 - Allow a technician (or the system on the technician's behalf) to reserve parts for a specific job; reservation reduces available quantity-on-hand but creates a reservation record (jobId, sku, quantity, reservedBy, reservedAt).  
 - Support both bulk SKUs (quantity tracked) and optionally serial-tracked items (individual serials selectable) — treat serial tracking as optional behavior governed by a flag on the SKU.  
 - Provide REST endpoints (mock-backed) for: list parts, get part by SKU, search by SKU/text, create reservation, list reservations for a job, cancel reservation, and admin restock endpoints.  
-- Seed the mock datastore with an example SKU range (e.g., SKU-1000..SKU-1100) and randomized quantities so the UI and tests have realistic data.  
-- Prevent reservations that would reduce available quantity below zero and return a clear error (HTTP 409) when attempted.  
+ - Seed the mock datastore with an example SKU range (e.g., SKU-1000..SKU-1100) and randomized quantities so the UI and tests have realistic data.  
+ - When requested quantity exceeds available stock, the system should create a partial reservation for the available quantity, record the shortage, and create an order/replenishment request for the shortage. Full reservations return HTTP 201; partial or awaiting-stock reservations return HTTP 200 with a reservation audit record describing reserved and shortage quantities.
 - Show reservation history for a job and per-SKU movement summary (simple list). |
 | **Out of scope** | - Purchasing workflows, supplier/PO management, receiving goods from vendors, invoices, or ERP integration.  
 - Multi-warehouse location management, bin-level inventory optimization, forecasting, or replenishment automation.  

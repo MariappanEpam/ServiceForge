@@ -1,0 +1,19 @@
+# Entity memory: ServiceForge configurable aspects
+# Keep this file small and stable.
+
+version: 1
+updated: 2026-09-27
+
+scheduling:
+  # Minutes of buffer time required between jobs for travel.
+  travelBufferMinutes: 45
+
+  # Whether overlapping bookings are allowed.
+  allowOverlap: false
+
+  # If true, treat endTime == next startTime as overlap.
+  endInclusiveOverlap: false
+
+parts:
+  # Reservation hold time (minutes) before auto-release (if implemented).
+  reservationHoldMinutes: 60
