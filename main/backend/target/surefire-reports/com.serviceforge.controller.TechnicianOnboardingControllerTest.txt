@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.serviceforge.controller.TechnicianOnboardingControllerTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 10.82 s -- in com.serviceforge.controller.TechnicianOnboardingControllerTest

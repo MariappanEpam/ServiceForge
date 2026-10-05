@@ -29,9 +29,11 @@ public class TechnicianAvailabilityService implements IReservationService{
     public static final int TRAVEL_BUFFER_MINUTES = 45;
 
     private final ServiceForgeDataStore dataStore;
+    private final TechnicianLifecycleService lifecycleService;
 
-    public TechnicianAvailabilityService(ServiceForgeDataStore dataStore) {
+    public TechnicianAvailabilityService(ServiceForgeDataStore dataStore, TechnicianLifecycleService lifecycleService) {
         this.dataStore = dataStore;
+        this.lifecycleService = lifecycleService;
     }
 
     public List<Technician> getAllTechnicians() {
@@ -59,6 +61,9 @@ public class TechnicianAvailabilityService implements IReservationService{
     public Job bookJob(Long technicianId, String customerName, LocalDateTime startTime, LocalDateTime endTime) {
         Technician technician = dataStore.findTechnician(technicianId)
                 .orElseThrow(() -> new IllegalArgumentException("No technician with id " + technicianId));
+
+        // Feature 3 booking guard: only ACTIVE technicians can be booked for new jobs.
+        lifecycleService.requireBookable(technician);
 
         List<Job> existingJobs = dataStore.getJobsForTechnician(technicianId);
 

@@ -28,6 +28,13 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(error, new HttpHeaders(), HttpStatus.CONFLICT);
     }
 
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<ApiError> handleIllegalArgument(IllegalArgumentException ex, WebRequest request) {
+        String requestId = resolveRequestId(request);
+        ApiError error = new ApiError(HttpStatus.BAD_REQUEST.value(), "BAD_REQUEST", ex.getMessage(), ex.getMessage(), requestId);
+        return new ResponseEntity<>(error, new HttpHeaders(), HttpStatus.BAD_REQUEST);
+    }
+
     @ExceptionHandler(InsufficientStockException.class)
     public ResponseEntity<ApiError> handleInsufficientStock(InsufficientStockException ex, WebRequest request) {
         String requestId = resolveRequestId(request);

@@ -1,0 +1,12 @@
+.panel { margin-top: 12px; padding: 12px; border: 1px solid #ddd; border-radius: 6px; }
+.row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.row input { width: 120px; }
+.error { color: #b00020; margin: 8px 0; }
+.form { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0; }
+.form label { display: block; }
+.form input { width: 100%; }
+.actions { display: flex; gap: 8px; flex-wrap: wrap; margin: 10px 0; }
+.token { margin-top: 10px; padding: 8px; background: #f7f7f7; border: 1px dashed #ccc; }
+.mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; word-break: break-all; }
+.hint { color: #666; font-size: 12px; }
+.detail p { margin: 6px 0; }

@@ -27,6 +27,17 @@ public class SqliteDataStoreAdapter implements ServiceForgeDataStore {
     }
 
     @Override
+    public Technician createTechnician(Technician technician) {
+        return sqlite.createTechnician(technician);
+    }
+
+    @Override
+    public long nextTechnicianId() {
+        // SQLite assigns IDs via createTechnician; keep this for interface compatibility.
+        return -1;
+    }
+
+    @Override
     public List<Job> getJobsForTechnician(Long technicianId) {
         return sqlite.getJobsForTechnician(technicianId);
     }

@@ -24,20 +24,11 @@ public class JobController {
 
     @PostMapping
     public ResponseEntity<?> bookJob(@Valid @RequestBody BookJobRequest request, org.springframework.web.context.request.WebRequest webRequest) {
-        try {
-            Job job = availabilityService.bookJob(
-                    request.getTechnicianId(),
-                    request.getCustomerName(),
-                    request.getStartTime(),
-                    request.getEndTime());
-            return ResponseEntity.status(201).body(job);
-        } catch (IllegalArgumentException e) {
-            // let GlobalExceptionHandler handle via IllegalArgumentException -> 400? For now map to 404
-            ApiError err = new ApiError(404, "NOT_FOUND", e.getMessage(), e.getMessage(), null);
-            return ResponseEntity.status(404).body(err);
-        } catch (IllegalStateException e) {
-            ApiError err = new ApiError(409, "CONFLICT", e.getMessage(), e.getMessage(), null);
-            return ResponseEntity.status(409).body(err);
-        }
+        Job job = availabilityService.bookJob(
+                request.getTechnicianId(),
+                request.getCustomerName(),
+                request.getStartTime(),
+                request.getEndTime());
+        return ResponseEntity.status(201).body(job);
     }
 }

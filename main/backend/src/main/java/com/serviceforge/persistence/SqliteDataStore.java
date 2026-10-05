@@ -75,6 +75,21 @@ public class SqliteDataStore {
         }
     }
 
+    public Technician createTechnician(Technician technician) {
+        try (Connection c = open()) {
+            long id = sequenceService.next(c, "technician");
+            try (PreparedStatement ps = c.prepareStatement("INSERT INTO technicians(id, name, region) VALUES(?,?,?)")) {
+                ps.setLong(1, id);
+                ps.setString(2, technician.getName());
+                ps.setString(3, technician.getRegion());
+                ps.executeUpdate();
+            }
+            return new Technician(id, technician.getName(), technician.getRegion());
+        } catch (Exception e) {
+            throw new IllegalStateException("Failed to create technician", e);
+        }
+    }
+
     public List<Job> getJobsForTechnician(Long technicianId) {
         try (Connection c = open();
              PreparedStatement ps = c.prepareStatement("SELECT id, technician_id, customer_name, start_time, end_time, status FROM jobs WHERE technician_id = ? ORDER BY start_time")) {

@@ -85,6 +85,29 @@ async function main() {
     version: '0.1.0',
   });
 
+  function safeJsonStringify(value) {
+    try {
+      return JSON.stringify(value, null, 2);
+    } catch {
+      return String(value);
+    }
+  }
+
+  async function sfGet(path) {
+    return axios.get(`${SF_BACKEND}${path}`, { validateStatus: () => true });
+  }
+
+  async function sfPost(path, config) {
+    return axios.post(`${SF_BACKEND}${path}`, undefined, {
+      ...config,
+      validateStatus: () => true,
+    });
+  }
+
+  async function sfDelete(path) {
+    return axios.delete(`${SF_BACKEND}${path}`, { validateStatus: () => true });
+  }
+
   server.tool(
     'book_job',
     'Book a job for a technician (creates a scheduled job).',
@@ -159,11 +182,107 @@ async function main() {
     'List technicians from ServiceForge backend.',
     {},
     async () => {
-      const resp = await axios.get(`${SF_BACKEND}/api/technicians`, { validateStatus: () => true });
+      const resp = await sfGet('/api/technicians');
       if (resp.status >= 200 && resp.status < 300) {
         return { content: [{ type: 'text', text: JSON.stringify(resp.data, null, 2) }] };
       }
       return { isError: true, content: [{ type: 'text', text: `Backend error (${resp.status}): ${JSON.stringify(resp.data)}` }] };
+    }
+  );
+
+  // -----------------------------
+  // Parts reservation MCP tools
+  // -----------------------------
+
+  server.tool(
+    'list_part_reservations',
+    'List part reservations from ServiceForge backend.',
+    {},
+    async () => {
+      const resp = await sfGet('/api/parts');
+      if (resp.status >= 200 && resp.status < 300) {
+        return { content: [{ type: 'text', text: safeJsonStringify(resp.data) }] };
+      }
+      return { isError: true, content: [{ type: 'text', text: `Backend error (${resp.status}): ${safeJsonStringify(resp.data)}` }] };
+    }
+  );
+
+  server.tool(
+    'list_part_orders',
+    'List part orders (if any) from ServiceForge backend.',
+    {},
+    async () => {
+      const resp = await sfGet('/api/parts/orders');
+      if (resp.status >= 200 && resp.status < 300) {
+        return { content: [{ type: 'text', text: safeJsonStringify(resp.data) }] };
+      }
+      return { isError: true, content: [{ type: 'text', text: `Backend error (${resp.status}): ${safeJsonStringify(resp.data)}` }] };
+    }
+  );
+
+  server.tool(
+    'reserve_parts',
+    'Reserve parts for a job (creates a part reservation).',
+    {
+      sku: z.string().min(1).describe('Part SKU (e.g., PART-001)'),
+      quantity: z.number().int().positive().describe('Quantity to reserve'),
+      jobId: z.number().int().positive().describe('Job ID'),
+      technicianId: z.number().int().positive().optional().describe('Technician ID (optional)'),
+    },
+    async ({ sku, quantity, jobId, technicianId }) => {
+      const params = new URLSearchParams();
+      params.set('sku', sku);
+      params.set('quantity', String(quantity));
+      params.set('jobId', String(jobId));
+      if (technicianId !== undefined && technicianId !== null) {
+        params.set('technicianId', String(technicianId));
+      }
+
+      const resp = await sfPost(`/api/parts/reservations?${params.toString()}`, {
+        headers: { 'Content-Type': 'application/json' },
+      });
+
+      if (resp.status >= 200 && resp.status < 300) {
+        return { content: [{ type: 'text', text: safeJsonStringify(resp.data) }] };
+      }
+
+      return {
+        isError: true,
+        content: [{ type: 'text', text: `Backend error (${resp.status}): ${safeJsonStringify(resp.data)}` }],
+      };
+    }
+  );
+
+  server.tool(
+    'cancel_part_reservation',
+    'Cancel (release) a part reservation by id.',
+    {
+      reservationId: z.number().int().positive().describe('Reservation ID'),
+    },
+    async ({ reservationId }) => {
+      const resp = await sfDelete(`/api/parts/reservations/${reservationId}`);
+      if (resp.status >= 200 && resp.status < 300) {
+        return { content: [{ type: 'text', text: `Cancelled reservation ${reservationId}` }] };
+      }
+      return { isError: true, content: [{ type: 'text', text: `Backend error (${resp.status}): ${safeJsonStringify(resp.data)}` }] };
+    }
+  );
+
+  server.tool(
+    'restock_part',
+    'Restock a part SKU by quantity.',
+    {
+      sku: z.string().min(1).describe('Part SKU'),
+      quantity: z.number().int().positive().describe('Quantity to add to inventory'),
+    },
+    async ({ sku, quantity }) => {
+      const resp = await sfPost(`/api/parts/${encodeURIComponent(sku)}/restock?quantity=${encodeURIComponent(String(quantity))}`, {
+        headers: { 'Content-Type': 'application/json' },
+      });
+      if (resp.status >= 200 && resp.status < 300) {
+        return { content: [{ type: 'text', text: `Restocked ${sku} by ${quantity}` }] };
+      }
+      return { isError: true, content: [{ type: 'text', text: `Backend error (${resp.status}): ${safeJsonStringify(resp.data)}` }] };
     }
   );
 

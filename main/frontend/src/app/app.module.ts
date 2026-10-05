@@ -7,12 +7,16 @@ import { AppComponent } from './app.component';
 import { TechnicianCalendarComponent } from './technician-calendar/technician-calendar.component';
 import { PartsComponent } from './parts/parts.component';
 import { PartsService } from './services/parts.service';
+import { TechnicianManagementComponent } from './technician-management/technician-management.component';
+import { TechnicianDetailComponent } from './technician-detail/technician-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TechnicianCalendarComponent
     ,PartsComponent
+    ,TechnicianManagementComponent
+    ,TechnicianDetailComponent
   ],
   imports: [
     BrowserModule,

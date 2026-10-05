@@ -2,6 +2,8 @@ package com.serviceforge.service;
 
 import com.serviceforge.data.MockDataStore;
 import com.serviceforge.model.Job;
+import com.serviceforge.model.Technician;
+import com.serviceforge.model.TechnicianStatus;
 import com.serviceforge.persistence.InMemoryDataStoreAdapter;
 import com.serviceforge.persistence.ServiceForgeDataStore;
 import org.junit.jupiter.api.BeforeEach;
@@ -31,7 +33,7 @@ class TechnicianAvailabilityServiceTest {
         dataStore = new MockDataStore();
         dataStore.seed();
         serviceForgeDataStore = new InMemoryDataStoreAdapter(dataStore);
-        service = new TechnicianAvailabilityService(serviceForgeDataStore);
+        service = new TechnicianAvailabilityService(serviceForgeDataStore, new TechnicianLifecycleService());
     }
 
     @Test
@@ -62,5 +64,16 @@ class TechnicianAvailabilityServiceTest {
         LocalDateTime end = start.plusHours(1);
 
         assertThrows(IllegalArgumentException.class, () -> service.bookJob(999L, "Nobody", start, end));
+    }
+
+    @Test
+    void rejectsBookingWhenTechnicianNotActive() {
+        Technician t = dataStore.findTechnician(1L).orElseThrow();
+        t.setStatus(TechnicianStatus.SUSPENDED);
+
+        LocalDateTime start = LocalDateTime.now().withHour(16).withMinute(30).withSecond(0).withNano(0);
+        LocalDateTime end = start.plusHours(1);
+
+        assertThrows(IllegalStateException.class, () -> service.bookJob(1L, "Blocked Customer", start, end));
     }
 }

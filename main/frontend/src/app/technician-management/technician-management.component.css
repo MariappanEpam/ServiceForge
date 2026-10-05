@@ -1,0 +1,12 @@
+.panel { padding: 12px; border: 1px solid #ddd; border-radius: 6px; }
+.filters { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-bottom: 10px; }
+.filters label { display: flex; gap: 6px; align-items: center; }
+.error { color: #b00020; margin: 8px 0; }
+.grid { display: grid; grid-template-columns: 2fr 1fr; gap: 16px; }
+.list table { width: 100%; border-collapse: collapse; }
+.list th, .list td { border-bottom: 1px solid #eee; padding: 6px; text-align: left; }
+.create label { display: block; margin: 6px 0; }
+.create input { width: 100%; }
+.token { margin-top: 10px; padding: 8px; background: #f7f7f7; border: 1px dashed #ccc; }
+.mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; word-break: break-all; }
+.hint { color: #666; font-size: 12px; }

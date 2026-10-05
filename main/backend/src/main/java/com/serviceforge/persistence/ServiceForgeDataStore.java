@@ -11,6 +11,10 @@ public interface ServiceForgeDataStore {
 
     Optional<Technician> findTechnician(Long id);
 
+    Technician createTechnician(Technician technician);
+
+    long nextTechnicianId();
+
     List<Job> getJobsForTechnician(Long technicianId);
 
     List<Job> getAllJobs();

@@ -28,6 +28,16 @@ public class InMemoryDataStoreAdapter implements ServiceForgeDataStore {
     }
 
     @Override
+    public Technician createTechnician(Technician technician) {
+        return dataStore.createTechnician(technician);
+    }
+
+    @Override
+    public long nextTechnicianId() {
+        return dataStore.nextTechnicianId();
+    }
+
+    @Override
     public List<Job> getJobsForTechnician(Long technicianId) {
         return dataStore.getJobsForTechnician(technicianId);
     }
