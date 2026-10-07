@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "openproject": {
+      "command": "node",
+      "args": ["tools/openproject-mcp/index.js"],
+      "env": {
+        "OPENPROJECT_BASE_URL": "http://localhost:8088",
+        "OPENPROJECT_PROJECT_IDENTIFIER": "serviceforge",
+        "OPENPROJECT_API_KEY": "<SET_IN_YOUR_ENV_NOT_IN_GIT>"
+      }
+    }
+  }
+}

@@ -41,6 +41,10 @@ Validate that the workflow guardrails defined in pipeline/orchestration.md were 
 ## What to check (minimum)
 Use the checklist in pipeline/orchestration.md under `critic_agent_checklist` as the source of truth.
 
+Additionally, enforce OpenProject publishing requirements when applicable:
+- If the current stage is **post-implementation-planner** (routing toward developer-agent), verify that the implementation plan was published to the local OpenProject tracker via MCP and that the handoff includes the OpenProject work package URLs.
+- Evidence must be present in the handoff (URLs) and/or in the implementation plan content (references to the OpenProject items).
+
 ## Output requirements
 - Update the handoff with a **Critic Compliance Report** section containing:
   - Timestamp

@@ -19,6 +19,15 @@ const { z } = require('zod');
 
 const SF_BACKEND = process.env.SF_BACKEND_URL || 'http://localhost:8080';
 
+// Optional: generated tools from OpenAPI (see tools/mcp-server/generate-tools-from-openapi.mjs)
+let registerGeneratedTools = null;
+try {
+  // eslint-disable-next-line global-require
+  ({ registerGeneratedTools } = require('./generated-tools'));
+} catch {
+  // No generated tools present; that's OK.
+}
+
 function pad2(n) {
   return String(n).padStart(2, '0');
 }
@@ -285,6 +294,20 @@ async function main() {
       return { isError: true, content: [{ type: 'text', text: `Backend error (${resp.status}): ${safeJsonStringify(resp.data)}` }] };
     }
   );
+
+  // -----------------------------
+  // Generated MCP tools (OpenAPI)
+  // -----------------------------
+  if (typeof registerGeneratedTools === 'function') {
+    registerGeneratedTools(server, {
+      SF_BACKEND,
+      safeJsonStringify,
+      sfRequest: async (method, url, options) => {
+        // axios expects full URL; url already includes SF_BACKEND
+        return axios({ method, url, validateStatus: () => true, ...options });
+      },
+    });
+  }
 
   const transport = new StdioServerTransport();
   await server.connect(transport);

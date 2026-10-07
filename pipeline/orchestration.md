@@ -67,11 +67,30 @@ memory_metadata:
   - "pipeline/memory/entities/*.yml"
   - "pipeline/memory/episodes/*.md"
   - "pipeline/memory/semantic/vector-db/"
-
 # Post hooks
 # Note: This orchestrator file is tool-agnostic; the actual execution of hooks depends on the
 # orchestrator runtime. This hook documents the intended post-review indexing step.
 post_hooks:
+  - name: "stop-local-hosts"
+    when: "before_developer_agent"
+    working_dir: "."
+    command: "powershell -NoProfile -ExecutionPolicy Bypass -File tools/stop-local-hosts.ps1"
+    description: "Pre-hook: stop any running local ServiceForge hosts (backend/frontend) and clear active host episodic memory so developer-agent changes take effect on next launch."
+  - name: "bootstrap-openproject-local-tracker"
+    when: "before_ba_agent"
+    working_dir: "."
+    command: "powershell -NoProfile -ExecutionPolicy Bypass -File tools/local-tracker/bootstrap-openproject.ps1"
+    description: "Ensure local OpenProject tracker is running and seeded (admin + ServiceForge project). Does NOT create API tokens; if OPENPROJECT_API_KEY is set, also ensures baseline work packages via REST sync."
+  - name: "bootstrap-serviceforge-mcp-server"
+    when: "before_developer_agent"
+    working_dir: "."
+    command: "powershell -NoProfile -ExecutionPolicy Bypass -File tools/mcp-server/bootstrap-mcp-server.ps1"
+    description: "Ensure ServiceForge MCP server dependencies are installed and provide next steps. Intended to be run before developer-agent so MCP tooling is available for any REST API feature (e.g., parts reservation)."
+  - name: "sync-serviceforge-mcp-tools"
+    when: "after_developer_agent"
+    working_dir: "."
+    command: "powershell -NoProfile -ExecutionPolicy Bypass -File tools/mcp-server/bootstrap-mcp-server.ps1 -SkipInstall -GenerateFromOpenApi"
+    description: "After developer-agent adds/changes REST endpoints, regenerate MCP tools from OpenAPI (tools/mcp-server/openapi.json) and ensure MCP server can expose matching tools."
   - name: "index-semantic-memory"
     when: "after_design_review_approved"
     working_dir: "tools/semantic-memory"
@@ -95,6 +114,7 @@ critic_agent_checklist:
     - "Any infrastructure cost estimate remains under $100/month; otherwise rejected."
     - "No legacy/non-compliant security protocols referenced (e.g., TLS 1.0); otherwise forced rewrite."
   testing_requirements:
+    - "Implementation plan was published to OpenProject via MCP and the handoff includes EPIC/Story/Implementation Plan work package URLs (when local tracker is enabled)."
     - "Tester stage produced evidence of UI + API tests and 100% pass rate (or documented exception + human approval)."
     - "Developer stage changes are invocable and validated (basic smoke test recorded)."
 ---
@@ -250,6 +270,10 @@ Inputs:
 
 Outputs:
 - Working Code
+
+Additional requirement (REST → MCP parity):
+- If the feature adds/changes any backend REST endpoints, the developer-agent must also add/adjust corresponding MCP tools in tools/mcp-server (and/or feature-specific MCP servers) so the new endpoints are invocable via MCP.
+- This is enforced by the post hook `sync-serviceforge-mcp-tools` (runs after developer-agent) and should be treated as part of “Development Complete”.
 
 Handoff Update:
 - Status = Development Complete

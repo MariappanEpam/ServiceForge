@@ -27,3 +27,7 @@ frontend/.angular/
 /main/frontend/node_modules
 /main/backend/logs/serviceforge.log.2026-09-23.0.gz
 /.memory
+/test-automation
+/backend
+/frontend
+/main

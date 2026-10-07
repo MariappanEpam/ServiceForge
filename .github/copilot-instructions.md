@@ -16,7 +16,7 @@ Load `.claude/skills/build-code-skill/SKILL.md` before writing backend or fronte
 
 ## Conventions to always respect
 
-- No real database — mock/in-memory data only (`MockDataStore` on the backend).
+- Local-only SQLite persistence is allowed; no external DB services. Prefer repositories + migrations; seed behavior must be explicit.
 - Constructor injection only on the backend; no HTTP calls inside Angular components, always through a service.
 - Every feature has exactly one spec file under `pipeline/features/`, never merged with another feature's spec.
 

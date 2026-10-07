@@ -1,0 +1,35 @@
+services:
+  db:
+    image: postgres:16
+    container_name: serviceforge-tracker-db
+    environment:
+      POSTGRES_DB: openproject
+      POSTGRES_USER: openproject
+      POSTGRES_PASSWORD: openproject
+    volumes:
+      - openproject_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U openproject -d openproject"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  openproject:
+    image: openproject/openproject:15
+    container_name: serviceforge-tracker
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8088:80"
+    environment:
+      DATABASE_URL: "postgres://openproject:openproject@db:5432/openproject"
+      OPENPROJECT_HOST__NAME: "localhost:8088"
+      OPENPROJECT_HTTPS: "false"
+      OPENPROJECT_RAILS__RELATIVE__URL__ROOT: ""
+    volumes:
+      - openproject_assets:/var/openproject/assets
+
+volumes:
+  openproject_pgdata:
+  openproject_assets:

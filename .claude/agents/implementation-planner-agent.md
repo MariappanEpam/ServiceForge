@@ -65,6 +65,47 @@ Your input will be from folder path `pipeline/architecture-design/.` Read all th
 ## Output Format
 Place the generated output into the path `pipeline/implementation-plan` with <feature-name>.md as the file name
 
+## OpenProject integration (local tracker via MCP)
+When the local OpenProject tracker is available, you must also publish the implementation plan into OpenProject as work packages.
+
+### Preconditions
+- Local tracker is running (see tools/local-tracker/bootstrap-openproject.ps1).
+- OpenProject MCP server is configured and available in the orchestrator runtime.
+- The target OpenProject project identifier is `serviceforge`.
+
+### Publishing steps (required)
+After writing the implementation plan markdown file under `pipeline/implementation-plan/`, do the following via MCP tools:
+
+1) Ensure an EPIC exists for the feature delivery
+  - Use `openproject_ensure_work_package` to create/find an EPIC work package.
+  - Title convention:
+    - `EPIC: <Feature N> — <Feature Name>`
+
+2) Ensure a Story exists for the feature
+  - Use `openproject_ensure_work_package` to create/find a Story work package.
+  - Title convention:
+    - `Story: <Feature N> — <Feature Name>`
+
+3) Ensure an Implementation Plan work package exists
+  - Use `openproject_ensure_work_package` to create/find a Task (or custom type if available).
+  - Title convention:
+    - `Implementation Plan: <Feature N> — <Feature Name>`
+
+4) Push the plan content into OpenProject
+  - Use `openproject_update_work_package_description` to set the description to the full implementation plan markdown.
+  - Include links to the repo artifacts:
+    - `pipeline/features/feature-N-<slug>.md`
+    - `pipeline/architecture/feature-N-architecture.md`
+    - `pipeline/reviews/feature-N-review.md`
+    - `pipeline/implementation-plan/<feature-name>.md`
+
+5) Record the OpenProject work package URLs in the handoff
+  - Add the EPIC/Story/Implementation Plan work package URLs to the feature handoff file under `pipeline/handoffs/`.
+
+### Notes
+- Token creation is manual; do not attempt to automate token creation.
+- The OpenProject MCP tools are the only allowed mechanism for publishing (no browser/UI automation).
+
 ### Executive Summary
 - Scope
 - Assumptions

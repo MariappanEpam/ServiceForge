@@ -1,6 +1,6 @@
 $body = Get-Content -Raw 'C:\Users\Mariappan_Ganesan\Documents\New folder\ServiceForge\ServiceForge-Start\temp_booking_conflict.json'
 try {
-    $r = Invoke-WebRequest -Uri 'http://localhost:8080/api/jobs' -Method Post -Body $body -ContentType 'application/json' -UseBasicParsing -ErrorAction Stop
+    $r = Invoke-WebRequest -Uri 'http://localhost:8081/api/jobs' -Method Post -Body $body -ContentType 'application/json' -UseBasicParsing -ErrorAction Stop
     Write-Host 'STATUS' $r.StatusCode.Value__
     Write-Host $r.Content
 } catch {

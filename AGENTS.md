@@ -13,7 +13,7 @@ This file is the entry point any coding agent (Claude Code, GitHub Copilot, Code
 
 ```bash
 # Backend (from /backend)
-mvn spring-boot:run          # serves http://localhost:8080
+mvn spring-boot:run          # serves http://localhost:4200
 
 # Frontend (from /frontend)
 npm install
@@ -39,7 +39,7 @@ npm start                    # serves http://localhost:4200
 
 - **Backend (Java/Spring Boot):** package-by-layer (`model`, `data`, `service`, `controller`, `dto`); constructor injection, no field injection; REST endpoints return `ResponseEntity<T>`; validation errors return `400` with an `ApiError` body; not-found returns `404` with an `ApiError` body.
 - **Frontend (Angular):** one component per screen area under `src/app/`; HTTP calls isolated in `services/`; no business logic in components — components render and delegate.
-- **Both:** no real database, no external services — mock/in-memory data only, seeded at startup. Do not introduce a database dependency without an explicit decision recorded in `pipeline/decisions/`.
+- **Both:** persistence is allowed only via **local-file SQLite** (no external DB services). Schema must be managed via versioned migrations; seed behavior must be explicit. See [pipeline/rules/local-sqlite-only.md](pipeline/rules/local-sqlite-only.md) and [pipeline/decisions/project-decisions.md](pipeline/decisions/project-decisions.md).
 
 ## Cross-tool notes
 
