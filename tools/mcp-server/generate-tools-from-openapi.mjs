@@ -185,4 +185,5 @@ module.exports = { registerGeneratedTools };
 `;
 
 fs.writeFileSync(outPath, header + body + footer, 'utf8');
-console.log(`[mcp-gen] Wrote ${outPath} with ${ops.length} tools`);
+// Diagnostics must go to stderr to avoid polluting stdout for stdio-based MCP sessions.
+console.error(`[mcp-gen] Wrote ${outPath} with ${ops.length} tools`);

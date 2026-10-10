@@ -168,3 +168,18 @@ Evidence links (tests):
 - Test plan: pipeline/test-plan/feature-8-test-plan.md
 - Test report: pipeline/test-report/feature-8-test-report.md
 - HTML evidence: test-execution/feature-8-job-parts-mapping-and-ui-conditions/reports/feature8.html
+
+---
+
+## Reviewer Agent (re-run) — 2026-10-10
+
+Result: **BLOCKED**
+
+Reason:
+- Reviewer skill requires TRX + HTML evidence for approval.
+- HTML exists: `test-execution/feature-8-job-parts-mapping-and-ui-conditions/reports/feature8.html`.
+- TRX missing: no `**/*.trx` files found in repo.
+
+Required fixes:
+1) Generate and commit at least one TRX file for Feature 8 under `test-execution/feature-8-job-parts-mapping-and-ui-conditions/` (or a subfolder).
+2) Update `pipeline/test-report/feature-8-test-report.md` to reference the committed TRX path.

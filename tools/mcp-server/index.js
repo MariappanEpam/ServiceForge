@@ -8,7 +8,9 @@
  * Transport: stdio (required by VS Code MCP).
  */
 
-console.log('ServiceForge MCP server starting (stdio) - version: 20260925-2');
+// IMPORTANT: MCP stdio transport requires stdout to contain protocol messages only.
+// Send all diagnostics/logging to stderr.
+console.error('ServiceForge MCP server starting (stdio) - version: 20260925-2');
 
 const axios = require('axios');
 const {

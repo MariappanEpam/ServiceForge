@@ -10,12 +10,16 @@ agents:
   - name: critic-agent
     role: Validates that guardrails were followed and that required tests/validations were executed. Reviews the latest handoff and produced artifacts for policy compliance; blocks routing if violations are found.
     model: inherit
-  - name: developer-agent
+  - name: developer-orchestrator-agent
     role: Implements a committed feature spec into working backend/frontend code, following this repo's stack conventions and any active rules. Use this agent only after a spec file already exists under pipeline/implementation-plan/. Do not use it to invent scope that isn't in the spec.
     model: inherit
-  - name: tester-agent
+  - name: test-orchestrator-agent
     role: Writes and runs tests against a feature spec's Definition of Done. Use this agent after the developer agent has implemented a spec. Do not use it to test things the spec never claimed.
     model: inherit
+  - name: review-agent
+    role: Review the developed code with 
+    model: inherit
+    
 guardrails:
   -execution_limits:
     - type: "max_loop_count"
@@ -42,35 +46,66 @@ guardrails:
       - "Force a rewrite if the design references legacy, non-compliant security protocols (e.g., TLS 1.0)."
 
 routing:
+
   - from: ba-orchestrator-agent
     to: critic-agent
-    condition: Implementation plan is present in the `/pipiline/implementation-plan/`
+    condition: Implementation plan is available in /pipeline/implementation-plan/
   - from: critic-agent
-    to: developer-agent
-    condition: Guardrails validated and compliance recorded in the handoff
-  - from: developer-agent
-    to: critic-agent
-    condition: Both frontend and backend development is completed and the application is invocable
+    to: developer-orchestrator-agent
+    condition: No findings, guardrails validated, and compliance recorded in handoff
   - from: critic-agent
-    to: tester-agent
-    condition: Guardrails validated and compliance recorded in the handoff
-  - from: tester-agent
-    to: critic-agent
-    condition: Established test for both UI and API and validated and 100% pass rates
-  - from: critic-agent
+    to: human-approval
+    condition: Findings, risks, ambiguities, gaps, or scope concerns identified
+  - from: human-approval
+    to: ba-orchestrator-agent
+    condition: Human approves critic feedback and requests plan refinement
+  - from: human-approval
+    to: developer-orchestrator-agent
+    condition: Human accepts findings as non-blocking
+  - from: developer-orchestrator-agent
+    to: review-agent
+    condition: Frontend and backend implementation completed and application is invocable
+  - from: review-agent
+    to: tester-orchestrator-agent
+    condition: Review passed, compliance recorded, and no blocking findings exist
+  - from: review-agent
+    to: human-approval
+    condition: Review findings require remediation or approval
+  - from: human-approval
+    to: developer-orchestrator-agent
+    condition: Human requests implementation updates
+  - from: tester-orchestrator-agent
+    to: review-agent
+    condition: UI, API, integration, and regression testing completed
+  - from: review-agent
     to: end
-    condition: Guardrails validated and compliance recorded in the handoff
+    condition: Test review passed, compliance recorded, and no blocking findings exist
+  - from: review-agent
+    to: human-approval
+    condition: Test coverage gaps, failed validations, or compliance concerns identified
+  - from: human-approval
+    to: tester-orchestrator-agent
+    condition: Human requests test remediation
+  - from: end
+    to: none
+    condition: Workflow complete
 
 memory: "project"
 memory_metadata:
   # Repo-local memory sources only (per AGENTS.md / pipeline rules)
   - "pipeline/memory/entities/*.yml"
   - "pipeline/memory/episodes/*.md"
+  - "pipeline/memory/facts/*.md"
   - "pipeline/memory/semantic/vector-db/"
 # Post hooks
 # Note: This orchestrator file is tool-agnostic; the actual execution of hooks depends on the
 # orchestrator runtime. This hook documents the intended post-review indexing step.
 post_hooks:
+  - name: "retrieve-repo-memory"
+    when: "before_ba_agent"
+    working_dir: "."
+    command: "powershell -NoProfile -ExecutionPolicy Bypass -Command \"Write-Host 'Memory sources:'; Get-ChildItem pipeline/memory/facts,pipeline/decisions,pipeline/rules -Recurse -File | Select-Object -Expand FullName\""
+    description: "Pre-hook: surface repo-local memory sources (decisions/rules/facts) so BA/Dev/Test can retrieve context without relying on chat history."
   - name: "stop-local-hosts"
     when: "before_developer_agent"
     working_dir: "."
@@ -96,6 +131,12 @@ post_hooks:
     working_dir: "tools/semantic-memory"
     command: "npm run index"
     description: "Index pipeline artifacts (spec/architecture/review/plan) into the local Chroma vector DB using pipeline/memory/semantic/index.sources.json."
+
+  - name: "promote-durable-memory"
+    when: "after_tester_agent"
+    working_dir: "."
+    command: "powershell -NoProfile -ExecutionPolicy Bypass -Command \"Write-Host 'Reminder: promote durable learnings to pipeline/memory/facts/*.md with provenance (see pipeline/memory/README.md).'; exit 0\""
+    description: "Post-hook: enforce the write/read round-trip by prompting promotion of durable learnings into facts memory with provenance and review_by/expires_at."
 
 # Critic agent checklist (guardrail compliance)
 # The critic-agent must record PASS/FAIL for each item in the handoff before routing continues.

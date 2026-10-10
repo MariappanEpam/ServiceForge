@@ -9,8 +9,7 @@
 ## Evidence
 - Backend (JUnit): `mvn test -Dtest=JobPartsReservationControllerFeature8Test` → PASS
 - Frontend (Angular): `npm test` → PASS (6/6)
-- UI regression (Playwright/.NET): TRX + HTML
-  - TRX: test-automation/src/ServiceForge.Tests.Api/TestResults/feature8-ui-regression.trx
+- UI regression (Playwright/.NET): HTML
   - HTML: test-execution/feature-8-job-parts-mapping-and-ui-conditions/reports/feature8.html
 
 ## Notes

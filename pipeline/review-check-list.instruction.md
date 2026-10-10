@@ -1,170 +1,289 @@
 # Review Agent Checklist
 
-## Requirement Alignment
+## Purpose
 
-- [ ] All requirements are implemented.
-- [ ] All acceptance criteria are satisfied.
-- [ ] No requirements are missing.
-- [ ] No unnecessary scope has been added.
-- [ ] Assumptions are explicitly documented.
-- [ ] Business rules are correctly implemented.
-- [ ] Edge cases identified in requirements are handled.
+The Review Agent performs a structured validation across five critical review areas:
 
----
-
-## Traceability
-
-- [ ] Every implementation maps to a requirement.
-- [ ] Every requirement has corresponding implementation.
-- [ ] Every requirement has corresponding test coverage.
-- [ ] Non-functional requirements are addressed.
-- [ ] Design decisions align with business objectives.
+1. Jira AC Verification
+2. Quality Audit
+3. Security Review
+4. Compliance Review
+5. Design Alignment
 
 ---
 
-## Architecture & Design
+# 1. Jira AC Verification
 
-- [ ] Solution follows established architecture guidelines.
-- [ ] Separation of concerns is maintained.
-- [ ] Components have clear responsibilities.
-- [ ] Dependencies are appropriate and justified.
-- [ ] Design is scalable.
-- [ ] Design is maintainable.
-- [ ] Error handling strategy is defined.
-- [ ] Reusable components are leveraged where applicable.
-- [ ] No architectural anti-patterns introduced.
+## Objective
+
+Verify every Acceptance Criterion (AC) is implemented correctly and fulfills the intended business outcome.
+
+### Checklist
+
+- [ ] Every Jira Acceptance Criterion is mapped to implemented functionality.
+- [ ] Implementation satisfies the business intent, not just the literal wording.
+- [ ] Positive scenarios are covered.
+- [ ] Negative scenarios are covered.
+- [ ] Boundary conditions are covered.
+- [ ] Error and exception paths are covered.
+- [ ] No ACs are partially implemented.
+- [ ] No ACs are skipped without documented approval.
+- [ ] User workflow aligns with expected business process.
+- [ ] Test evidence exists for every AC.
+- [ ] Requirement traceability is maintained.
+
+### Findings Template
+
+```text
+AC Status:
+✓ AC-1 Implemented
+✓ AC-2 Implemented
+⚠ AC-3 Partially Implemented
+✗ AC-4 Missing Validation Scenario
+
+Overall AC Coverage: XX%
+```
 
 ---
 
-## Security
+# 2. Quality Audit
 
-- [ ] Input validation is implemented.
-- [ ] Authorization controls are present.
-- [ ] Authentication is properly enforced.
-- [ ] Sensitive data is protected.
-- [ ] Secrets are not hardcoded.
-- [ ] APIs are secured.
-- [ ] OWASP risks are considered.
-- [ ] Security exceptions are documented.
-- [ ] Logs do not expose confidential information.
+## Objective
 
----
+Ensure implementation is maintainable, readable, testable, and free from unnecessary complexity.
 
 ## Code Quality
 
-- [ ] Code follows project standards.
-- [ ] Naming conventions are consistent.
-- [ ] Functions have a single responsibility.
-- [ ] Logic duplication is minimized.
-- [ ] Error handling is appropriate.
-- [ ] Logging is meaningful and actionable.
-- [ ] Dead code is removed.
-- [ ] Code complexity is reasonable.
-- [ ] No obvious bugs or defects detected.
-- [ ] Configuration values are externalized.
+- [ ] Naming conventions followed consistently.
+- [ ] Classes, methods, and variables are descriptive.
+- [ ] No dead or unreachable code.
+- [ ] No duplicate logic or copy-paste implementations.
+- [ ] SOLID principles appropriately applied.
+- [ ] Complexity remains manageable.
+- [ ] Logging is sufficient and meaningful.
+- [ ] Exception handling is clear and actionable.
+- [ ] Code readability meets team standards.
+- [ ] Comments explain intent rather than implementation details.
+
+## Scope Control
+
+- [ ] No unauthorized features introduced.
+- [ ] No hidden requirements implemented.
+- [ ] No unnecessary framework or library additions.
+- [ ] Solution remains within approved Jira scope.
+- [ ] Technical debt is documented.
+
+## Testing Quality
+
+- [ ] Unit tests added where required.
+- [ ] Test names clearly describe behavior.
+- [ ] Critical paths validated.
+- [ ] Edge cases tested.
+- [ ] Regression risks evaluated.
 
 ---
 
-## Maintainability
+# 3. Security Review
 
-- [ ] Code is easy to understand.
-- [ ] Appropriate comments are included where needed.
-- [ ] Documentation is updated.
-- [ ] Technical debt is identified.
-- [ ] Future extensibility is considered.
-- [ ] Modules are loosely coupled.
-- [ ] Changes are localized and modular.
+## Objective
 
----
+Identify application, infrastructure, and AI-specific security risks.
 
-## API Review
+## OWASP Security Review
 
-- [ ] API contracts are respected.
-- [ ] Request validation exists.
-- [ ] Response format is consistent.
-- [ ] Error handling follows standards.
-- [ ] API documentation is updated.
-- [ ] Backward compatibility is maintained.
-- [ ] Versioning guidelines are followed.
+- [ ] Input validation implemented.
+- [ ] Output encoding applied where needed.
+- [ ] Authentication controls enforced.
+- [ ] Authorization controls verified.
+- [ ] Sensitive data protected.
+- [ ] SQL injection protection verified.
+- [ ] XSS protection verified.
+- [ ] CSRF protection verified.
+- [ ] Rate limiting considered.
+- [ ] File upload security validated.
+- [ ] Error messages do not expose internal details.
 
----
+## Secrets Management
 
-## Database Review
+- [ ] Secrets-scan hook reported clean for this diff.
+- [ ] No hardcoded credentials identified.
+- [ ] No API keys committed.
+- [ ] No connection strings exposed.
+- [ ] No secrets present in logs.
+- [ ] Environment variables used appropriately.
 
-- [ ] Schema changes are justified.
-- [ ] Migrations are safe and reversible.
-- [ ] Queries are optimized.
-- [ ] Required indexes exist.
-- [ ] Transactions are properly handled.
-- [ ] Data integrity is preserved.
-- [ ] No unnecessary database coupling introduced.
+## LLM / Agentic Security
 
----
+- [ ] Prompt injection risks reviewed.
+- [ ] Tool invocation permissions constrained.
+- [ ] User input sanitized before LLM consumption.
+- [ ] Memory access scope validated.
+- [ ] Sensitive information excluded from prompts.
+- [ ] Least-privilege principles enforced.
+- [ ] Retrieval sources validated.
+- [ ] Model outputs validated before execution.
+- [ ] Hallucination-related risks assessed.
+- [ ] Agent routing cannot bypass security controls.
 
-## Frontend Review
+### Findings Template
 
-- [ ] UI aligns with requirements.
-- [ ] Validation is implemented.
-- [ ] Error messages are user friendly.
-- [ ] Loading states are handled.
-- [ ] Empty states are handled.
-- [ ] Accessibility requirements are met.
-- [ ] Responsive behavior is verified.
-- [ ] Cross-browser considerations are addressed.
+```text
+Security Status: PASS
 
----
-
-## Testing
-
-### Unit Testing
-
-- [ ] New functionality is covered.
-- [ ] Business logic is tested.
-- [ ] Negative scenarios are tested.
-- [ ] Edge cases are tested.
-
-### Integration Testing
-
-- [ ] Service interactions are covered.
-- [ ] Database interactions are verified.
-- [ ] External dependencies are validated.
-
-### End-to-End Testing
-
-- [ ] Critical workflows are covered.
-- [ ] Regression risks are addressed.
-
-### Overall Testing
-
-- [ ] Test suite passes successfully.
-- [ ] No flaky tests introduced.
-- [ ] Coverage meets project threshold.
-- [ ] Test evidence is available.
+Findings:
+✓ No critical vulnerabilities
+✓ Secrets scan clean
+⚠ Missing rate-limiting controls
+```
 
 ---
 
-## Performance
+# 4. Compliance Review
 
-- [ ] Performance impact is assessed.
-- [ ] Expensive operations are optimized.
-- [ ] Caching opportunities considered.
-- [ ] Network usage is optimized.
-- [ ] Large data volumes are handled appropriately.
-- [ ] No obvious bottlenecks identified.
+## Objective
+
+Ensure implementation complies with project standards, architecture rules, and previously approved decisions.
+
+## Project Standards
+
+- [ ] All approved rule files followed.
+- [ ] Architecture constraints respected.
+- [ ] Coding standards followed.
+- [ ] Repository conventions followed.
+- [ ] API standards followed.
+- [ ] Naming standards followed.
+- [ ] Logging standards followed.
+- [ ] Error handling standards followed.
+- [ ] Documentation standards followed.
+
+## Historical Compliance
+
+- [ ] Previous design decisions maintained.
+- [ ] Previous architectural commitments preserved.
+- [ ] Earlier review findings resolved.
+- [ ] Previously fixed issues not reintroduced.
+- [ ] Existing business rules remain intact.
+
+## Governance
+
+- [ ] Changes traceable to Jira work item.
+- [ ] Audit trail maintained.
+- [ ] Required approvals documented.
+- [ ] Compliance exceptions documented and approved.
+
+### Findings Template
+
+```text
+Compliance Status: PASS
+
+Violations:
+None
+
+Observations:
+Previous architecture commitments remain intact.
+```
 
 ---
 
-## Observability
+# 5. Design Alignment Review
 
-- [ ] Logging is sufficient.
-- [ ] Metrics are captured.
-- [ ] Monitoring requirements are addressed.
-- [ ] Failure scenarios are observable.
-- [ ] Diagnostics support troubleshooting.
+## Objective
+
+Validate that implementation remains aligned with approved requirements, architecture, and intended system design.
+
+## Requirements Alignment
+
+- [ ] Solution aligns with approved requirements.
+- [ ] Business workflow remains unchanged unless approved.
+- [ ] Functional behavior matches design intent.
+- [ ] Non-functional requirements addressed.
+
+## Architecture Alignment
+
+- [ ] Approved architecture followed.
+- [ ] Layer boundaries respected.
+- [ ] Service responsibilities preserved.
+- [ ] Integration patterns unchanged.
+- [ ] Data ownership boundaries respected.
+- [ ] Existing contracts preserved.
+
+## Scope Drift Detection
+
+- [ ] No unauthorized feature additions.
+- [ ] No hidden architectural changes.
+- [ ] No unexpected dependencies introduced.
+- [ ] No technology stack deviations.
+- [ ] Design remains within agreed boundaries.
+
+## Future Impact Assessment
+
+- [ ] Scalability impact reviewed.
+- [ ] Maintainability impact reviewed.
+- [ ] Operational impact reviewed.
+- [ ] Performance impact reviewed.
+
+### Findings Template
+
+```text
+Design Alignment Status: PASS
+
+Drift Analysis:
+✓ Architecture unchanged
+✓ Requirements aligned
+⚠ Additional caching layer introduced
+
+Action:
+Requires architecture approval.
+```
 
 ---
 
-## Documentation
+# Final Review Summary
 
-- [ ] Architecture documentation updated.
-- [ ] API 
+```text
+Review Summary
+
+1. Jira AC Verification      : PASS | FAIL
+2. Quality Audit            : PASS | FAIL
+3. Security Review          : PASS | FAIL
+4. Compliance Review        : PASS | FAIL
+5. Design Alignment Review  : PASS | FAIL
+
+Critical Findings : 0
+Major Findings    : 0
+Minor Findings    : 0
+
+Recommendation:
+APPROVE
+APPROVE WITH COMMENTS
+REJECT
+
+Required Actions:
+1.
+2.
+3.
+```
+
+---
+
+# Review Agent Approval Criteria
+
+## APPROVE
+
+- No critical findings
+- No major findings
+- All five review areas pass
+
+## APPROVE WITH COMMENTS
+
+- No critical findings
+- Minor issues exist
+- Does not block deployment or merge
+
+## REJECT
+
+- Any critical finding present
+- Significant AC gap identified
+- Security violation exists
+- Compliance violation detected
+- Architecture or design drift found without approval

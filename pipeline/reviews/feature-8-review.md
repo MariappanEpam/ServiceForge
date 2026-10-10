@@ -1,52 +1,44 @@
-# Feature 8 — Design Review
+# Review — Feature 8: Job ↔ Parts Mapping & UI Control Conditions
 
-> Canonical copy for the orchestration workflow.
-> Source of truth content is maintained in: `pipeline/design-review-logs/feature-8-2026-10-08.md`
+| Field | Value |
+|---|---|
+| Feature | 8 |
+| Date | 2026-10-10 |
+| Reviewer | reviewer-agent |
+| Result | BLOCKED |
 
 ---
 
-# Design Review Log — Feature 8 (Job ↔ Parts Mapping & UI Control Conditions)
+BLOCKED
 
-Date: 2026-10-08
+## Summary
+- Feature 8 pipeline artifacts exist (spec, architecture, implementation plan, handoff, test plan, test report).
+- HTML execution evidence exists at `test-execution/feature-8-job-parts-mapping-and-ui-conditions/reports/feature8.html`.
+- Repo-wide search shows **no `.trx` files** committed anywhere.
+- Reviewer skill requires **TRX + HTML** for approval → evidence gate not met.
 
-## Inputs reviewed
-- Spec: pipeline/features/feature-8-job-parts-mapping-and-ui-conditions.md
-- Architecture: pipeline/architecture-design/feature-8-architecture.md
-- Rules:
-  - pipeline/rules/parts-reservation-against-job.md
-  - pipeline/rules/parts-count-inventory.md
-  - pipeline/rules/navigation-site-map.md
-  - pipeline/rules/how-controls-should-look-like.md
+## Findings
 
-## Key findings
+### Backend
+- Pass: Required docs exist; backend test run is referenced in the test report.
+- Needs Human Decision: Code-style/convention review is secondary; blocked earlier by missing TRX evidence.
 
-### 1) Rule alignment: job-mandatory + immutability
-- Spec and architecture correctly enforce:
-  - `jobId` required on create
-  - validate job existence
-  - prevent `jobId` changes
-- Note: If the system has no reservation update endpoint, immutability is naturally satisfied; do not add an update endpoint unless required.
+### Frontend
+- Pass: Frontend unit test run is referenced in the test report; recent unit test fix is consistent.
+- Needs Human Decision: Convention review is secondary; blocked earlier by missing TRX evidence.
 
-### 2) API drift risk (Feature 2 vs Feature 4)
-- Existing specs define different reservation endpoint shapes:
-  - Feature 2 uses `/api/parts/reserve` and `/api/jobs/{jobId}/parts`
-  - Feature 4 uses `/api/jobs/{jobId}/parts-reservations`
-- Architecture calls out the need to select a canonical set for UI and keep compatibility if both exist.
+### Tests
+- Pass: HTML report exists:
+  - `test-execution/feature-8-job-parts-mapping-and-ui-conditions/reports/feature8.html`
+- Fail: TRX evidence missing:
+  - No `**/*.trx` files found in repo.
 
-### 3) Job status rules ambiguity
-- Rule PR-006 requires “job status must allow parts reservation”, but job statuses are not defined in the rule.
-- Spec includes an explicit assumption; implementation should confirm actual statuses and centralize the allow/deny logic in backend service.
+### Docs
+- Pass: Spec/plan/report files exist and are in correct locations.
+- Fail (evidence completeness): Approval requires at least one TRX path that exists in the repo.
 
-### 4) UI control conditions are implementable and testable
-- Conditions are expressed in a way that can be unit-tested (view-model state + bindings).
-- Ensure disabled reasons are user-visible and consistent.
+## Required fixes (minimal)
+1) Generate and commit at least one TRX file for Feature 8 under `test-execution/feature-8-job-parts-mapping-and-ui-conditions/` (or a subfolder).
+2) Update `pipeline/test-report/feature-8-test-report.md` to reference the committed TRX path.
 
-## Required changes before implementation
-- None (no critical blockers).
-
-## Recommended changes (non-blocking)
-- In the spec, explicitly name the canonical reservation endpoints to avoid ambiguity during implementation.
-- Add a short “job status allowlist” section once actual statuses are confirmed.
-
-## Approval status
-APPROVED
+Ship | No-Ship: **No-Ship** — missing required TRX evidence (TRX + HTML required).
