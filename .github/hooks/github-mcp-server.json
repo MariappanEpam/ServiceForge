@@ -1,0 +1,17 @@
+{
+  "hooks": {
+    "name": "github-mcp-server",
+    "event": "LocalTooling",
+    "description": "Starts the local GitHub MCP server for PR operations.",
+    "action": {
+      "type": "run-script",
+      "script": ".github/hooks/github-mcp-server.ps1",
+      "blocking": false,
+      "warnOnly": false
+    },
+    "policy": {
+      "requiresConfirmation": false,
+      "allowOnCi": false
+    }
+  }
+}
