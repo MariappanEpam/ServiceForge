@@ -118,7 +118,7 @@ async function main() {
   }
 
   server.tool(
-    'book_job',
+    'DDD',
     'Book a job for a technician (creates a scheduled job).',
     {
       technicianId: z.number().int().positive().describe('Technician ID'),

@@ -52,6 +52,22 @@ post_hooks:
     description: If the unit tests fail, this hook will trigger a reroute to the appropriate developer agent for code adjustments.
     model: inherit
 
+pre_hooks:
+  - name: "semantic-memory-refresh"
+    when: "always"
+    description: |
+      Before starting any development work, refresh the local semantic vector DB
+      so the latest pipeline rules, feature specs, and implementation plans are retrievable.
+
+      Steps:
+      1) Ensure ChromaDB is running (pipeline/memory/semantic/vector-db/docker-compose.yml).
+      2) Run tools/semantic-memory indexer (npm install if needed, then npm run index).
+      3) Run a quick sanity query for the current feature (e.g., "NAV rules" / "parts reservation against job")
+         and include the top 3 snippets in the working context for downstream agents.
+
+      If indexing cannot run (Docker unavailable), proceed but explicitly state that semantic memory is stale
+      and fall back to reading pipeline/rules + pipeline/features + pipeline/implementation-plan directly.
+
 memory: "project"
 memory_metadata: 
   - "memory/entities/*.yml"

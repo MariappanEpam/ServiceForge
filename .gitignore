@@ -30,4 +30,5 @@ frontend/.angular/
 /test-automation
 /backend
 /frontend
-/main
+/main  
+/test-execution

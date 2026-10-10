@@ -3,9 +3,11 @@
   "updated": "2026-09-27",
   "sources": [
     "pipeline/features",
+    "pipeline/implementation-plan",
     "pipeline/architecture",
     "pipeline/decisions",
     "pipeline/reviews",
+    "pipeline/rules",
     "pipeline/memory/entities"
   ]
 }
