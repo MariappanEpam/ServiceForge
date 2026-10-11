@@ -23,6 +23,7 @@ The agent must have access to:
 - GitHub MCP tools:
   - `github_create_pr`
   - `github_comment_pr`
+   - `github_create_pr_review` (for inline suggestion reviews)
   - `github_request_reviewers`
   - `github_list_prs`
 

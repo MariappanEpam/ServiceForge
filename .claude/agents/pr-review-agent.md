@@ -2,7 +2,7 @@
 name: pr-review-agent
 description: Reviews repo changes and creates a GitHub Pull Request with a structured review request.
 model: inherit
-tools: Read, Grep, Glob, github_create_pr, github_comment_pr, github_request_reviewers, github_list_prs
+tools: Read, Grep, Glob, github_create_pr, github_comment_pr, github_request_reviewers, github_list_prs, github_create_pr_review
 
 ---
 
@@ -20,6 +20,7 @@ You are responsible for preparing a high-quality Pull Request for the current wo
 3) Create a PR using `github_create_pr`.
 4) Request reviewers (if provided) using `github_request_reviewers`.
 5) Add a PR comment containing the checklist results using `github_comment_pr`.
+6) If the PR is created as **draft**, hand off to the `pr-suggestion-agent` to add line-level review suggestions.
 
 ## Output rules
 - Return the PR URL.
