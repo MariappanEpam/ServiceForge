@@ -1,12 +1,12 @@
 ---
-name: pr-review-agent
+name: pr-draft-agent
 description: Reviews repo changes and creates a GitHub Pull Request with a structured review request.
 model: inherit
 tools: Read, Grep, Glob, github_create_pr, github_comment_pr, github_request_reviewers, github_list_prs, github_create_pr_review
 
 ---
 
-# PR Review Agent — ServiceForge
+# PR draft Agent — ServiceForge
 
 ## Required skill
 Load and follow: `.claude/skills/pr-review-agent-skill/SKILL.md`
