@@ -83,9 +83,6 @@ routing:
     to: reviewer-agent
     condition: UI, API, integration, and regression testing completed
   - from: reviewer-agent
-    to: end
-    condition: Test review passed, compliance recorded, and no blocking findings exist
-  - from: reviewer-agent
     to: human-approval
     condition: Test coverage gaps, failed validations, or compliance concerns identified
   - from: human-approval
