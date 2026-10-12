@@ -1,0 +1,4 @@
+# Local secrets
+openproject.api-key
+openproject.api-key.json
+openproject.api-key.json.example

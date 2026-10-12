@@ -1,0 +1,69 @@
+<div class="panel">
+  <h2>Feature 3 — Technician Management</h2>
+
+  <div class="filters">
+    <label>
+      Status:
+      <select [(ngModel)]="filterStatus" (change)="load()">
+        <option value="">All</option>
+        <option value="INVITED">INVITED</option>
+        <option value="ACTIVE">ACTIVE</option>
+        <option value="SUSPENDED">SUSPENDED</option>
+        <option value="OFFBOARDED">OFFBOARDED</option>
+      </select>
+    </label>
+
+    <label>
+      Search:
+      <input [(ngModel)]="search" (keyup.enter)="load()" placeholder="name/email/phone" />
+    </label>
+
+    <button (click)="load()">Refresh</button>
+  </div>
+
+  <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+
+  <div class="grid">
+    <div class="list">
+      <h3>Technicians</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Trade</th>
+            <th>Region</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let t of technicians">
+            <td>{{ t.id }}</td>
+            <td>{{ t.name }}</td>
+            <td>{{ t.trade || '-' }}</td>
+            <td>{{ t.region }}</td>
+            <td>{{ t.status || 'ACTIVE' }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="hint">Tip: use the Technician Detail panel below by entering an ID.</p>
+    </div>
+
+    <div class="create">
+      <h3>Create technician</h3>
+      <label>Name <input [(ngModel)]="create.name" /></label>
+      <label>Trade <input [(ngModel)]="create.trade" /></label>
+      <label>Region <input [(ngModel)]="create.region" /></label>
+      <label>Email <input [(ngModel)]="create.email" /></label>
+      <label>Phone <input [(ngModel)]="create.phone" /></label>
+      <button (click)="createTechnician()">Create (INVITED)</button>
+
+      <div *ngIf="lastInviteToken" class="token">
+        <strong>Invitation token (demo-only):</strong>
+        <div class="mono">{{ lastInviteToken }}</div>
+      </div>
+    </div>
+  </div>
+
+  <app-technician-detail></app-technician-detail>
+</div>

@@ -1,0 +1,18 @@
+{
+  "question": "parts reservation rules",
+  "semantic": {
+    "contextChars": 8781,
+    "estimatedTokens": 2239,
+    "note": "Semantic retrieval: top-k chunks from ChromaDB"
+  },
+  "repo_naive": {
+    "contextChars": 23819,
+    "estimatedTokens": 5998,
+    "note": "Naive repo stuffing baseline: first N files from sources (capped per file)"
+  },
+  "savings": {
+    "estimatedTokensSaved": 3759,
+    "estimatedPercentSaved": 63
+  },
+  "disclaimer": "Token counts are estimates (chars/4). For exact counts, integrate a tokenizer for your target model and/or call the LLM API with usage reporting."
+}

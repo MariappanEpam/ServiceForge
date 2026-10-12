@@ -1,0 +1,181 @@
+﻿[
+  {
+    "id": "9e6d44e6-6457-4dbe-bd47-3ddd322beaa9",
+    "name": "pr-assistant",
+    "slug": "pr-assistant",
+    "project": "mariappan_ganesan@epam.com",
+    "type": "codemie",
+    "description": "Push the code changes from previous assistant to remote and create a pull request to Main branch from the feature branch",
+    "icon_url": "",
+    "created_by": {
+      "id": "f65a7140-fa41-477c-b65c-0e68fb6e40be",
+      "username": "mariappan_ganesan@epam.com",
+      "name": "Mariappan Ganesan"
+    },
+    "user_abilities": [
+      "read",
+      "write",
+      "delete"
+    ],
+    "unique_users_count": 1,
+    "unique_likes_count": 0,
+    "unique_dislikes_count": 0,
+    "clone_count": 0,
+    "categories": [
+      "engineering"
+    ],
+    "is_global": false,
+    "shared": false,
+    "origin": "unknown"
+  },
+  {
+    "id": "606fddb4-79d5-46d2-b7e0-c161e8b4ff3f",
+    "name": "code-assistant",
+    "slug": "code-assistant",
+    "project": "mariappan_ganesan@epam.com",
+    "type": "codemie",
+    "description": "\ndescription: \"Implements approved Jira requirements in C#/.NET ASP.NET Core and React JS, with secure, maintainable code and executable validation.\"\ntools: [read, search, edit, execute]\nuser-invocable: false\n---\n\n# Developer Agent\n\nImplement only the approved plan and healed architecture. Inspect existing conventions first. Build the backend with C#/.NET and ASP.NET Core using dependency injection, typed contracts, async I/O, cancellation, validation, secure configuration, structured errors, authorization, and observability. Build the UI with React JS using accessible responsive workflows, API integration, loading, empty, validation, and error states.\n\nKeep secrets out of source and output. Add focused unit, integration, contract, and E2E seams. Run relevant formatting, lint, typecheck, build, and test commands after edits. Return changed files, requirement mapping, commands and results, known gaps, and blockers. Do not claim success without executable evidence.\n",
+    "icon_url": "",
+    "created_by": {
+      "id": "f65a7140-fa41-477c-b65c-0e68fb6e40be",
+      "username": "mariappan_ganesan@epam.com",
+      "name": "Mariappan Ganesan"
+    },
+    "user_abilities": [
+      "read",
+      "write",
+      "delete"
+    ],
+    "unique_users_count": 1,
+    "unique_likes_count": 0,
+    "unique_dislikes_count": 0,
+    "clone_count": 0,
+    "categories": [
+      "engineering"
+    ],
+    "is_global": false,
+    "shared": false,
+    "origin": "unknown"
+  },
+  {
+    "id": "aabb2922-0591-4feb-a362-1a7a07235e4a",
+    "name": "Jira Story Converter",
+    "slug": "jira-story-converter",
+    "project": "mariappan_ganesan@epam.com",
+    "type": "codemie",
+    "description": "An assistant specialized in analyzing functional requirements and converting them into well-structured Jira user stories. It helps users break down requirements into epics, stories, and subtasks; define acceptance criteria (e.g., Gherkin); identify assumptions, dependencies, edge cases, and non-functional considerations; and generate Jira-ready fields such as summaries, descriptions, priorities, labels, components, and estimates guidance. It can also support creating or updating issues in Jira via an API integration when configured, while keeping outputs consistent with common agile and product discovery practices.",
+    "icon_url": "",
+    "created_by": {
+      "id": "f65a7140-fa41-477c-b65c-0e68fb6e40be",
+      "username": "mariappan_ganesan@epam.com",
+      "name": "Mariappan Ganesan"
+    },
+    "user_abilities": [
+      "read",
+      "write",
+      "delete"
+    ],
+    "unique_users_count": 1,
+    "unique_likes_count": 0,
+    "unique_dislikes_count": 0,
+    "clone_count": 0,
+    "categories": [
+      "business-analysis",
+      "project-management"
+    ],
+    "is_global": false,
+    "shared": false,
+    "origin": "unknown"
+  },
+  {
+    "id": "de051a39-dd20-4b47-8ad0-dbff020f72f5",
+    "name": "Jira Story Assistant",
+    "slug": "jira-story-assistant",
+    "project": "mariappan_ganesan@epam.com",
+    "type": "codemie",
+    "description": "An assistant that helps users draft high-quality Jira user stories and then appends/creates them directly in Jira using the existing Jira integration. It can structure stories (title, description, acceptance criteria), propose subtasks, add labels/components, and prepare Jira-ready formatting. When the user provides story content or requirements, the assistant can map details to Jira issue fields and create or update issues accordingly.",
+    "icon_url": "",
+    "created_by": {
+      "id": "f65a7140-fa41-477c-b65c-0e68fb6e40be",
+      "username": "mariappan_ganesan@epam.com",
+      "name": "Mariappan Ganesan"
+    },
+    "user_abilities": [
+      "read",
+      "write",
+      "delete"
+    ],
+    "unique_users_count": 1,
+    "unique_likes_count": 0,
+    "unique_dislikes_count": 0,
+    "clone_count": 0,
+    "categories": [
+      "project-management",
+      "business-analysis"
+    ],
+    "is_global": false,
+    "shared": false,
+    "origin": "unknown"
+  },
+  {
+    "id": "74c882d3-921e-43bd-9a21-3ab029e8b226",
+    "name": "Requirements-to-Repo Planner",
+    "slug": "requirements-to-repo-planner",
+    "project": "mariappan_ganesan@epam.com",
+    "type": "codemie",
+    "description": "An assistant that turns an input list of requirements into a structured set of architecture decisions, functional requirements, and non-functional requirements, then produces an implementation plan suitable for documentation in a code repository. It helps decompose requirements into epics/features/stories, define acceptance criteria, identify quality attributes (performance, security, availability, maintainability), map requirements to components and interfaces, and outline milestones, risks, dependencies, and deliverables. It can also draft repository-ready documentation (e.g., README, Architecture Decision Records, requirement specs, and planning docs) with consistent formatting and traceability from original requirements to planned work items.",
+    "icon_url": "",
+    "created_by": {
+      "id": "f65a7140-fa41-477c-b65c-0e68fb6e40be",
+      "username": "mariappan_ganesan@epam.com",
+      "name": "Mariappan Ganesan"
+    },
+    "user_abilities": [
+      "read",
+      "write",
+      "delete"
+    ],
+    "unique_users_count": 1,
+    "unique_likes_count": 0,
+    "unique_dislikes_count": 0,
+    "clone_count": 0,
+    "categories": [
+      "architecture",
+      "business-analysis",
+      "project-management"
+    ],
+    "is_global": false,
+    "shared": false,
+    "origin": "unknown"
+  },
+  {
+    "id": "411838cd-8b0e-4990-873e-1aaebccf5e31",
+    "name": "BA Assistant Mariappan Ganesan",
+    "slug": "ba-assistant-mariappan-ganesan",
+    "project": "mariappan_ganesan@epam.com",
+    "type": "codemie",
+    "description": "Generate User story content for the given contents with below details\nSummary\nGeneral description\nPreconditions\nScenarios of use (in Gherkin format)\nAcceptance criteria\n",
+    "icon_url": "",
+    "created_by": {
+      "id": "f65a7140-fa41-477c-b65c-0e68fb6e40be",
+      "username": "mariappan_ganesan@epam.com",
+      "name": "Mariappan Ganesan"
+    },
+    "user_abilities": [
+      "read",
+      "write",
+      "delete"
+    ],
+    "unique_users_count": 1,
+    "unique_likes_count": 0,
+    "unique_dislikes_count": 0,
+    "clone_count": 0,
+    "categories": [
+      "product-management",
+      "business-analysis"
+    ],
+    "is_global": false,
+    "shared": false,
+    "origin": "unknown"
+  }
+]

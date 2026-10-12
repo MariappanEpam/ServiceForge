@@ -26,3 +26,10 @@ The Definition of Done above says overlapping bookings must be rejected. As ship
 - `backend/.../model/Technician.java`, `Job.java`, `JobStatus.java`
 - `backend/.../data/MockDataStore.java`
 - No `pipeline/rules/*.md` yet — none has been needed until now
+
+-- CHANGES (developer):
+
+- Added enforcement of the "No Overlapping Bookings" rule per pipeline/rules/no-overlap-booking.md in `TechnicianAvailabilityService.bookJob(...)` so bookings that overlap existing jobs (including travel buffer) are rejected.
+- Touched files:
+	- `backend/src/main/java/com/serviceforge/service/TechnicianAvailabilityService.java` (fixed overlap detection)
+	- `pipeline/rules/no-overlap-booking.md` (rule referenced by the implementation)

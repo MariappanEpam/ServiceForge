@@ -1,0 +1,17 @@
+{
+  "name": "serviceforge-openproject-mcp",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "MCP server for managing OpenProject work packages for ServiceForge pipeline artifacts.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.17.0",
+    "node-fetch": "^3.3.2",
+    "serviceforge-start": "file:../..",
+    "zod": "^3.25.76"
+  }
+}
