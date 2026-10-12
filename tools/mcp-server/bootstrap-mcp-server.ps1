@@ -9,7 +9,7 @@ $ErrorActionPreference = 'Stop'
 function Write-Step([string]$msg) {
   # IMPORTANT: MCP stdio transport requires stdout to contain protocol messages only.
   # Send all diagnostics/logging to stderr.
-  Write-Error "[serviceforge-mcp-bootstrap] $msg"
+  [Console]::Error.WriteLine("[serviceforge-mcp-bootstrap] $msg")
 }
 
 function Test-CommandExists([string]$name) {

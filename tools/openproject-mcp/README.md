@@ -8,7 +8,10 @@ This MCP server exposes a small set of tools to manage OpenProject work packages
 
 ## Environment variables
 - `OPENPROJECT_BASE_URL` (default: `http://localhost:8088`)
-- `OPENPROJECT_API_KEY` (**required**) – do not commit
+- `OPENPROJECT_API_KEY` (optional) – do not commit
+- `OPENPROJECT_API_KEY_FILE` (optional) – path to a local file containing the token (raw token or JSON `{ "apiKey": "..." }`).
+  - Default: `tools/openproject-mcp/openproject.api-key.json`
+  - Do not commit.
 - `OPENPROJECT_PROJECT_IDENTIFIER` (default: `serviceforge`)
 
 ## Run

@@ -112,6 +112,11 @@ memory_metadata:
 # Note: This orchestrator file is tool-agnostic; the actual execution of hooks depends on the
 # orchestrator runtime. This hook documents the intended post-review indexing step.
 post_hooks:
+  - name: "ensure-gh-cli"
+    when: "before_pr_draft_agent"
+    working_dir: "."
+    command: "powershell -NoProfile -ExecutionPolicy Bypass -Command \"if (Get-Command gh -ErrorAction SilentlyContinue) { Write-Host 'GitHub CLI (gh) is present.'; gh --version | Select-Object -First 1 } else { Write-Host 'GitHub CLI (gh) not found. Install it from https://cli.github.com/ and ensure it is on PATH.'; exit 1 }\""
+    description: "Pre-hook: ensure GitHub CLI is installed and available on PATH before pr-draft-agent runs. Fails fast with install instructions if missing."
   - name: "retrieve-repo-memory"
     when: "before_ba_agent"
     working_dir: "."

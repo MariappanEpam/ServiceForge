@@ -1,21 +1,86 @@
 import { createReadStream } from 'node:fs';
+import { readFile } from 'node:fs/promises';
 import { stat } from 'node:fs/promises';
 import { basename } from 'node:path';
 import fetch from 'node-fetch';
 import { z } from 'zod';
-
 import {
   McpServer,
 } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
 
 const BASE_URL = process.env.OPENPROJECT_BASE_URL || 'http://localhost:8088';
-const API_KEY = process.env.OPENPROJECT_API_KEY;
+const API_KEY_FILE = process.env.OPENPROJECT_API_KEY_FILE || 'tools/openproject-mcp/openproject.api-key.json.example';
+let API_KEY = process.env.OPENPROJECT_API_KEY;
 const PROJECT_IDENTIFIER = process.env.OPENPROJECT_PROJECT_IDENTIFIER || 'serviceforge';
+
+function asOptionalString(v) {
+  return typeof v === 'string' && v.trim() ? v : undefined;
+}
+
+function asOptionalInt(v) {
+  if (v === undefined || v === null || v === '') return undefined;
+  const n = Number(v);
+  return Number.isInteger(n) ? n : undefined;
+}
+
+function requireString(v, name) {
+  if (typeof v !== 'string' || !v.trim()) throw new Error(`${name} is required`);
+  return v;
+}
+
+function requireHref(v, name) {
+  const s = requireString(v, name);
+  if (!s.startsWith('/api/v3/')) throw new Error(`${name} must be an OpenProject API v3 href (e.g., /api/v3/work_packages/123)`);
+  return s;
+}
+
+function jsonSchemaObject(properties, required = []) {
+  return {
+    type: 'object',
+    additionalProperties: false,
+    properties,
+    ...(required.length ? { required } : {}),
+  };
+}
+
+// NOTE:
+// The MCP SDK used by this server requires Zod schemas (v3 or v4-mini) for tool registration.
+// Some MCP hosts validate tool inputs client-side and may have schema compatibility issues.
+// We keep Zod schemas here for server registration, and do lightweight manual validation
+// inside handlers to produce clearer errors.
+
+async function loadApiKeyFromFile(filePath) {
+  const raw = await readFile(filePath, 'utf8');
+  // Allow either a raw token or a JSON file like: { "apiKey": "..." }
+  const trimmed = raw.trim();
+  if (!trimmed) return null;
+  if (trimmed.startsWith('{')) {
+    try {
+      const parsed = JSON.parse(trimmed);
+      const key = parsed?.apiKey;
+      return typeof key === 'string' && key.trim() ? key.trim() : null;
+    } catch {
+      // fall through to treat as raw token
+    }
+  }
+  return trimmed;
+}
+
+if (!API_KEY && API_KEY_FILE) {
+  try {
+    API_KEY = await loadApiKeyFromFile(API_KEY_FILE);
+  } catch (e) {
+    console.error(`Failed to read OPENPROJECT_API_KEY_FILE (${API_KEY_FILE}): ${e?.message || String(e)}`);
+    process.exit(2);
+  }
+}
 
 if (!API_KEY) {
   // MCP servers should fail fast if required config is missing.
-  console.error('OPENPROJECT_API_KEY is required. Create an OpenProject API token and set it in your environment.');
+  console.error(
+    'OpenProject API key is required. Provide either OPENPROJECT_API_KEY (env) or OPENPROJECT_API_KEY_FILE (path to a local file containing the token).'
+  );
   process.exit(2);
 }
 
@@ -171,7 +236,8 @@ server.tool(
       projectIdentifier: z.string().optional(),
     }),
   },
-  async ({ projectIdentifier }) => {
+  async (args) => {
+    const projectIdentifier = asOptionalString(args?.projectIdentifier);
     if (projectIdentifier && projectIdentifier !== PROJECT_IDENTIFIER) {
       // allow override per call
       const proj = await httpJson('GET', `/api/v3/projects/${encodeURIComponent(projectIdentifier)}`);
@@ -196,8 +262,19 @@ server.tool(
     }),
   },
   async (args) => {
-    const projectHref = args.projectHref || (await getProject())?._links?.self?.href;
-    const list = await listWorkPackages({ ...args, projectHref });
+    const projectHref = asOptionalString(args?.projectHref) || (await getProject())?._links?.self?.href;
+    const subjectContains = asOptionalString(args?.subjectContains);
+    const typeHref = asOptionalString(args?.typeHref);
+    const statusHref = asOptionalString(args?.statusHref);
+    const pageSize = asOptionalInt(args?.pageSize);
+
+    const list = await listWorkPackages({
+      projectHref,
+      subjectContains,
+      typeHref,
+      statusHref,
+      ...(pageSize ? { pageSize } : {}),
+    });
     return { content: [{ type: 'text', text: JSON.stringify(list, null, 2) }] };
   }
 );
@@ -215,7 +292,12 @@ server.tool(
       projectHref: z.string().optional(),
     }),
   },
-  async ({ subject, descriptionRaw, typeHref, projectHref }) => {
+  async (args) => {
+    const subject = requireString(args?.subject, 'subject');
+    const descriptionRaw = asOptionalString(args?.descriptionRaw);
+    const typeHref = asOptionalString(args?.typeHref) || '/api/v3/types/1';
+    const projectHref = asOptionalString(args?.projectHref);
+
     const projHref = projectHref || (await getProject())?._links?.self?.href;
     const existing = await listWorkPackages({ projectHref: projHref, pageSize: 200 });
     const found = findBySubject(existing, subject);
@@ -241,7 +323,9 @@ server.tool(
       descriptionRaw: z.string().optional(),
     }),
   },
-  async ({ workPackageHref, descriptionRaw }) => {
+  async (args) => {
+    const workPackageHref = requireHref(args?.workPackageHref, 'workPackageHref');
+    const descriptionRaw = asOptionalString(args?.descriptionRaw);
     const updated = await updateWorkPackageDescription({ workPackageHref, descriptionRaw });
     return { content: [{ type: 'text', text: JSON.stringify(updated, null, 2) }] };
   }
@@ -257,7 +341,9 @@ server.tool(
       commentRaw: z.string().min(1),
     }),
   },
-  async ({ workPackageHref, commentRaw }) => {
+  async (args) => {
+    const workPackageHref = requireHref(args?.workPackageHref, 'workPackageHref');
+    const commentRaw = requireString(args?.commentRaw, 'commentRaw');
     const created = await addComment({ workPackageHref, commentRaw });
     return { content: [{ type: 'text', text: JSON.stringify(created, null, 2) }] };
   }
@@ -275,7 +361,12 @@ server.tool(
       description: z.string().optional(),
     }),
   },
-  async ({ workPackageHref, filePath, fileName, description }) => {
+  async (args) => {
+    const workPackageHref = requireHref(args?.workPackageHref, 'workPackageHref');
+    const filePath = requireString(args?.filePath, 'filePath');
+    const fileName = asOptionalString(args?.fileName);
+    const description = asOptionalString(args?.description);
+
     const attachment = await uploadAttachment({ filePath, fileName, description });
     const attachmentHref = attachment?._links?.self?.href;
     if (!attachmentHref) {
