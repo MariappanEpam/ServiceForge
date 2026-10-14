@@ -140,3 +140,22 @@ Every durable memory entry must link to at least one:
 - committed test evidence under `pipeline/test-execution/` or `pipeline/test-report/`.
 
 Avoid provenance that points to user profile paths (non-repo locations).
+
+---
+
+## Memory quality gate (evidence-first)
+
+Before adding/updating anything under `pipeline/memory/facts/` or `pipeline/decisions/`, ensure:
+
+1) **Statement is stable** (not a one-off observation).
+2) **Provenance exists in-repo** (file link and/or committed test evidence).
+3) **No unverified claims** (e.g., do not claim OpenProject work packages exist unless a GET confirms it).
+4) **Confidence is set** (`high|medium|low`) and a **review date** is present (`review_by`).
+
+If any item is missing, write an **episode** instead under `pipeline/memory/episodes/` and promote later.
+
+## Tokenomics guidance
+
+- Prefer **one fact per entry**; target **≤ 120 tokens** per entry.
+- Prefer **links over duplication** (link to specs/decisions/code/tests instead of copying).
+- Keep episodic notes short; promote only what will help future work.

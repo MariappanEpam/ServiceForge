@@ -104,7 +104,16 @@ memory_metadata:
   - "pipeline/memory/entities/*.yml"
   - "pipeline/memory/episodes/*.md"
   - "pipeline/memory/facts/*.md"
+  - "pipeline/memory/facts/index.md"
   - "pipeline/memory/semantic/vector-db/"
+
+pre_hooks:
+  - name: "retrieve-repo-memory"
+    when: "before_ba_agent"
+    working_dir: "."
+    command: "powershell -NoProfile -ExecutionPolicy Bypass -Command \"Write-Host 'Memory sources:'; Get-ChildItem pipeline/memory/facts,pipeline/decisions,pipeline/rules -Recurse -File | Select-Object -Expand FullName\""
+    description: "Pre-hook: surface repo-local memory sources (decisions/rules/facts) so BA/Dev/Test can retrieve context without relying on chat history."
+
 # Post hooks
 # Note: This orchestrator file is tool-agnostic; the actual execution of hooks depends on the
 # orchestrator runtime. This hook documents the intended post-review indexing step.
@@ -114,11 +123,6 @@ post_hooks:
     working_dir: "."
     command: "powershell -NoProfile -ExecutionPolicy Bypass -Command \"if (Get-Command gh -ErrorAction SilentlyContinue) { Write-Host 'GitHub CLI (gh) is present.'; gh --version | Select-Object -First 1 } else { Write-Host 'GitHub CLI (gh) not found. Install it from https://cli.github.com/ and ensure it is on PATH.'; exit 1 }\""
     description: "Pre-hook: ensure GitHub CLI is installed and available on PATH before pr-draft-agent runs. Fails fast with install instructions if missing."
-  - name: "retrieve-repo-memory"
-    when: "before_ba_agent"
-    working_dir: "."
-    command: "powershell -NoProfile -ExecutionPolicy Bypass -Command \"Write-Host 'Memory sources:'; Get-ChildItem pipeline/memory/facts,pipeline/decisions,pipeline/rules -Recurse -File | Select-Object -Expand FullName\""
-    description: "Pre-hook: surface repo-local memory sources (decisions/rules/facts) so BA/Dev/Test can retrieve context without relying on chat history."
   - name: "stop-local-hosts"
     when: "before_developer_agent"
     working_dir: "."
@@ -144,6 +148,18 @@ post_hooks:
     working_dir: "tools/semantic-memory"
     command: "npm run index"
     description: "Index pipeline artifacts (spec/architecture/review/plan) into the local Chroma vector DB using pipeline/memory/semantic/index.sources.json."
+
+  - name: "report-orchestrator-tokenomics"
+    when: "after_pr_suggestion_agent"
+    working_dir: "."
+    command: "powershell -NoProfile -ExecutionPolicy Bypass -Command \"$t = '{{VSCODE_TARGET_SESSION_LOG}}'; $transcript = Join-Path (Split-Path $t -Parent) ('..\\transcripts\\' + (Split-Path $t -LeafBase) + '.jsonl'); if (!(Test-Path $transcript)) { Write-Host ('Transcript not found: ' + $transcript); exit 0 }; node tools/semantic-memory/orchestrator-tokenomics.mjs --transcript $transcript --out tools/semantic-memory/orchestrator-tokenomics-report.json; Write-Host 'Wrote tools/semantic-memory/orchestrator-tokenomics-report.json';\""
+    description: "Post-hook: estimate total tokens consumed for the orchestrator run from the Copilot transcript (chars/4), including tool payloads. Writes tools/semantic-memory/orchestrator-tokenomics-report.json."
+
+  - name: "report-orchestrator-tokenomics-naive-baseline"
+    when: "after_pr_suggestion_agent"
+    working_dir: "."
+    command: "powershell -NoProfile -ExecutionPolicy Bypass -Command \"node tools/semantic-memory/naive-baseline-tokenomics.mjs --out tools/semantic-memory/orchestrator-tokenomics-naive-baseline.json; Write-Host 'Wrote tools/semantic-memory/orchestrator-tokenomics-naive-baseline.json';\""
+    description: "Post-hook: estimate a naive baseline token budget if memory is not in place (repo stuffing of pipeline sources). Writes tools/semantic-memory/orchestrator-tokenomics-naive-baseline.json."
 
   - name: "promote-durable-memory"
     when: "after_tester_agent"

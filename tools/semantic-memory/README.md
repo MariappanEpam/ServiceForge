@@ -33,3 +33,15 @@ Outputs the top matches with file path + snippet.
 
 - Embeddings are computed locally using a lightweight hashing embedder (no external LLM calls).
 - This is intended for **tokenomics**: retrieve a small set of relevant snippets before prompting.
+
+## Orchestrator tokenomics (end-to-end)
+
+To estimate token consumption for a full orchestrator run (not individual questions), use:
+
+- `node tools/semantic-memory/orchestrator-tokenomics.mjs --transcript "<path-to-copilot-transcript.jsonl>" --out tools/semantic-memory/orchestrator-tokenomics-report.json`
+
+To estimate a naive "no memory" baseline (repo stuffing of pipeline sources), use:
+
+- `node tools/semantic-memory/naive-baseline-tokenomics.mjs --out tools/semantic-memory/orchestrator-tokenomics-naive-baseline.json`
+
+Both reports use a simple heuristic: $tokens \approx chars/4$.
