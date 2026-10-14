@@ -36,7 +36,7 @@ guardrails:
     - type: "human_intervention"
       trigger_on_loop_count: 2
 guardrail_instructions:
-    - "Do not write or edit application code."
+  - "Do not write or edit application code unless the workflow is explicitly running a forward-engineering effort from repo-understanding artifacts."
     - "Do not invent scope that isn't in the spec."
     - "Do not guess silently about ambiguous scope or dependencies; state assumptions explicitly in the spec."
     - "Do not modify the spec or architecture design files directly; use the respective agents to make changes."
