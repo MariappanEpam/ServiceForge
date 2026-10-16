@@ -1,0 +1,19 @@
+﻿
+CodeGraph Status
+
+Project: C:\Users\Mariappan_Ganesan\Documents\New folder\ServiceForge\ServiceForge-Start\backend
+
+Index Statistics:
+  Files:     0
+  Nodes:     0
+  Edges:     0
+  DB Size:   0.16 MB
+  Backend:   node:sqlite ΓÇö built-in (full WAL)
+  Journal:   wal
+
+Nodes by Kind:
+
+Files by Language:
+
+Γ£ô Index is up to date
+

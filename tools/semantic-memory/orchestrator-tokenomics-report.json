@@ -1,0 +1,23 @@
+{
+  "transcript": "c:\\Users\\Mariappan_Ganesan\\AppData\\Roaming\\Code\\User\\workspaceStorage\\e89803b23fec34fc750c7215b56ae80e\\GitHub.copilot-chat\\transcripts\\4ad57fac-1a39-4f0a-91d1-c1e83ca15a93.jsonl",
+  "lines": 1078,
+  "counts": {
+    "user": 31,
+    "assistant": 210,
+    "tool": 0,
+    "other": 837
+  },
+  "chars": {
+    "total": 150512,
+    "user": 30691,
+    "assistant": 21622,
+    "tool": 98199
+  },
+  "estimatedTokens": {
+    "total": 37628,
+    "user": 7673,
+    "assistant": 5406,
+    "tool": 24550
+  },
+  "disclaimer": "Token counts are estimates (chars/4). For exact counts, integrate a tokenizer for your target model and/or call the LLM API with usage reporting."
+}

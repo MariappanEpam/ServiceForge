@@ -1,0 +1,42 @@
+<div class="panel">
+  <h3>Technician Detail</h3>
+
+  <div class="row">
+    <label>
+      Technician ID:
+      <input [(ngModel)]="technicianIdInput" placeholder="e.g. 1" />
+    </label>
+    <button (click)="load()">Load</button>
+  </div>
+
+  <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+
+  <div *ngIf="technician" class="detail">
+    <p><strong>Status:</strong> {{ technician.status || 'ACTIVE' }}</p>
+
+    <div class="form">
+      <label>Name <input [(ngModel)]="edit.name" /></label>
+      <label>Trade <input [(ngModel)]="edit.trade" /></label>
+      <label>Region <input [(ngModel)]="edit.region" /></label>
+      <label>Email <input [(ngModel)]="edit.email" /></label>
+      <label>Phone <input [(ngModel)]="edit.phone" /></label>
+      <button (click)="save()">Save</button>
+    </div>
+
+    <div class="actions">
+      <button (click)="reinvite()">Reinvite (new token)</button>
+      <button (click)="suspend()" [disabled]="technician.status !== 'ACTIVE'">Suspend</button>
+      <button (click)="reactivate()" [disabled]="technician.status !== 'SUSPENDED'">Reactivate</button>
+      <button (click)="offboard()" [disabled]="technician.status === 'OFFBOARDED'">Offboard</button>
+    </div>
+
+    <div *ngIf="lastInviteToken" class="token">
+      <strong>Invitation token (demo-only):</strong>
+      <div class="mono">{{ lastInviteToken }}</div>
+    </div>
+
+    <div class="hint">
+      Booking guard: only <strong>ACTIVE</strong> technicians can be booked in Feature 1.
+    </div>
+  </div>
+</div>

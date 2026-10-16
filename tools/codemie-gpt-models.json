@@ -1,0 +1,1289 @@
+﻿{
+    "value":  [
+                  {
+                      "base_name":  "gpt-4.1",
+                      "deployment_name":  "gpt-4.1",
+                      "label":  "GPT-4.1 2025-04-14",
+                      "multimodal":  true,
+                      "react_agent":  false,
+                      "enabled":  true,
+                      "supports_image_generation":  false,
+                      "provider":  "azure_openai",
+                      "default":  false,
+                      "default_for_categories":  [
+
+                                                 ],
+                      "cost":  {
+                                   "input":  0.000002,
+                                   "output":  0.000008,
+                                   "cache_read_input_token_cost":  5E-07
+                               },
+                      "features":  {
+                                       "streaming":  true,
+                                       "tools":  true,
+                                       "temperature":  true,
+                                       "parallel_tool_calls":  true,
+                                       "system_prompt":  true,
+                                       "max_tokens":  true,
+                                       "top_p":  true
+                                   },
+                      "switchyard":  [
+
+                                     ],
+                      "forbidden_for_web":  false,
+                      "is_premium":  false
+                  },
+                  {
+                      "base_name":  "gpt-4.1-mini",
+                      "deployment_name":  "gpt-4.1-mini",
+                      "label":  "GPT-4.1 mini 2025-04-14",
+                      "multimodal":  true,
+                      "react_agent":  false,
+                      "enabled":  true,
+                      "supports_image_generation":  false,
+                      "provider":  "azure_openai",
+                      "default":  false,
+                      "default_for_categories":  [
+
+                                                 ],
+                      "cost":  {
+                                   "input":  4E-07,
+                                   "output":  0.0000016,
+                                   "cache_read_input_token_cost":  1E-07
+                               },
+                      "features":  {
+                                       "streaming":  true,
+                                       "tools":  true,
+                                       "temperature":  true,
+                                       "parallel_tool_calls":  true,
+                                       "system_prompt":  true,
+                                       "max_tokens":  true,
+                                       "top_p":  true
+                                   },
+                      "switchyard":  [
+
+                                     ],
+                      "forbidden_for_web":  false,
+                      "is_premium":  false
+                  },
+                  {
+                      "base_name":  "gpt-5-2025-08-07",
+                      "deployment_name":  "gpt-5-2025-08-07",
+                      "label":  "GPT-5 2025-08-07",
+                      "multimodal":  true,
+                      "react_agent":  false,
+                      "enabled":  true,
+                      "supports_image_generation":  false,
+                      "provider":  "azure_openai",
+                      "default":  false,
+                      "default_for_categories":  [
+
+                                                 ],
+                      "cost":  {
+                                   "input":  0.00000125,
+                                   "output":  0.00001,
+                                   "cache_read_input_token_cost":  1.25E-07
+                               },
+                      "features":  {
+                                       "streaming":  true,
+                                       "tools":  true,
+                                       "temperature":  true,
+                                       "parallel_tool_calls":  true,
+                                       "system_prompt":  true,
+                                       "max_tokens":  true,
+                                       "top_p":  false
+                                   },
+                      "switchyard":  [
+
+                                     ],
+                      "forbidden_for_web":  false,
+                      "is_premium":  false
+                  },
+                  {
+                      "base_name":  "gpt-5-mini-2025-08-07",
+                      "deployment_name":  "gpt-5-mini-2025-08-07",
+                      "label":  "GPT-5 Mini 2025-08-07",
+                      "multimodal":  true,
+                      "react_agent":  false,
+                      "enabled":  true,
+                      "supports_image_generation":  false,
+                      "provider":  "azure_openai",
+                      "default":  false,
+                      "default_for_categories":  [
+
+                                                 ],
+                      "cost":  {
+                                   "input":  2.5E-07,
+                                   "output":  0.000002,
+                                   "cache_read_input_token_cost":  2.5E-08
+                               },
+                      "features":  {
+                                       "streaming":  true,
+                                       "tools":  true,
+                                       "temperature":  true,
+                                       "parallel_tool_calls":  true,
+                                       "system_prompt":  true,
+                                       "max_tokens":  true,
+                                       "top_p":  false
+                                   },
+                      "switchyard":  [
+
+                                     ],
+                      "forbidden_for_web":  false,
+                      "is_premium":  false
+                  },
+                  {
+                      "base_name":  "gpt-5-nano-2025-08-07",
+                      "deployment_name":  "gpt-5-nano-2025-08-07",
+                      "label":  "GPT-5 Nano 2025-08-07",
+                      "multimodal":  true,
+                      "react_agent":  false,
+                      "enabled":  true,
+                      "supports_image_generation":  false,
+                      "provider":  "azure_openai",
+                      "default":  false,
+                      "default_for_categories":  [
+
+                                                 ],
+                      "cost":  {
+                                   "input":  5E-08,
+                                   "output":  4E-07,
+                                   "cache_read_input_token_cost":  5E-09
+                               },
+                      "features":  {
+                                       "streaming":  true,
+                                       "tools":  true,
+                                       "temperature":  true,
+                                       "parallel_tool_calls":  true,
+                                       "system_prompt":  true,
+                                       "max_tokens":  true,
+                                       "top_p":  false
+                                   },
+                      "switchyard":  [
+
+                                     ],
+                      "forbidden_for_web":  false,
+                      "is_premium":  false
+                  },
+                  {
+                      "base_name":  "gpt-5-2-2025-12-11",
+                      "deployment_name":  "gpt-5-2-2025-12-11",
+                      "label":  "GPT-5.2 2025-12-11",
+                      "multimodal":  true,
+                      "react_agent":  false,
+                      "enabled":  true,
+                      "supports_image_generation":  false,
+                      "provider":  "azure_openai",
+                      "default":  true,
+                      "default_for_categories":  [
+                                                     "global"
+                                                 ],
+                      "cost":  {
+                                   "input":  0.00000175,
+                                   "output":  0.000014,
+                                   "cache_read_input_token_cost":  1.75E-07
+                               },
+                      "features":  {
+                                       "streaming":  true,
+                                       "tools":  true,
+                                       "temperature":  true,
+                                       "parallel_tool_calls":  true,
+                                       "system_prompt":  true,
+                                       "max_tokens":  true,
+                                       "top_p":  true
+                                   },
+                      "switchyard":  [
+
+                                     ],
+                      "forbidden_for_web":  false,
+                      "is_premium":  false
+                  },
+                  {
+                      "base_name":  "gpt-5.4-2026-03-05",
+                      "deployment_name":  "gpt-5.4-2026-03-05",
+                      "label":  "GPT-5.4",
+                      "multimodal":  true,
+                      "react_agent":  false,
+                      "enabled":  true,
+                      "supports_image_generation":  false,
+                      "provider":  "azure_openai",
+                      "default":  false,
+                      "default_for_categories":  [
+
+                                                 ],
+                      "cost":  {
+                                   "input":  0.00000275,
+                                   "output":  0.0000165,
+                                   "cache_read_input_token_cost":  2.75E-07
+                               },
+                      "features":  {
+                                       "streaming":  true,
+                                       "tools":  true,
+                                       "temperature":  true,
+                                       "parallel_tool_calls":  true,
+                                       "max_tokens":  true,
+                                       "top_p":  true
+                                   },
+                      "switchyard":  [
+
+                                     ],
+                      "forbidden_for_web":  false,
+                      "is_premium":  false
+                  },
+                  {
+                      "base_name":  "gpt-5.5-2026-04-24",
+                      "deployment_name":  "gpt-5.5-2026-04-24",
+                      "label":  "GPT-5.5",
+                      "multimodal":  true,
+                      "react_agent":  false,
+                      "enabled":  true,
+                      "supports_image_generation":  false,
+                      "provider":  "azure_openai",
+                      "default":  false,
+                      "default_for_categories":  [
+
+                                                 ],
+                      "cost":  {
+                                   "input":  0.0000055,
+                                   "output":  0.000033,
+                                   "cache_read_input_token_cost":  5.5E-07
+                               },
+                      "features":  {
+                                       "streaming":  true,
+                                       "tools":  true,
+                                       "temperature":  true,
+                                       "parallel_tool_calls":  true,
+                                       "max_tokens":  true,
+                                       "top_p":  true
+                                   },
+                      "switchyard":  [
+
+                                     ],
+                      "forbidden_for_web":  false,
+                      "is_premium":  false
+                  },
+                  {
+                      "base_name":  "gpt-5.6-luna-2026-07-09",
+                      "deployment_name":  "gpt-5.6-luna-2026-07-09",
+                      "label":  "GPT-5.6 Luna",
+                      "multimodal":  true,
+                      "react_agent":  false,
+                      "enabled":  true,
+                      "supports_image_generation":  false,
+                      "provider":  "azure_openai",
+                      "default":  false,
+                      "default_for_categories":  [
+
+                                                 ],
+                      "cost":  {
+                                   "input":  2.2E-07,
+                                   "output":  0.00000132,
+                                   "cache_read_input_token_cost":  2.2E-08,
+                                   "cache_creation_input_token_cost":  2.75E-07
+                               },
+                      "features":  {
+                                       "streaming":  true,
+                                       "tools":  true,
+                                       "temperature":  true,
+                                       "parallel_tool_calls":  true,
+                                       "max_tokens":  true,
+                                       "top_p":  true
+                                   },
+                      "switchyard":  [
+
+                                     ],
+                      "forbidden_for_web":  false,
+                      "is_premium":  false
+                  },
+                  {
+                      "base_name":  "gpt-5.6-sol-2026-07-09",
+                      "deployment_name":  "gpt-5.6-sol-2026-07-09",
+                      "label":  "GPT-5.6 Sol",
+                      "multimodal":  true,
+                      "react_agent":  false,
+                      "enabled":  true,
+                      "supports_image_generation":  false,
+                      "provider":  "azure_openai",
+                      "default":  false,
+                      "default_for_categories":  [
+
+                                                 ],
+                      "cost":  {
+                                   "input":  0.0000044,
+                                   "output":  0.000022,
+                                   "cache_read_input_token_cost":  4.4E-07,
+                                   "cache_creation_input_token_cost":  0.0000055
+                               },
+                      "features":  {
+                                       "streaming":  true,
+                                       "tools":  true,
+                                       "temperature":  true,
+                                       "parallel_tool_calls":  true,
+                                       "max_tokens":  true,
+                                       "top_p":  true
+                                   },
+                      "switchyard":  [
+
+                                     ],
+                      "forbidden_for_web":  false,
+                      "is_premium":  true
+                  },
+                  {
+                      "base_name":  "gpt-5.6-terra-2026-07-09",
+                      "deployment_name":  "gpt-5.6-terra-2026-07-09",
+                      "label":  "GPT-5.6 Terra",
+                      "multimodal":  true,
+                      "react_agent":  false,
+                      "enabled":  true,
+                      "supports_image_generation":  false,
+                      "provider":  "azure_openai",
+                      "default":  false,
+                      "default_for_categories":  [
+
+                                                 ],
+                      "cost":  {
+                                   "input":  0.0000022,
+                                   "output":  0.0000132,
+                                   "cache_read_input_token_cost":  2.2E-07,
+                                   "cache_creation_input_token_cost":  0.00000275
+                               },
+                      "features":  {
+                                       "streaming":  true,
+                                       "tools":  true,
+                                       "temperature":  true,
+                                       "parallel_tool_calls":  true,
+                                       "max_tokens":  true,
+                                       "top_p":  true
+                                   },
+                      "switchyard":  [
+
+                                     ],
+                      "forbidden_for_web":  false,
+                      "is_premium":  false
+                  },
+                  {
+                      "base_name":  "gpt-6-luna",
+                      "deployment_name":  "gpt-6-luna",
+                      "label":  "GPT-6 Luna",
+                      "multimodal":  true,
+                      "react_agent":  false,
+                      "enabled":  true,
+                      "supports_image_generation":  false,
+                      "provider":  "azure_openai",
+                      "default":  false,
+                      "default_for_categories":  [
+
+                                                 ],
+                      "cost":  {
+                                   "input":  1E-07,
+                                   "output":  5E-07,
+                                   "cache_read_input_token_cost":  1E-08,
+                                   "cache_creation_input_token_cost":  1.25E-07
+                               },
+                      "features":  {
+                                       "streaming":  true,
+                                       "tools":  true,
+                                       "temperature":  true,
+                                       "parallel_tool_calls":  true,
+                                       "system_prompt":  true,
+                                       "max_tokens":  true,
+                                       "top_p":  true
+                                   },
+                      "switchyard":  [
+
+                                     ],
+                      "forbidden_for_web":  false,
+                      "is_premium":  false
+                  },
+                  {
+                      "base_name":  "gpt-6-sol",
+                      "deployment_name":  "gpt-6-sol",
+                      "label":  "GPT-6 Sol",
+                      "multimodal":  true,
+                      "react_agent":  false,
+                      "enabled":  true,
+                      "supports_image_generation":  false,
+                      "provider":  "azure_openai",
+                      "default":  false,
+                      "default_for_categories":  [
+
+                                                 ],
+                      "cost":  {
+                                   "input":  0.000002,
+                                   "output":  0.00001,
+                                   "cache_read_input_token_cost":  2E-07,
+                                   "cache_creation_input_token_cost":  0.0000025
+                               },
+                      "features":  {
+                                       "streaming":  true,
+                                       "tools":  true,
+                                       "temperature":  true,
+                                       "parallel_tool_calls":  true,
+                                       "system_prompt":  true,
+                                       "max_tokens":  true,
+                                       "top_p":  true
+                                   },
+                      "switchyard":  [
+
+                                     ],
+                      "forbidden_for_web":  false,
+                      "is_premium":  true
+                  },
+                  {
+                      "base_name":  "o3-mini",
+                      "deployment_name":  "o3-mini",
+                      "label":  "o3 Mini 2025-01-31",
+                      "multimodal":  false,
+                      "react_agent":  true,
+                      "enabled":  true,
+                      "supports_image_generation":  false,
+                      "provider":  "azure_openai",
+                      "default":  false,
+                      "default_for_categories":  [
+
+                                                 ],
+                      "cost":  {
+                                   "input":  0.00000121,
+                                   "output":  0.00000484,
+                                   "cache_read_input_token_cost":  6.05E-07
+                               },
+                      "features":  {
+                                       "streaming":  false,
+                                       "temperature":  true,
+                                       "parallel_tool_calls":  true,
+                                       "max_tokens":  true,
+                                       "top_p":  true
+                                   },
+                      "switchyard":  [
+
+                                     ],
+                      "forbidden_for_web":  false,
+                      "api_version":  "2024-12-01-preview",
+                      "is_premium":  false
+                  },
+                  {
+                      "base_name":  "o1",
+                      "deployment_name":  "o1",
+                      "label":  "o1 2024-12-17",
+                      "multimodal":  true,
+                      "react_agent":  false,
+                      "enabled":  true,
+                      "supports_image_generation":  false,
+                      "provider":  "azure_openai",
+                      "default":  false,
+                      "default_for_categories":  [
+
+                                                 ],
+                      "cost":  {
+                                   "input":  0.0000165,
+                                   "output":  0.000066,
+                                   "cache_read_input_token_cost":  0.00000825
+                               },
+                      "features":  {
+                                       "streaming":  false,
+                                       "tools":  true,
+                                       "temperature":  true,
+                                       "parallel_tool_calls":  true,
+                                       "max_tokens":  true,
+                                       "top_p":  true
+                                   },
+                      "switchyard":  [
+
+                                     ],
+                      "forbidden_for_web":  false,
+                      "api_version":  "2024-12-01-preview",
+                      "is_premium":  true
+                  },
+                  {
+                      "base_name":  "o3-2025-04-16",
+                      "deployment_name":  "o3-2025-04-16",
+                      "label":  "o3 2025-04-16",
+                      "multimodal":  true,
+                      "react_agent":  false,
+                      "enabled":  true,
+                      "supports_image_generation":  false,
+                      "provider":  "azure_openai",
+                      "default":  false,
+                      "default_for_categories":  [
+
+                                                 ],
+                      "cost":  {
+                                   "input":  0.000002,
+                                   "output":  0.000008,
+                                   "cache_read_input_token_cost":  5E-07
+                               },
+                      "features":  {
+                                       "streaming":  false,
+                                       "tools":  true,
+                                       "temperature":  true,
+                                       "parallel_tool_calls":  true,
+                                       "max_tokens":  true,
+                                       "top_p":  true
+                                   },
+                      "switchyard":  [
+
+                                     ],
+                      "forbidden_for_web":  false,
+                      "api_version":  "2024-12-01-preview",
+                      "is_premium":  false
+                  },
+                  {
+                      "base_name":  "o4-mini-2025-04-16",
+                      "deployment_name":  "o4-mini-2025-04-16",
+                      "label":  "o4-mini 2025-04-16",
+                      "multimodal":  true,
+                      "react_agent":  false,
+                      "enabled":  true,
+                      "supports_image_generation":  false,
+                      "provider":  "azure_openai",
+                      "default":  false,
+                      "default_for_categories":  [
+
+                                                 ],
+                      "cost":  {
+                                   "input":  0.0000011,
+                                   "output":  0.0000044,
+                                   "cache_read_input_token_cost":  2.75E-07
+                               },
+                      "features":  {
+                                       "streaming":  false,
+                                       "tools":  true,
+                                       "temperature":  true,
+                                       "parallel_tool_calls":  true,
+                                       "max_tokens":  true,
+                                       "top_p":  true
+                                   },
+                      "switchyard":  [
+
+                                     ],
+                      "forbidden_for_web":  false,
+                      "api_version":  "2024-12-01-preview",
+                      "is_premium":  false
+                  },
+                  {
+                      "base_name":  "deepseek-v4-pro",
+                      "deployment_name":  "deepseek-v4-pro",
+                      "label":  "DeepSeek V4 Pro",
+                      "react_agent":  false,
+                      "enabled":  true,
+                      "supports_image_generation":  false,
+                      "provider":  "azure_openai",
+                      "default":  false,
+                      "default_for_categories":  [
+
+                                                 ],
+                      "cost":  {
+                                   "input":  0.00000174,
+                                   "output":  0.00000348,
+                                   "cache_read_input_token_cost":  1.45E-07
+                               },
+                      "features":  {
+                                       "streaming":  true,
+                                       "tools":  true,
+                                       "temperature":  true,
+                                       "parallel_tool_calls":  true,
+                                       "max_tokens":  true,
+                                       "top_p":  true
+                                   },
+                      "switchyard":  [
+
+                                     ],
+                      "forbidden_for_web":  false,
+                      "api_version":  "2024-05-01-preview",
+                      "is_premium":  false
+                  },
+                  {
+                      "base_name":  "gemini-3-flash",
+                      "deployment_name":  "gemini-3-flash",
+                      "label":  "Gemini 3 Flash",
+                      "multimodal":  true,
+                      "react_agent":  false,
+                      "enabled":  true,
+                      "supports_image_generation":  false,
+                      "provider":  "azure_openai",
+                      "default":  false,
+                      "default_for_categories":  [
+
+                                                 ],
+                      "cost":  {
+                                   "input":  5E-07,
+                                   "output":  0.000003,
+                                   "cache_read_input_token_cost":  5E-08
+                               },
+                      "features":  {
+                                       "streaming":  true,
+                                       "tools":  true,
+                                       "temperature":  true,
+                                       "parallel_tool_calls":  true,
+                                       "system_prompt":  true,
+                                       "max_tokens":  true,
+                                       "top_p":  true
+                                   },
+                      "switchyard":  [
+
+                                     ],
+                      "forbidden_for_web":  false,
+                      "is_premium":  false
+                  },
+                  {
+                      "base_name":  "gemini-3.1-pro",
+                      "deployment_name":  "gemini-3.1-pro",
+                      "label":  "Gemini 3.1 Pro",
+                      "multimodal":  true,
+                      "react_agent":  false,
+                      "enabled":  true,
+                      "supports_image_generation":  false,
+                      "provider":  "azure_openai",
+                      "default":  false,
+                      "default_for_categories":  [
+
+                                                 ],
+                      "cost":  {
+                                   "input":  0.000002,
+                                   "output":  0.000012,
+                                   "cache_read_input_token_cost":  2E-07
+                               },
+                      "features":  {
+                                       "streaming":  true,
+                                       "tools":  true,
+                                       "temperature":  true,
+                                       "parallel_tool_calls":  true,
+                                       "system_prompt":  true,
+                                       "max_tokens":  true,
+                                       "top_p":  true
+                                   },
+                      "switchyard":  [
+
+                                     ],
+                      "forbidden_for_web":  false,
+                      "is_premium":  false
+                  },
+                  {
+                      "base_name":  "gemini-3.5-flash",
+                      "deployment_name":  "gemini-3.5-flash",
+                      "label":  "Gemini 3.5 Flash",
+                      "multimodal":  true,
+                      "react_agent":  false,
+                      "enabled":  true,
+                      "supports_image_generation":  false,
+                      "provider":  "azure_openai",
+                      "default":  false,
+                      "default_for_categories":  [
+
+                                                 ],
+                      "cost":  {
+                                   "input":  0.0000015,
+                                   "output":  0.000009,
+                                   "cache_read_input_token_cost":  1.5E-07
+                               },
+                      "features":  {
+                                       "streaming":  true,
+                                       "tools":  true,
+                                       "temperature":  true,
+                                       "parallel_tool_calls":  true,
+                                       "system_prompt":  true,
+                                       "max_tokens":  true,
+                                       "top_p":  true
+                                   },
+                      "switchyard":  [
+
+                                     ],
+                      "forbidden_for_web":  false,
+                      "is_premium":  false
+                  },
+                  {
+                      "base_name":  "gemini-3.6-flash",
+                      "deployment_name":  "gemini-3.6-flash",
+                      "label":  "Gemini 3.6 Flash",
+                      "multimodal":  true,
+                      "react_agent":  false,
+                      "enabled":  true,
+                      "supports_image_generation":  false,
+                      "provider":  "google_vertexai",
+                      "default":  false,
+                      "default_for_categories":  [
+
+                                                 ],
+                      "cost":  {
+                                   "input":  7.5E-07,
+                                   "output":  0.00000375,
+                                   "cache_read_input_token_cost":  7.5E-08
+                               },
+                      "features":  {
+                                       "streaming":  true,
+                                       "tools":  true,
+                                       "temperature":  true,
+                                       "parallel_tool_calls":  true,
+                                       "system_prompt":  true,
+                                       "max_tokens":  true,
+                                       "top_p":  true
+                                   },
+                      "switchyard":  [
+
+                                     ],
+                      "forbidden_for_web":  false,
+                      "is_premium":  false
+                  },
+                  {
+                      "base_name":  "gemini-3.7-flash",
+                      "deployment_name":  "gemini-3.7-flash",
+                      "label":  "Gemini 3.7 Flash",
+                      "multimodal":  true,
+                      "react_agent":  false,
+                      "enabled":  true,
+                      "supports_image_generation":  false,
+                      "provider":  "google_vertexai",
+                      "default":  false,
+                      "default_for_categories":  [
+
+                                                 ],
+                      "cost":  {
+                                   "input":  7.5E-07,
+                                   "output":  0.00000375,
+                                   "cache_read_input_token_cost":  7.5E-08
+                               },
+                      "features":  {
+                                       "streaming":  true,
+                                       "tools":  true,
+                                       "temperature":  true,
+                                       "parallel_tool_calls":  true,
+                                       "system_prompt":  true,
+                                       "max_tokens":  true,
+                                       "top_p":  true
+                                   },
+                      "switchyard":  [
+
+                                     ],
+                      "forbidden_for_web":  false,
+                      "is_premium":  false
+                  },
+                  {
+                      "base_name":  "gemini-3.8-flash",
+                      "deployment_name":  "gemini-3.8-flash",
+                      "label":  "Gemini 3.8 Flash",
+                      "multimodal":  true,
+                      "react_agent":  false,
+                      "enabled":  true,
+                      "supports_image_generation":  false,
+                      "provider":  "google_vertexai",
+                      "default":  false,
+                      "default_for_categories":  [
+
+                                                 ],
+                      "cost":  {
+                                   "input":  7.5E-07,
+                                   "output":  0.00000375,
+                                   "cache_read_input_token_cost":  7.5E-08
+                               },
+                      "features":  {
+                                       "streaming":  true,
+                                       "tools":  true,
+                                       "temperature":  true,
+                                       "parallel_tool_calls":  true,
+                                       "system_prompt":  true,
+                                       "max_tokens":  true,
+                                       "top_p":  true
+                                   },
+                      "switchyard":  [
+
+                                     ],
+                      "forbidden_for_web":  false,
+                      "is_premium":  false
+                  },
+                  {
+                      "base_name":  "claude-4-5-sonnet-vertex",
+                      "deployment_name":  "claude-4-5-sonnet-vertex",
+                      "label":  "VertexAI Claude Sonnet 4.5",
+                      "multimodal":  true,
+                      "react_agent":  false,
+                      "enabled":  true,
+                      "supports_image_generation":  false,
+                      "provider":  "vertex_ai-anthropic_models",
+                      "default":  false,
+                      "default_for_categories":  [
+
+                                                 ],
+                      "cost":  {
+                                   "input":  0.000003,
+                                   "output":  0.000015,
+                                   "cache_read_input_token_cost":  3E-07,
+                                   "cache_creation_input_token_cost":  0.00000375
+                               },
+                      "features":  {
+                                       "streaming":  true,
+                                       "tools":  true,
+                                       "temperature":  true,
+                                       "parallel_tool_calls":  true,
+                                       "max_tokens":  true,
+                                       "top_p":  true
+                                   },
+                      "switchyard":  [
+
+                                     ],
+                      "forbidden_for_web":  false,
+                      "is_premium":  false
+                  },
+                  {
+                      "base_name":  "claude-sonnet-4-6-vertex",
+                      "deployment_name":  "claude-sonnet-4-6-vertex",
+                      "label":  "VertexAI Claude Sonnet 4.6",
+                      "multimodal":  true,
+                      "react_agent":  false,
+                      "enabled":  true,
+                      "supports_image_generation":  false,
+                      "provider":  "vertex_ai-anthropic_models",
+                      "default":  false,
+                      "default_for_categories":  [
+
+                                                 ],
+                      "cost":  {
+                                   "input":  0.000003,
+                                   "output":  0.000015,
+                                   "cache_read_input_token_cost":  3E-07,
+                                   "cache_creation_input_token_cost":  0.00000375
+                               },
+                      "features":  {
+                                       "streaming":  true,
+                                       "tools":  true,
+                                       "temperature":  true,
+                                       "parallel_tool_calls":  true,
+                                       "max_tokens":  true,
+                                       "top_p":  true
+                                   },
+                      "switchyard":  [
+
+                                     ],
+                      "forbidden_for_web":  false,
+                      "is_premium":  false
+                  },
+                  {
+                      "base_name":  "claude-opus-4-6-vertex",
+                      "deployment_name":  "claude-opus-4-6-vertex",
+                      "label":  "VertexAI Claude Opus 4.6",
+                      "multimodal":  true,
+                      "react_agent":  false,
+                      "enabled":  true,
+                      "supports_image_generation":  false,
+                      "provider":  "vertex_ai-anthropic_models",
+                      "default":  false,
+                      "default_for_categories":  [
+
+                                                 ],
+                      "cost":  {
+                                   "input":  0.000005,
+                                   "output":  0.000025,
+                                   "cache_read_input_token_cost":  5E-07,
+                                   "cache_creation_input_token_cost":  0.00000625
+                               },
+                      "features":  {
+                                       "streaming":  true,
+                                       "tools":  true,
+                                       "temperature":  true,
+                                       "parallel_tool_calls":  true,
+                                       "max_tokens":  true,
+                                       "top_p":  true
+                                   },
+                      "switchyard":  [
+
+                                     ],
+                      "forbidden_for_web":  false,
+                      "is_premium":  true
+                  },
+                  {
+                      "base_name":  "claude-4-5-sonnet",
+                      "deployment_name":  "claude-4-5-sonnet",
+                      "label":  "Bedrock Claude 4.5 Sonnet",
+                      "multimodal":  true,
+                      "react_agent":  false,
+                      "enabled":  true,
+                      "supports_image_generation":  false,
+                      "provider":  "aws_bedrock",
+                      "default":  false,
+                      "default_for_categories":  [
+
+                                                 ],
+                      "cost":  {
+                                   "input":  0.0000033,
+                                   "output":  0.0000165,
+                                   "cache_read_input_token_cost":  3.3E-07,
+                                   "cache_creation_input_token_cost":  0.000004125
+                               },
+                      "features":  {
+                                       "streaming":  true,
+                                       "tools":  true,
+                                       "temperature":  true,
+                                       "parallel_tool_calls":  true,
+                                       "max_tokens":  true,
+                                       "top_p":  true
+                                   },
+                      "switchyard":  [
+
+                                     ],
+                      "forbidden_for_web":  false,
+                      "is_premium":  false
+                  },
+                  {
+                      "base_name":  "claude-sonnet-4-6",
+                      "deployment_name":  "claude-sonnet-4-6",
+                      "label":  "Bedrock Claude Sonnet 4.6",
+                      "multimodal":  true,
+                      "react_agent":  false,
+                      "enabled":  true,
+                      "supports_image_generation":  false,
+                      "provider":  "aws_bedrock",
+                      "default":  false,
+                      "default_for_categories":  [
+
+                                                 ],
+                      "cost":  {
+                                   "input":  0.0000033,
+                                   "output":  0.0000165,
+                                   "cache_read_input_token_cost":  3.3E-07,
+                                   "cache_creation_input_token_cost":  0.000004125
+                               },
+                      "features":  {
+                                       "streaming":  true,
+                                       "tools":  true,
+                                       "temperature":  true,
+                                       "parallel_tool_calls":  true,
+                                       "max_tokens":  true,
+                                       "top_p":  true
+                                   },
+                      "switchyard":  [
+
+                                     ],
+                      "forbidden_for_web":  false,
+                      "is_premium":  false
+                  },
+                  {
+                      "base_name":  "claude-sonnet-5",
+                      "deployment_name":  "claude-sonnet-5",
+                      "label":  "Bedrock Claude Sonnet 5",
+                      "multimodal":  true,
+                      "react_agent":  false,
+                      "enabled":  true,
+                      "supports_image_generation":  false,
+                      "provider":  "aws_bedrock",
+                      "default":  false,
+                      "default_for_categories":  [
+
+                                                 ],
+                      "cost":  {
+                                   "input":  0.0000022,
+                                   "output":  0.000011,
+                                   "cache_read_input_token_cost":  2.2E-07,
+                                   "cache_creation_input_token_cost":  0.00000275
+                               },
+                      "features":  {
+                                       "streaming":  true,
+                                       "tools":  true,
+                                       "temperature":  true,
+                                       "parallel_tool_calls":  true,
+                                       "max_tokens":  true,
+                                       "top_p":  true
+                                   },
+                      "switchyard":  [
+
+                                     ],
+                      "forbidden_for_web":  false,
+                      "is_premium":  false
+                  },
+                  {
+                      "base_name":  "claude-opus-4-5-20251101",
+                      "deployment_name":  "claude-opus-4-5-20251101",
+                      "label":  "Bedrock Claude Opus 4.5",
+                      "multimodal":  true,
+                      "react_agent":  false,
+                      "enabled":  true,
+                      "supports_image_generation":  false,
+                      "provider":  "aws_bedrock",
+                      "default":  false,
+                      "default_for_categories":  [
+
+                                                 ],
+                      "cost":  {
+                                   "input":  0.000005,
+                                   "output":  0.000025,
+                                   "cache_read_input_token_cost":  5E-07,
+                                   "cache_creation_input_token_cost":  0.00000625
+                               },
+                      "features":  {
+                                       "streaming":  true,
+                                       "tools":  true,
+                                       "temperature":  true,
+                                       "parallel_tool_calls":  true,
+                                       "max_tokens":  true,
+                                       "top_p":  true
+                                   },
+                      "switchyard":  [
+
+                                     ],
+                      "forbidden_for_web":  false,
+                      "is_premium":  true
+                  },
+                  {
+                      "base_name":  "claude-opus-4-6-20260205",
+                      "deployment_name":  "claude-opus-4-6-20260205",
+                      "label":  "Bedrock Claude Opus 4.6",
+                      "multimodal":  true,
+                      "react_agent":  false,
+                      "enabled":  true,
+                      "supports_image_generation":  false,
+                      "provider":  "aws_bedrock",
+                      "default":  false,
+                      "default_for_categories":  [
+
+                                                 ],
+                      "cost":  {
+                                   "input":  0.0000055,
+                                   "output":  0.0000275,
+                                   "cache_read_input_token_cost":  5.5E-07,
+                                   "cache_creation_input_token_cost":  0.000006875
+                               },
+                      "features":  {
+                                       "streaming":  true,
+                                       "tools":  true,
+                                       "temperature":  true,
+                                       "parallel_tool_calls":  true,
+                                       "max_tokens":  true,
+                                       "top_p":  true
+                                   },
+                      "switchyard":  [
+
+                                     ],
+                      "forbidden_for_web":  false,
+                      "is_premium":  true
+                  },
+                  {
+                      "base_name":  "claude-opus-4-7",
+                      "deployment_name":  "claude-opus-4-7",
+                      "label":  "Bedrock Claude Opus 4.7",
+                      "multimodal":  true,
+                      "react_agent":  false,
+                      "enabled":  true,
+                      "supports_image_generation":  false,
+                      "provider":  "aws_bedrock",
+                      "default":  false,
+                      "default_for_categories":  [
+
+                                                 ],
+                      "cost":  {
+                                   "input":  0.0000055,
+                                   "output":  0.0000275,
+                                   "cache_read_input_token_cost":  5.5E-07,
+                                   "cache_creation_input_token_cost":  0.000006875
+                               },
+                      "features":  {
+                                       "streaming":  true,
+                                       "tools":  true,
+                                       "temperature":  true,
+                                       "parallel_tool_calls":  true,
+                                       "max_tokens":  true,
+                                       "top_p":  true
+                                   },
+                      "switchyard":  [
+
+                                     ],
+                      "forbidden_for_web":  false,
+                      "is_premium":  true
+                  },
+                  {
+                      "base_name":  "claude-opus-4-8",
+                      "deployment_name":  "claude-opus-4-8",
+                      "label":  "Bedrock Claude Opus 4.8",
+                      "multimodal":  true,
+                      "react_agent":  false,
+                      "enabled":  true,
+                      "supports_image_generation":  false,
+                      "provider":  "aws_bedrock",
+                      "default":  false,
+                      "default_for_categories":  [
+
+                                                 ],
+                      "cost":  {
+                                   "input":  0.000005,
+                                   "output":  0.000025,
+                                   "cache_read_input_token_cost":  5E-07,
+                                   "cache_creation_input_token_cost":  0.00000625
+                               },
+                      "features":  {
+                                       "streaming":  true,
+                                       "tools":  true,
+                                       "temperature":  true,
+                                       "parallel_tool_calls":  true,
+                                       "max_tokens":  true,
+                                       "top_p":  true
+                                   },
+                      "switchyard":  [
+
+                                     ],
+                      "forbidden_for_web":  false,
+                      "is_premium":  true
+                  },
+                  {
+                      "base_name":  "claude-opus-5",
+                      "deployment_name":  "claude-opus-5",
+                      "label":  "Bedrock Claude Opus 5",
+                      "multimodal":  true,
+                      "react_agent":  false,
+                      "enabled":  true,
+                      "supports_image_generation":  false,
+                      "provider":  "aws_bedrock",
+                      "default":  false,
+                      "default_for_categories":  [
+
+                                                 ],
+                      "cost":  {
+                                   "input":  0.0000055,
+                                   "output":  0.0000275,
+                                   "cache_read_input_token_cost":  5.5E-07,
+                                   "cache_creation_input_token_cost":  0.000006875
+                               },
+                      "features":  {
+                                       "streaming":  true,
+                                       "tools":  true,
+                                       "temperature":  true,
+                                       "parallel_tool_calls":  true,
+                                       "max_tokens":  true,
+                                       "top_p":  true
+                                   },
+                      "switchyard":  [
+
+                                     ],
+                      "forbidden_for_web":  false,
+                      "is_premium":  true
+                  },
+                  {
+                      "base_name":  "claude-opus-5-5",
+                      "deployment_name":  "claude-opus-5-5",
+                      "label":  "Bedrock Claude Opus 5.5",
+                      "multimodal":  true,
+                      "react_agent":  false,
+                      "enabled":  true,
+                      "supports_image_generation":  false,
+                      "provider":  "aws_bedrock",
+                      "default":  false,
+                      "default_for_categories":  [
+
+                                                 ],
+                      "cost":  {
+                                   "input":  0.0000044,
+                                   "output":  0.000022,
+                                   "cache_read_input_token_cost":  2.2E-07,
+                                   "cache_creation_input_token_cost":  0.0000055
+                               },
+                      "features":  {
+                                       "streaming":  true,
+                                       "tools":  true,
+                                       "temperature":  true,
+                                       "parallel_tool_calls":  true,
+                                       "max_tokens":  true,
+                                       "top_p":  true
+                                   },
+                      "switchyard":  [
+
+                                     ],
+                      "forbidden_for_web":  false,
+                      "is_premium":  true
+                  },
+                  {
+                      "base_name":  "claude-haiku-4-5-20251001",
+                      "deployment_name":  "claude-haiku-4-5-20251001",
+                      "label":  "Bedrock Claude Haiku 4.5",
+                      "multimodal":  true,
+                      "react_agent":  false,
+                      "enabled":  true,
+                      "supports_image_generation":  false,
+                      "provider":  "aws_bedrock",
+                      "default":  false,
+                      "default_for_categories":  [
+
+                                                 ],
+                      "cost":  {
+                                   "input":  0.000001,
+                                   "output":  0.000005,
+                                   "cache_read_input_token_cost":  1E-07,
+                                   "cache_creation_input_token_cost":  0.00000125
+                               },
+                      "features":  {
+                                       "streaming":  true,
+                                       "tools":  true,
+                                       "temperature":  true,
+                                       "parallel_tool_calls":  true,
+                                       "max_tokens":  true,
+                                       "top_p":  true
+                                   },
+                      "switchyard":  [
+
+                                     ],
+                      "forbidden_for_web":  false,
+                      "is_premium":  false
+                  },
+                  {
+                      "base_name":  "grok-4.6",
+                      "deployment_name":  "grok-4.6",
+                      "label":  "Grok 4.6",
+                      "multimodal":  true,
+                      "react_agent":  false,
+                      "enabled":  true,
+                      "supports_image_generation":  false,
+                      "provider":  "aws_bedrock",
+                      "default":  false,
+                      "default_for_categories":  [
+
+                                                 ],
+                      "cost":  {
+                                   "input":  0.0000022,
+                                   "output":  0.0000066,
+                                   "cache_read_input_token_cost":  5.5E-07
+                               },
+                      "features":  {
+                                       "streaming":  true,
+                                       "tools":  true,
+                                       "temperature":  true,
+                                       "parallel_tool_calls":  true,
+                                       "max_tokens":  true,
+                                       "top_p":  true
+                                   },
+                      "switchyard":  [
+
+                                     ],
+                      "forbidden_for_web":  false,
+                      "is_premium":  false
+                  },
+                  {
+                      "base_name":  "claude-sonnet-4-5-20250929",
+                      "deployment_name":  "claude-sonnet-4-5-20250929",
+                      "label":  "Bedrock Claude 4.5 Sonnet",
+                      "multimodal":  true,
+                      "react_agent":  false,
+                      "enabled":  true,
+                      "supports_image_generation":  false,
+                      "provider":  "aws_bedrock",
+                      "default":  false,
+                      "default_for_categories":  [
+
+                                                 ],
+                      "cost":  {
+                                   "input":  0.0000033,
+                                   "output":  0.0000165,
+                                   "cache_read_input_token_cost":  3.3E-07,
+                                   "cache_creation_input_token_cost":  0.000004125
+                               },
+                      "features":  {
+                                       "streaming":  true,
+                                       "tools":  true,
+                                       "temperature":  true,
+                                       "parallel_tool_calls":  true,
+                                       "max_tokens":  true,
+                                       "top_p":  true
+                                   },
+                      "switchyard":  [
+
+                                     ],
+                      "forbidden_for_web":  false,
+                      "is_premium":  false
+                  }
+              ],
+    "Count":  39
+}

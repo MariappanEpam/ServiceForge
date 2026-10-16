@@ -1,0 +1,13 @@
+services:
+  chroma:
+    image: chromadb/chroma:0.6.3
+    container_name: serviceforge-chroma
+    environment:
+      - IS_PERSISTENT=TRUE
+      - PERSIST_DIRECTORY=/chroma/chroma
+      - ANONYMIZED_TELEMETRY=FALSE
+    ports:
+      - "8000:8000" # HTTP
+    volumes:
+      - ./.chroma_data:/chroma/chroma
+    restart: unless-stopped

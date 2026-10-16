@@ -1,0 +1,131 @@
+﻿
+Project Structure (84 files):
+
+ΓööΓöÇΓöÇ src
+    ΓööΓöÇΓöÇ ServiceForge.Tests.Api
+        Γö£ΓöÇΓöÇ bin
+        Γöé   Γö£ΓöÇΓöÇ Debug
+        Γöé   Γöé   ΓööΓöÇΓöÇ net9.0
+        Γöé   Γöé       ΓööΓöÇΓöÇ .playwright
+        Γöé   Γöé           ΓööΓöÇΓöÇ package
+        Γöé   Γöé               Γö£ΓöÇΓöÇ lib
+        Γöé   Γöé               Γöé   Γö£ΓöÇΓöÇ entry
+        Γöé   Γöé               Γöé   Γöé   Γö£ΓöÇΓöÇ cliDaemon.js (javascript, 2 symbols)
+        Γöé   Γöé               Γöé   Γöé   Γö£ΓöÇΓöÇ dashboardApp.js (javascript, 2 symbols)
+        Γöé   Γöé               Γöé   Γöé   Γö£ΓöÇΓöÇ mcp.js (javascript, 4 symbols)
+        Γöé   Γöé               Γöé   Γöé   ΓööΓöÇΓöÇ oopBrowserDownload.js (javascript, 2 symbols)
+        Γöé   Γöé               Γöé   Γö£ΓöÇΓöÇ server
+        Γöé   Γöé               Γöé   Γöé   ΓööΓöÇΓöÇ electron
+        Γöé   Γöé               Γöé   Γöé       ΓööΓöÇΓöÇ loader.js (javascript, 11 symbols)
+        Γöé   Γöé               Γöé   Γö£ΓöÇΓöÇ tools
+        Γöé   Γöé               Γöé   Γöé   Γö£ΓöÇΓöÇ cli-client
+        Γöé   Γöé               Γöé   Γöé   Γöé   Γö£ΓöÇΓöÇ channelSessions.js (javascript, 24 symbols)
+        Γöé   Γöé               Γöé   Γöé   Γöé   Γö£ΓöÇΓöÇ cli.js (javascript, 2 symbols)
+        Γöé   Γöé               Γöé   Γöé   Γöé   Γö£ΓöÇΓöÇ minimist.js (javascript, 12 symbols)
+        Γöé   Γöé               Γöé   Γöé   Γöé   Γö£ΓöÇΓöÇ output.js (javascript, 67 symbols)
+        Γöé   Γöé               Γöé   Γöé   Γöé   Γö£ΓöÇΓöÇ program.js (javascript, 37 symbols)
+        Γöé   Γöé               Γöé   Γöé   Γöé   Γö£ΓöÇΓöÇ registry.js (javascript, 34 symbols)
+        Γöé   Γöé               Γöé   Γöé   Γöé   ΓööΓöÇΓöÇ session.js (javascript, 41 symbols)
+        Γöé   Γöé               Γöé   Γöé   ΓööΓöÇΓöÇ utils
+        Γöé   Γöé               Γöé   Γöé       Γö£ΓöÇΓöÇ extension.js (javascript, 24 symbols)
+        Γöé   Γöé               Γöé   Γöé       ΓööΓöÇΓöÇ socketConnection.js (javascript, 17 symbols)
+        Γöé   Γöé               Γöé   Γö£ΓöÇΓöÇ vite
+        Γöé   Γöé               Γöé   Γöé   Γö£ΓöÇΓöÇ dashboard
+        Γöé   Γöé               Γöé   Γöé   Γöé   ΓööΓöÇΓöÇ assets
+        Γöé   Γöé               Γöé   Γöé   Γöé       Γö£ΓöÇΓöÇ codeMirrorModule-CQ8RZGBm.js (javascript, 762 symbols)
+        Γöé   Γöé               Γöé   Γöé   Γöé       ΓööΓöÇΓöÇ index-hRvO4yU2.js (javascript, 1147 symbols)
+        Γöé   Γöé               Γöé   Γöé   Γö£ΓöÇΓöÇ htmlReport
+        Γöé   Γöé               Γöé   Γöé   Γöé   ΓööΓöÇΓöÇ report.js (javascript, 1060 symbols)
+        Γöé   Γöé               Γöé   Γöé   Γö£ΓöÇΓöÇ recorder
+        Γöé   Γöé               Γöé   Γöé   Γöé   ΓööΓöÇΓöÇ assets
+        Γöé   Γöé               Γöé   Γöé   Γöé       Γö£ΓöÇΓöÇ codeMirrorModule-CVQWJZAA.js (javascript, 762 symbols)
+        Γöé   Γöé               Γöé   Γöé   Γöé       ΓööΓöÇΓöÇ index-hrlLqLtq.js (javascript, 1003 symbols)
+        Γöé   Γöé               Γöé   Γöé   ΓööΓöÇΓöÇ traceViewer
+        Γöé   Γöé               Γöé   Γöé       Γö£ΓöÇΓöÇ assets
+        Γöé   Γöé               Γöé   Γöé       Γöé   Γö£ΓöÇΓöÇ codeMirrorModule-BbkfBe3n.js (javascript, 762 symbols)
+        Γöé   Γöé               Γöé   Γöé       Γöé   Γö£ΓöÇΓöÇ defaultSettingsView-Ds6CBOo0.js (javascript, 1557 symbols)
+        Γöé   Γöé               Γöé   Γöé       Γöé   Γö£ΓöÇΓöÇ urlMatch-L3liM589.js (javascript, 20 symbols)
+        Γöé   Γöé               Γöé   Γöé       Γöé   ΓööΓöÇΓöÇ xtermModule-DywYcAf8.js (javascript, 560 symbols)
+        Γöé   Γöé               Γöé   Γöé       Γö£ΓöÇΓöÇ index.B4cLoZK3.js (javascript, 13 symbols)
+        Γöé   Γöé               Γöé   Γöé       Γö£ΓöÇΓöÇ snapshot.B_Jk1wbt.js (javascript, 2 symbols)
+        Γöé   Γöé               Γöé   Γöé       Γö£ΓöÇΓöÇ sw.bundle.js (javascript, 396 symbols)
+        Γöé   Γöé               Γöé   Γöé       ΓööΓöÇΓöÇ uiMode.CU5KtEkS.js (javascript, 59 symbols)
+        Γöé   Γöé               Γöé   Γö£ΓöÇΓöÇ bootstrap.js (javascript, 12 symbols)
+        Γöé   Γöé               Γöé   Γö£ΓöÇΓöÇ coreBundle.js (javascript, 0 symbols)
+        Γöé   Γöé               Γöé   Γö£ΓöÇΓöÇ package.js (javascript, 17 symbols)
+        Γöé   Γöé               Γöé   Γö£ΓöÇΓöÇ serverRegistry.js (javascript, 118 symbols)
+        Γöé   Γöé               Γöé   ΓööΓöÇΓöÇ utilsBundle.js (javascript, 0 symbols)
+        Γöé   Γöé               Γö£ΓöÇΓöÇ types
+        Γöé   Γöé               Γöé   Γö£ΓöÇΓöÇ protocol.d.ts (typescript, 7980 symbols)
+        Γöé   Γöé               Γöé   Γö£ΓöÇΓöÇ structs.d.ts (typescript, 15 symbols)
+        Γöé   Γöé               Γöé   ΓööΓöÇΓöÇ types.d.ts (typescript, 0 symbols)
+        Γöé   Γöé               Γö£ΓöÇΓöÇ cli.js (javascript, 1 symbols)
+        Γöé   Γöé               Γö£ΓöÇΓöÇ index.d.ts (typescript, 1 symbols)
+        Γöé   Γöé               Γö£ΓöÇΓöÇ index.js (javascript, 1 symbols)
+        Γöé   Γöé               ΓööΓöÇΓöÇ index.mjs (javascript, 11 symbols)
+        Γöé   ΓööΓöÇΓöÇ Release
+        Γöé       ΓööΓöÇΓöÇ net9.0
+        Γöé           ΓööΓöÇΓöÇ .playwright
+        Γöé               ΓööΓöÇΓöÇ package
+        Γöé                   Γö£ΓöÇΓöÇ lib
+        Γöé                   Γöé   Γö£ΓöÇΓöÇ entry
+        Γöé                   Γöé   Γöé   Γö£ΓöÇΓöÇ cliDaemon.js (javascript, 2 symbols)
+        Γöé                   Γöé   Γöé   Γö£ΓöÇΓöÇ dashboardApp.js (javascript, 2 symbols)
+        Γöé                   Γöé   Γöé   Γö£ΓöÇΓöÇ mcp.js (javascript, 4 symbols)
+        Γöé                   Γöé   Γöé   ΓööΓöÇΓöÇ oopBrowserDownload.js (javascript, 2 symbols)
+        Γöé                   Γöé   Γö£ΓöÇΓöÇ server
+        Γöé                   Γöé   Γöé   ΓööΓöÇΓöÇ electron
+        Γöé                   Γöé   Γöé       ΓööΓöÇΓöÇ loader.js (javascript, 11 symbols)
+        Γöé                   Γöé   Γö£ΓöÇΓöÇ tools
+        Γöé                   Γöé   Γöé   Γö£ΓöÇΓöÇ cli-client
+        Γöé                   Γöé   Γöé   Γöé   Γö£ΓöÇΓöÇ channelSessions.js (javascript, 24 symbols)
+        Γöé                   Γöé   Γöé   Γöé   Γö£ΓöÇΓöÇ cli.js (javascript, 2 symbols)
+        Γöé                   Γöé   Γöé   Γöé   Γö£ΓöÇΓöÇ minimist.js (javascript, 12 symbols)
+        Γöé                   Γöé   Γöé   Γöé   Γö£ΓöÇΓöÇ output.js (javascript, 67 symbols)
+        Γöé                   Γöé   Γöé   Γöé   Γö£ΓöÇΓöÇ program.js (javascript, 37 symbols)
+        Γöé                   Γöé   Γöé   Γöé   Γö£ΓöÇΓöÇ registry.js (javascript, 34 symbols)
+        Γöé                   Γöé   Γöé   Γöé   ΓööΓöÇΓöÇ session.js (javascript, 41 symbols)
+        Γöé                   Γöé   Γöé   ΓööΓöÇΓöÇ utils
+        Γöé                   Γöé   Γöé       Γö£ΓöÇΓöÇ extension.js (javascript, 24 symbols)
+        Γöé                   Γöé   Γöé       ΓööΓöÇΓöÇ socketConnection.js (javascript, 17 symbols)
+        Γöé                   Γöé   Γö£ΓöÇΓöÇ vite
+        Γöé                   Γöé   Γöé   Γö£ΓöÇΓöÇ dashboard
+        Γöé                   Γöé   Γöé   Γöé   ΓööΓöÇΓöÇ assets
+        Γöé                   Γöé   Γöé   Γöé       Γö£ΓöÇΓöÇ codeMirrorModule-CQ8RZGBm.js (javascript, 762 symbols)
+        Γöé                   Γöé   Γöé   Γöé       ΓööΓöÇΓöÇ index-hRvO4yU2.js (javascript, 1147 symbols)
+        Γöé                   Γöé   Γöé   Γö£ΓöÇΓöÇ htmlReport
+        Γöé                   Γöé   Γöé   Γöé   ΓööΓöÇΓöÇ report.js (javascript, 1060 symbols)
+        Γöé                   Γöé   Γöé   Γö£ΓöÇΓöÇ recorder
+        Γöé                   Γöé   Γöé   Γöé   ΓööΓöÇΓöÇ assets
+        Γöé                   Γöé   Γöé   Γöé       Γö£ΓöÇΓöÇ codeMirrorModule-CVQWJZAA.js (javascript, 762 symbols)
+        Γöé                   Γöé   Γöé   Γöé       ΓööΓöÇΓöÇ index-hrlLqLtq.js (javascript, 1003 symbols)
+        Γöé                   Γöé   Γöé   ΓööΓöÇΓöÇ traceViewer
+        Γöé                   Γöé   Γöé       Γö£ΓöÇΓöÇ assets
+        Γöé                   Γöé   Γöé       Γöé   Γö£ΓöÇΓöÇ codeMirrorModule-BbkfBe3n.js (javascript, 762 symbols)
+        Γöé                   Γöé   Γöé       Γöé   Γö£ΓöÇΓöÇ defaultSettingsView-Ds6CBOo0.js (javascript, 1557 symbols)
+        Γöé                   Γöé   Γöé       Γöé   Γö£ΓöÇΓöÇ urlMatch-L3liM589.js (javascript, 20 symbols)
+        Γöé                   Γöé   Γöé       Γöé   ΓööΓöÇΓöÇ xtermModule-DywYcAf8.js (javascript, 560 symbols)
+        Γöé                   Γöé   Γöé       Γö£ΓöÇΓöÇ index.B4cLoZK3.js (javascript, 13 symbols)
+        Γöé                   Γöé   Γöé       Γö£ΓöÇΓöÇ snapshot.B_Jk1wbt.js (javascript, 2 symbols)
+        Γöé                   Γöé   Γöé       Γö£ΓöÇΓöÇ sw.bundle.js (javascript, 396 symbols)
+        Γöé                   Γöé   Γöé       ΓööΓöÇΓöÇ uiMode.CU5KtEkS.js (javascript, 59 symbols)
+        Γöé                   Γöé   Γö£ΓöÇΓöÇ bootstrap.js (javascript, 12 symbols)
+        Γöé                   Γöé   Γö£ΓöÇΓöÇ coreBundle.js (javascript, 0 symbols)
+        Γöé                   Γöé   Γö£ΓöÇΓöÇ package.js (javascript, 17 symbols)
+        Γöé                   Γöé   Γö£ΓöÇΓöÇ serverRegistry.js (javascript, 118 symbols)
+        Γöé                   Γöé   ΓööΓöÇΓöÇ utilsBundle.js (javascript, 0 symbols)
+        Γöé                   Γö£ΓöÇΓöÇ types
+        Γöé                   Γöé   Γö£ΓöÇΓöÇ protocol.d.ts (typescript, 7980 symbols)
+        Γöé                   Γöé   Γö£ΓöÇΓöÇ structs.d.ts (typescript, 15 symbols)
+        Γöé                   Γöé   ΓööΓöÇΓöÇ types.d.ts (typescript, 0 symbols)
+        Γöé                   Γö£ΓöÇΓöÇ cli.js (javascript, 1 symbols)
+        Γöé                   Γö£ΓöÇΓöÇ index.d.ts (typescript, 1 symbols)
+        Γöé                   Γö£ΓöÇΓöÇ index.js (javascript, 1 symbols)
+        Γöé                   ΓööΓöÇΓöÇ index.mjs (javascript, 11 symbols)
+        Γö£ΓöÇΓöÇ Feature2PartsReservationUiTests.cs (csharp, 7 symbols)
+        Γö£ΓöÇΓöÇ Feature7PartsInventoryApiTests.cs (csharp, 10 symbols)
+        Γö£ΓöÇΓöÇ Feature7PartsInventoryUiTests.cs (csharp, 8 symbols)
+        Γö£ΓöÇΓöÇ TestConfig.cs (csharp, 7 symbols)
+        Γö£ΓöÇΓöÇ UiTestBase.cs (csharp, 15 symbols)
+        ΓööΓöÇΓöÇ UnitTest1.cs (csharp, 12 symbols)
+

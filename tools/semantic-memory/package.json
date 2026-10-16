@@ -1,0 +1,19 @@
+{
+  "name": "serviceforge-semantic-memory",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Local semantic memory indexer + query tool for ServiceForge using ChromaDB",
+  "scripts": {
+    "index": "node src/index.js",
+    "query": "node src/query.js",
+    "prompt": "node src/prompt.js",
+    "compare": "node src/compare-tokenomics.js"
+  },
+  "dependencies": {
+    "chromadb": "^1.8.1",
+    "fast-glob": "^3.3.2",
+    "ignore": "^5.3.1",
+    "zod": "^3.23.8"
+  }
+}

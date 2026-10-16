@@ -1,0 +1,124 @@
+{
+  "version": 1,
+  "note": "Naive baseline estimate: broad pipeline repo stuffing (capped per file). Token counts are estimates (chars/4).",
+  "config": {
+    "maxFiles": 200,
+    "maxCharsPerFile": 12000,
+    "roots": [
+      "pipeline/features",
+      "pipeline/implementation-plan",
+      "pipeline/architecture",
+      "pipeline/decisions",
+      "pipeline/reviews",
+      "pipeline/rules",
+      "pipeline/memory/entities",
+      "pipeline/memory/facts",
+      "pipeline/memory/episodes"
+    ]
+  },
+  "selectedFiles": 47,
+  "totalChars": 184266,
+  "estimatedTokens": 46067,
+  "topFiles": [
+    {
+      "path": "pipeline/architecture/feature-2-architecture.md",
+      "charsCounted": 12000
+    },
+    {
+      "path": "pipeline/architecture/feature-3-architecture.md",
+      "charsCounted": 4128
+    },
+    {
+      "path": "pipeline/architecture/feature-4-architecture.md",
+      "charsCounted": 4955
+    },
+    {
+      "path": "pipeline/architecture/feature-5-architecture.md",
+      "charsCounted": 5720
+    },
+    {
+      "path": "pipeline/architecture/feature-6-architecture.md",
+      "charsCounted": 2293
+    },
+    {
+      "path": "pipeline/architecture/feature-7-architecture.md",
+      "charsCounted": 12000
+    },
+    {
+      "path": "pipeline/architecture/feature-8-architecture.md",
+      "charsCounted": 4649
+    },
+    {
+      "path": "pipeline/architecture/feature-9-architecture.md",
+      "charsCounted": 5615
+    },
+    {
+      "path": "pipeline/decisions/feature-1-decisions.md",
+      "charsCounted": 1761
+    },
+    {
+      "path": "pipeline/decisions/feature-5-decisions.md",
+      "charsCounted": 1497
+    },
+    {
+      "path": "pipeline/decisions/feature-9-decisions.md",
+      "charsCounted": 1619
+    },
+    {
+      "path": "pipeline/decisions/project-decisions.md",
+      "charsCounted": 1872
+    },
+    {
+      "path": "pipeline/features/feature-1-technician-availability.md",
+      "charsCounted": 2327
+    },
+    {
+      "path": "pipeline/features/feature-2-parts-reservation.md",
+      "charsCounted": 6068
+    },
+    {
+      "path": "pipeline/features/feature-3-technician-onboarding-management.md",
+      "charsCounted": 5022
+    },
+    {
+      "path": "pipeline/features/feature-4-parts-reservation-by-technician.md",
+      "charsCounted": 2795
+    },
+    {
+      "path": "pipeline/features/feature-5-sqlite-persistence.md",
+      "charsCounted": 6075
+    },
+    {
+      "path": "pipeline/features/feature-6-restore-technician-availability-sqlite.md",
+      "charsCounted": 4553
+    },
+    {
+      "path": "pipeline/features/feature-7-parts-inventory-management.md",
+      "charsCounted": 6071
+    },
+    {
+      "path": "pipeline/features/feature-8-job-parts-mapping-and-ui-conditions.md",
+      "charsCounted": 6137
+    },
+    {
+      "path": "pipeline/features/feature-9-technician-onboarding-and-management.md",
+      "charsCounted": 7907
+    },
+    {
+      "path": "pipeline/implementation-plan/feature-2-implementation-plan.md",
+      "charsCounted": 11900
+    },
+    {
+      "path": "pipeline/implementation-plan/feature-4-implementation-plan.md",
+      "charsCounted": 5087
+    },
+    {
+      "path": "pipeline/implementation-plan/feature-5-implementation-plan.md",
+      "charsCounted": 4518
+    },
+    {
+      "path": "pipeline/implementation-plan/feature-6-implementation-plan.md",
+      "charsCounted": 2286
+    }
+  ]
+}

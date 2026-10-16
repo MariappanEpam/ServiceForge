@@ -1,0 +1,34 @@
+﻿
+CodeGraph Status
+
+Project: C:\Users\Mariappan_Ganesan\Documents\New folder\ServiceForge\ServiceForge-Start\test-automation
+
+Index Statistics:
+  Files:     84
+  Nodes:     33,135
+  Edges:     1,15,334
+  DB Size:   121.77 MB
+  Backend:   node:sqlite ΓÇö built-in (full WAL)
+  Journal:   wal
+
+Nodes by Kind:
+  function        12,604
+  property        11,622
+  type_alias      3,576
+  variable        3,150
+  method          1,122
+  interface       790
+  class           82
+  file            78
+  constant        54
+  import          48
+  namespace       6
+  field           3
+
+Files by Language:
+  javascript      70
+  typescript      8
+  csharp          6
+
+Γ£ô Index is up to date
+

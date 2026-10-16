@@ -1,0 +1,28 @@
+﻿
+Project Structure (15 files):
+
+ΓööΓöÇΓöÇ src
+    Γö£ΓöÇΓöÇ app
+    Γöé   Γö£ΓöÇΓöÇ job-parts-panel
+    Γöé   Γöé   ΓööΓöÇΓöÇ job-parts-panel.component.ts (typescript, 21 symbols)
+    Γöé   Γö£ΓöÇΓöÇ pages
+    Γöé   Γöé   Γö£ΓöÇΓöÇ parts-reservations-page
+    Γöé   Γöé   Γöé   ΓööΓöÇΓöÇ parts-reservations-page.component.ts (typescript, 8 symbols)
+    Γöé   Γöé   ΓööΓöÇΓöÇ technicians-management-page
+    Γöé   Γöé       ΓööΓöÇΓöÇ technicians-management-page.component.ts (typescript, 32 symbols)
+    Γöé   Γö£ΓöÇΓöÇ parts-management
+    Γöé   Γöé   Γö£ΓöÇΓöÇ parts-management.component.spec.ts (typescript, 6 symbols)
+    Γöé   Γöé   ΓööΓöÇΓöÇ parts-management.component.ts (typescript, 24 symbols)
+    Γöé   Γö£ΓöÇΓöÇ services
+    Γöé   Γöé   Γö£ΓöÇΓöÇ jobs-api.service.ts (typescript, 19 symbols)
+    Γöé   Γöé   Γö£ΓöÇΓöÇ parts-api.service.ts (typescript, 35 symbols)
+    Γöé   Γöé   Γö£ΓöÇΓöÇ parts-reservations-api.service.ts (typescript, 26 symbols)
+    Γöé   Γöé   ΓööΓöÇΓöÇ technicians-api.service.ts (typescript, 31 symbols)
+    Γöé   Γö£ΓöÇΓöÇ technician-availability
+    Γöé   Γöé   ΓööΓöÇΓöÇ technician-availability.component.ts (typescript, 22 symbols)
+    Γöé   Γö£ΓöÇΓöÇ app.component.spec.ts (typescript, 5 symbols)
+    Γöé   Γö£ΓöÇΓöÇ app.component.ts (typescript, 5 symbols)
+    Γöé   Γö£ΓöÇΓöÇ app.config.ts (typescript, 6 symbols)
+    Γöé   ΓööΓöÇΓöÇ app.routes.ts (typescript, 11 symbols)
+    ΓööΓöÇΓöÇ main.ts (typescript, 4 symbols)
+

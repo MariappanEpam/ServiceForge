@@ -1,0 +1,724 @@
+{
+  "count": 1376,
+  "totals": {
+    "files": 1376,
+    "bytes": 1099573940,
+    "lines": 18326248
+  },
+  "byGroup": {
+    ".claude": {
+      "files": 36,
+      "bytes": 104661,
+      "lines": 1744
+    },
+    ".github": {
+      "files": 10,
+      "bytes": 129801,
+      "lines": 2163
+    },
+    "root": {
+      "files": 50,
+      "bytes": 21585796,
+      "lines": 359774
+    },
+    ".vscode": {
+      "files": 1,
+      "bytes": 99,
+      "lines": 2
+    },
+    "backend": {
+      "files": 147,
+      "bytes": 46824249,
+      "lines": 780396
+    },
+    "frontend": {
+      "files": 353,
+      "bytes": 752779831,
+      "lines": 12546329
+    },
+    "main": {
+      "files": 107,
+      "bytes": 43413112,
+      "lines": 723552
+    },
+    "pipeline": {
+      "files": 83,
+      "bytes": 6743388,
+      "lines": 112395
+    },
+    "test-automation": {
+      "files": 534,
+      "bytes": 227644506,
+      "lines": 3794085
+    },
+    "tools": {
+      "files": 55,
+      "bytes": 348497,
+      "lines": 5808
+    }
+  },
+  "byExt": {
+    ".md": {
+      "files": 168,
+      "bytes": 620492,
+      "lines": 10349
+    },
+    ".json": {
+      "files": 304,
+      "bytes": 13353302,
+      "lines": 222557
+    },
+    ".ps1": {
+      "files": 28,
+      "bytes": 38881,
+      "lines": 645
+    },
+    "(noext)": {
+      "files": 18,
+      "bytes": 659927,
+      "lines": 11000
+    },
+    ".config": {
+      "files": 1,
+      "bytes": 74272,
+      "lines": 1238
+    },
+    ".db": {
+      "files": 19,
+      "bytes": 5713920,
+      "lines": 95224
+    },
+    ".db-shm": {
+      "files": 2,
+      "bytes": 65536,
+      "lines": 1092
+    },
+    ".db-wal": {
+      "files": 2,
+      "bytes": 8371904,
+      "lines": 139532
+    },
+    ".vsidx": {
+      "files": 5,
+      "bytes": 7538592,
+      "lines": 125643
+    },
+    ".testlog": {
+      "files": 1,
+      "bytes": 20,
+      "lines": 1
+    },
+    ".manifest": {
+      "files": 1,
+      "bytes": 24,
+      "lines": 1
+    },
+    ".sqlite": {
+      "files": 1,
+      "bytes": 413696,
+      "lines": 6895
+    },
+    "pom.xml": {
+      "files": 2,
+      "bytes": 4464,
+      "lines": 74
+    },
+    ".java": {
+      "files": 91,
+      "bytes": 185929,
+      "lines": 3096
+    },
+    ".yml": {
+      "files": 3,
+      "bytes": 1378,
+      "lines": 22
+    },
+    ".sql": {
+      "files": 6,
+      "bytes": 4362,
+      "lines": 72
+    },
+    ".class": {
+      "files": 53,
+      "bytes": 165017,
+      "lines": 2750
+    },
+    ".properties": {
+      "files": 4,
+      "bytes": 1091,
+      "lines": 18
+    },
+    ".lst": {
+      "files": 8,
+      "bytes": 19294,
+      "lines": 322
+    },
+    ".jar": {
+      "files": 2,
+      "bytes": 80898750,
+      "lines": 1348313
+    },
+    ".original": {
+      "files": 2,
+      "bytes": 102965,
+      "lines": 1716
+    },
+    ".txt": {
+      "files": 22,
+      "bytes": 120601,
+      "lines": 2015
+    },
+    ".xml": {
+      "files": 9,
+      "bytes": 457321,
+      "lines": 7621
+    },
+    ".pack": {
+      "files": 21,
+      "bytes": 723966966,
+      "lines": 12066115
+    },
+    ".old": {
+      "files": 3,
+      "bytes": 3044802,
+      "lines": 50747
+    },
+    ".js": {
+      "files": 98,
+      "bytes": 24256089,
+      "lines": 404266
+    },
+    ".map": {
+      "files": 14,
+      "bytes": 7989106,
+      "lines": 133155
+    },
+    "package.json": {
+      "files": 10,
+      "bytes": 6925,
+      "lines": 117
+    },
+    ".tgz": {
+      "files": 1,
+      "bytes": 6657485,
+      "lines": 110958
+    },
+    ".ico": {
+      "files": 2,
+      "bytes": 30172,
+      "lines": 502
+    },
+    ".html": {
+      "files": 66,
+      "bytes": 312598,
+      "lines": 5214
+    },
+    ".css": {
+      "files": 28,
+      "bytes": 1024994,
+      "lines": 17085
+    },
+    "package-lock.json": {
+      "files": 8,
+      "bytes": 940824,
+      "lines": 15681
+    },
+    ".scss": {
+      "files": 7,
+      "bytes": 5638,
+      "lines": 93
+    },
+    ".ts": {
+      "files": 35,
+      "bytes": 3944908,
+      "lines": 65752
+    },
+    ".gz": {
+      "files": 1,
+      "bytes": 62710,
+      "lines": 1045
+    },
+    ".sqlite3": {
+      "files": 1,
+      "bytes": 4771840,
+      "lines": 79531
+    },
+    ".bin": {
+      "files": 4,
+      "bytes": 1680100,
+      "lines": 28003
+    },
+    "docker-compose": {
+      "files": 2,
+      "bytes": 1313,
+      "lines": 22
+    },
+    ".sln": {
+      "files": 1,
+      "bytes": 2054,
+      "lines": 34
+    },
+    ".exe": {
+      "files": 4,
+      "bytes": 187499264,
+      "lines": 3124986
+    },
+    ".sh": {
+      "files": 20,
+      "bytes": 18242,
+      "lines": 302
+    },
+    ".mjs": {
+      "files": 7,
+      "bytes": 23672,
+      "lines": 395
+    },
+    ".png": {
+      "files": 36,
+      "bytes": 1014904,
+      "lines": 16919
+    },
+    ".license": {
+      "files": 6,
+      "bytes": 236828,
+      "lines": 3948
+    },
+    ".ttf": {
+      "files": 6,
+      "bytes": 482040,
+      "lines": 8034
+    },
+    ".svg": {
+      "files": 14,
+      "bytes": 93752,
+      "lines": 1564
+    },
+    ".webmanifest": {
+      "files": 2,
+      "bytes": 858,
+      "lines": 14
+    },
+    ".wasm": {
+      "files": 2,
+      "bytes": 1130738,
+      "lines": 18846
+    },
+    ".dll": {
+      "files": 180,
+      "bytes": 11175600,
+      "lines": 186260
+    },
+    ".pdb": {
+      "files": 6,
+      "bytes": 200808,
+      "lines": 3346
+    },
+    ".tmp": {
+      "files": 1,
+      "bytes": 10,
+      "lines": 1
+    },
+    ".cs": {
+      "files": 12,
+      "bytes": 18466,
+      "lines": 308
+    },
+    ".up2date": {
+      "files": 2,
+      "bytes": 0,
+      "lines": 2
+    },
+    ".cache": {
+      "files": 11,
+      "bytes": 105264,
+      "lines": 1755
+    },
+    ".editorconfig": {
+      "files": 2,
+      "bytes": 1552,
+      "lines": 26
+    },
+    ".props": {
+      "files": 1,
+      "bytes": 2816,
+      "lines": 47
+    },
+    ".targets": {
+      "files": 1,
+      "bytes": 1463,
+      "lines": 24
+    },
+    ".csproj": {
+      "files": 1,
+      "bytes": 898,
+      "lines": 15
+    },
+    ".trx": {
+      "files": 6,
+      "bytes": 55461,
+      "lines": 923
+    },
+    ".example": {
+      "files": 1,
+      "bytes": 86,
+      "lines": 1
+    },
+    ".py": {
+      "files": 1,
+      "bytes": 956,
+      "lines": 16
+    }
+  },
+  "topLargest": [
+    {
+      "p": "frontend/.angular/cache/17.3.17/angular-webpack/ed55e0ecc3749261e0d746161d903c469f66a9f6/1.pack",
+      "s": 177326595,
+      "approxLines": 2955443,
+      "group": "frontend",
+      "ext": ".pack"
+    },
+    {
+      "p": "frontend/.angular/cache/17.3.17/angular-webpack/00b5c5f7afd0385e42d5e3b67a1914504769ae84/0.pack",
+      "s": 176780329,
+      "approxLines": 2946339,
+      "group": "frontend",
+      "ext": ".pack"
+    },
+    {
+      "p": "frontend/.angular/cache/17.3.17/angular-webpack/ed55e0ecc3749261e0d746161d903c469f66a9f6/6.pack",
+      "s": 176653985,
+      "approxLines": 2944233,
+      "group": "frontend",
+      "ext": ".pack"
+    },
+    {
+      "p": "frontend/.angular/cache/17.3.17/angular-webpack/0ab68f73647cbaa1cd416e9aa8895e1cd42c3b83/3.pack",
+      "s": 109948931,
+      "approxLines": 1832482,
+      "group": "frontend",
+      "ext": ".pack"
+    },
+    {
+      "p": "test-automation/src/ServiceForge.Tests.Api/bin/Debug/net9.0/.playwright/node/win32_x64/node.exe",
+      "s": 93580104,
+      "approxLines": 1559668,
+      "group": "test-automation",
+      "ext": ".exe"
+    },
+    {
+      "p": "test-automation/src/ServiceForge.Tests.Api/bin/Release/net9.0/.playwright/node/win32_x64/node.exe",
+      "s": 93580104,
+      "approxLines": 1559668,
+      "group": "test-automation",
+      "ext": ".exe"
+    },
+    {
+      "p": "frontend/.angular/cache/17.3.17/angular-webpack/0ab68f73647cbaa1cd416e9aa8895e1cd42c3b83/0.pack",
+      "s": 62102772,
+      "approxLines": 1035046,
+      "group": "frontend",
+      "ext": ".pack"
+    },
+    {
+      "p": "backend/target/serviceforge-backend-0.0.1-SNAPSHOT.jar",
+      "s": 45414762,
+      "approxLines": 756913,
+      "group": "backend",
+      "ext": ".jar"
+    },
+    {
+      "p": "main/backend/target/serviceforge-backend-0.1.0.jar",
+      "s": 35483988,
+      "approxLines": 591400,
+      "group": "main",
+      "ext": ".jar"
+    },
+    {
+      "p": "frontend/.angular/cache/17.3.17/angular-webpack/0ab68f73647cbaa1cd416e9aa8895e1cd42c3b83/1.pack",
+      "s": 13021815,
+      "approxLines": 217030,
+      "group": "frontend",
+      "ext": ".pack"
+    },
+    {
+      "p": "frontend/angular-core-17.3.12.tgz",
+      "s": 6657485,
+      "approxLines": 110958,
+      "group": "frontend",
+      "ext": ".tgz"
+    },
+    {
+      "p": "pipeline/memory/semantic/vector-db/.chroma_data/chroma.sqlite3",
+      "s": 4771840,
+      "approxLines": 79531,
+      "group": "pipeline",
+      "ext": ".sqlite3"
+    },
+    {
+      "p": ".vs/ServiceForge-Start/CopilotIndices/17.14.1700.50054/CodeChunks.db-wal",
+      "s": 4243632,
+      "approxLines": 70727,
+      "group": "root",
+      "ext": ".db-wal"
+    },
+    {
+      "p": ".vs/ServiceForge-Start/CopilotIndices/17.14.1700.50054/CodeChunks.db",
+      "s": 4198400,
+      "approxLines": 69973,
+      "group": "root",
+      "ext": ".db"
+    },
+    {
+      "p": "frontend/.angular/cache/17.3.17/babel-webpack/33e71ac02722db536995ae8b73a6caf1e82c312e4f7157340c3ddde09ccc83ba.json",
+      "s": 4143876,
+      "approxLines": 69065,
+      "group": "frontend",
+      "ext": ".json"
+    },
+    {
+      "p": ".vs/ServiceForge-Start/CopilotIndices/17.14.1700.50054/SemanticSymbols.db-wal",
+      "s": 4128272,
+      "approxLines": 68805,
+      "group": "root",
+      "ext": ".db-wal"
+    },
+    {
+      "p": "frontend/.angular/cache/17.3.17/babel-webpack/5e379d197ba0d69a3405642f68b9144ad767391de20a6ee46e84b36c0517b1fa.json",
+      "s": 4004965,
+      "approxLines": 66749,
+      "group": "frontend",
+      "ext": ".json"
+    },
+    {
+      "p": "main/frontend/dist/serviceforge-frontend/main.js.map",
+      "s": 3996606,
+      "approxLines": 66610,
+      "group": "main",
+      "ext": ".map"
+    },
+    {
+      "p": "test-automation/src/ServiceForge.Tests.Api/bin/Debug/net9.0/.playwright/package/lib/coreBundle.js",
+      "s": 3477183,
+      "approxLines": 57953,
+      "group": "test-automation",
+      "ext": ".js"
+    },
+    {
+      "p": "test-automation/src/ServiceForge.Tests.Api/bin/Release/net9.0/.playwright/package/lib/coreBundle.js",
+      "s": 3477183,
+      "approxLines": 57953,
+      "group": "test-automation",
+      "ext": ".js"
+    },
+    {
+      "p": "test-automation/src/ServiceForge.Tests.Api/bin/Debug/net9.0/.playwright/package/lib/utilsBundle.js",
+      "s": 3048692,
+      "approxLines": 50812,
+      "group": "test-automation",
+      "ext": ".js"
+    },
+    {
+      "p": "test-automation/src/ServiceForge.Tests.Api/bin/Release/net9.0/.playwright/package/lib/utilsBundle.js",
+      "s": 3048692,
+      "approxLines": 50812,
+      "group": "test-automation",
+      "ext": ".js"
+    },
+    {
+      "p": "frontend/.angular/cache/17.3.17/angular-webpack/0ab68f73647cbaa1cd416e9aa8895e1cd42c3b83/4.pack",
+      "s": 2796369,
+      "approxLines": 46606,
+      "group": "frontend",
+      "ext": ".pack"
+    },
+    {
+      "p": ".vs/ServiceForge-Start/FileContentIndex/8314e5c0-b385-4e36-bb4f-3c738cbb9378.vsidx",
+      "s": 2566550,
+      "approxLines": 42776,
+      "group": "root",
+      "ext": ".vsidx"
+    },
+    {
+      "p": ".vs/ServiceForge-Start/FileContentIndex/945afc4b-405e-4d98-b7ce-57e77b016e97.vsidx",
+      "s": 2551347,
+      "approxLines": 42522,
+      "group": "root",
+      "ext": ".vsidx"
+    },
+    {
+      "p": "main/frontend/dist/serviceforge-frontend/main.js",
+      "s": 2522789,
+      "approxLines": 42046,
+      "group": "main",
+      "ext": ".js"
+    },
+    {
+      "p": "frontend/.angular/cache/17.3.17/vite/deps/chunk-6DT2DWOU.js.map",
+      "s": 2260763,
+      "approxLines": 37679,
+      "group": "frontend",
+      "ext": ".map"
+    },
+    {
+      "p": "pipeline/memory/semantic/vector-db/.chroma_data/db5dc089-18e6-427d-a925-f1a19d2b0e50/data_level0.bin",
+      "s": 1676000,
+      "approxLines": 27933,
+      "group": "pipeline",
+      "ext": ".bin"
+    },
+    {
+      "p": "frontend/.angular/cache/17.3.17/angular-webpack/0ab68f73647cbaa1cd416e9aa8895e1cd42c3b83/index.pack",
+      "s": 1268163,
+      "approxLines": 21136,
+      "group": "frontend",
+      "ext": ".pack"
+    },
+    {
+      "p": "frontend/.angular/cache/17.3.17/angular-webpack/0ab68f73647cbaa1cd416e9aa8895e1cd42c3b83/index.pack.old",
+      "s": 1267877,
+      "approxLines": 21131,
+      "group": "frontend",
+      "ext": ".old"
+    },
+    {
+      "p": "frontend/.angular/cache/17.3.17/angular-webpack/ed55e0ecc3749261e0d746161d903c469f66a9f6/index.pack",
+      "s": 1266408,
+      "approxLines": 21107,
+      "group": "frontend",
+      "ext": ".pack"
+    },
+    {
+      "p": "test-automation/src/ServiceForge.Tests.Api/bin/Debug/net9.0/.playwright/package/types/types.d.ts",
+      "s": 1131883,
+      "approxLines": 18865,
+      "group": "test-automation",
+      "ext": ".ts"
+    },
+    {
+      "p": "test-automation/src/ServiceForge.Tests.Api/bin/Release/net9.0/.playwright/package/types/types.d.ts",
+      "s": 1131883,
+      "approxLines": 18865,
+      "group": "test-automation",
+      "ext": ".ts"
+    },
+    {
+      "p": "test-automation/src/ServiceForge.Tests.Api/bin/Debug/net9.0/Microsoft.Playwright.dll",
+      "s": 1068344,
+      "approxLines": 17806,
+      "group": "test-automation",
+      "ext": ".dll"
+    },
+    {
+      "p": "test-automation/src/ServiceForge.Tests.Api/bin/Release/net9.0/Microsoft.Playwright.dll",
+      "s": 1068344,
+      "approxLines": 17806,
+      "group": "test-automation",
+      "ext": ".dll"
+    },
+    {
+      "p": "frontend/.angular/cache/17.3.17/angular-webpack/00b5c5f7afd0385e42d5e3b67a1914504769ae84/index.pack",
+      "s": 996705,
+      "approxLines": 16612,
+      "group": "frontend",
+      "ext": ".pack"
+    },
+    {
+      "p": "frontend/.angular/cache/17.3.17/angular-webpack/00b5c5f7afd0385e42d5e3b67a1914504769ae84/index.pack.old",
+      "s": 996646,
+      "approxLines": 16611,
+      "group": "frontend",
+      "ext": ".old"
+    },
+    {
+      "p": "frontend/.angular/cache/17.3.17/vite/deps/chunk-6DT2DWOU.js",
+      "s": 888194,
+      "approxLines": 14803,
+      "group": "frontend",
+      "ext": ".js"
+    },
+    {
+      "p": "frontend/.angular/cache/17.3.17/babel-webpack/474bf1cbd3f65d04560d0527d53c8a8e6d308dc686105b63c6781c17f4453c5f.json",
+      "s": 831040,
+      "approxLines": 13851,
+      "group": "frontend",
+      "ext": ".json"
+    },
+    {
+      "p": "test-automation/src/ServiceForge.Tests.Api/bin/Debug/net9.0/.playwright/package/types/protocol.d.ts",
+      "s": 814210,
+      "approxLines": 13570,
+      "group": "test-automation",
+      "ext": ".ts"
+    },
+    {
+      "p": "test-automation/src/ServiceForge.Tests.Api/bin/Release/net9.0/.playwright/package/types/protocol.d.ts",
+      "s": 814210,
+      "approxLines": 13570,
+      "group": "test-automation",
+      "ext": ".ts"
+    },
+    {
+      "p": "frontend/.angular/cache/17.3.17/babel-webpack/75981f5accb130f01ee00c9a00e0a6cafc19c449a97543b5244f6fd3f315810b.json",
+      "s": 810878,
+      "approxLines": 13515,
+      "group": "frontend",
+      "ext": ".json"
+    },
+    {
+      "p": ".vs/ServiceForge-Start/FileContentIndex/624adc42-2b78-4fda-8953-caf2dd40d99e.vsidx",
+      "s": 808035,
+      "approxLines": 13467,
+      "group": "root",
+      "ext": ".vsidx"
+    },
+    {
+      "p": ".vs/ServiceForge-Start/FileContentIndex/fd3a79db-2545-4eea-b491-e8473f2ff542.vsidx",
+      "s": 806441,
+      "approxLines": 13441,
+      "group": "root",
+      "ext": ".vsidx"
+    },
+    {
+      "p": ".vs/ServiceForge-Start/FileContentIndex/d2f06c33-eca0-4bbf-b361-d017e51d0ae9.vsidx",
+      "s": 806219,
+      "approxLines": 13437,
+      "group": "root",
+      "ext": ".vsidx"
+    },
+    {
+      "p": "frontend/.angular/cache/17.3.17/angular-webpack/ed55e0ecc3749261e0d746161d903c469f66a9f6/index.pack.old",
+      "s": 780279,
+      "approxLines": 13005,
+      "group": "frontend",
+      "ext": ".old"
+    },
+    {
+      "p": "frontend/.angular/cache/17.3.17/babel-webpack/0ba78775db041d75d29fdb7493d7668083bc02c5d09425480ab01425c0eb276e.json",
+      "s": 745218,
+      "approxLines": 12420,
+      "group": "frontend",
+      "ext": ".json"
+    },
+    {
+      "p": "test-automation/src/ServiceForge.Tests.Api/bin/Debug/net9.0/Newtonsoft.Json.dll",
+      "s": 695336,
+      "approxLines": 11589,
+      "group": "test-automation",
+      "ext": ".dll"
+    },
+    {
+      "p": "test-automation/src/ServiceForge.Tests.Api/bin/Release/net9.0/Newtonsoft.Json.dll",
+      "s": 695336,
+      "approxLines": 11589,
+      "group": "test-automation",
+      "ext": ".dll"
+    },
+    {
+      "p": "test-automation/src/ServiceForge.Tests.Api/bin/Debug/net9.0/.playwright/package/lib/vite/traceViewer/assets/defaultSettingsView-Ds6CBOo0.js",
+      "s": 654294,
+      "approxLines": 10905,
+      "group": "test-automation",
+      "ext": ".js"
+    }
+  ]
+}

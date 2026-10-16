@@ -1,0 +1,29 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: serviceforge-migrated-backend
+
+  datasource:
+    url: jdbc:sqlite:${SERVICEFORGE_DB_PATH:./data/serviceforge.db}
+    driver-class-name: org.sqlite.JDBC
+
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: ${ENTRA_ISSUER_URI:http://localhost/NEEDS-ENTRA}
+
+serviceforge:
+  security:
+    enabled: ${SERVICEFORGE_SECURITY_ENABLED:true}
+    audience: ${ENTRA_AUDIENCE:api://NEEDS-ENTRA}
+
+logging:
+  level:
+    org.springframework.security: INFO
