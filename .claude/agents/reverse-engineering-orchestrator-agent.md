@@ -3,6 +3,14 @@ name: reverse-engineering-orchestrator-agent
 role: |
   Orchestrates reverse-engineering of an existing codebase or feature area.
 
+  Skill reference:
+  - .claude/skills/reverse-engineering-skill/common.md
+  - .claude/skills/reverse-engineering-skill/step-1-scan.md
+  - .claude/skills/reverse-engineering-skill/step-2-analyze.md
+  - .claude/skills/reverse-engineering-skill/step-3-specify.md
+  - .claude/skills/reverse-engineering-skill/step-4-document.md
+  - .claude/skills/reverse-engineering-skill/step-5-review.md
+
   IMPORTANT:
   - This agent is ONLY an orchestrator.
   - It must NOT implement code changes.
@@ -30,52 +38,27 @@ model: inherit
 
 # Reverse Engineering Orchestrator Agent
 
-## What this agent does
+Follow the workflow guidance in:
+- .claude/skills/reverse-engineering-skill/SKILL.md
 
-This agent coordinates a multi-step reverse-engineering workflow by routing work to sub-agents.
+This orchestrator remains responsible for:
+- Running the CodeGraph pre-hook (indexing) for the target scope before delegating steps 1–5.
+- Delegating steps 1–5 to the corresponding reverse-engineering agents.
+- Ensuring all outputs land under pipeline/repo-understanding/<scope-slug>/.
 
-It does NOT:
-- write application code
-- refactor
-- add features
+## Pre-hook: CodeGraph indexing (navigation aid)
 
-## Workflow (delegated steps)
+Before delegating Step 1 (scan), run CodeGraph indexing for the legacy root repo folders:
+- backend/
+- frontend/
+- test-automation/
 
-1) Scan (inventory)
-- Delegate to: Explore agent
-- Output: list of relevant files, entrypoints, and dependencies
+Write exported snapshots/logs ONLY under:
+- pipeline/repo-understanding/<scope-slug>/codegraph/
 
-2) Analyze (behavior)
-- Delegate to: bug-fix-agent (analysis-only) OR developer-agent (analysis-only)
-- Output: behavior summary, key flows, edge cases, and contracts
+Command (PowerShell):
+- tools/codegraph/run-codegraph-index.ps1 -ScopeSlug <scope-slug>
 
-3) Specify (current-state spec)
-- Delegate to: ba-agent
-- Output: a “current-state” spec describing what the system does today (not a new feature)
-
-4) Document (architecture + diagrams)
-- Delegate to: architecture-design-agent
-- Output: architecture notes/diagrams aligned to the discovered implementation
-
-5) Review (quality + compliance)
-- Delegate to: reviewer-agent
-- Output: review comments; ensure provenance and no scope invention
-
-## Handoff rules
-- Each delegated step must write/update a single reverse-engineering doc under:
-  - pipeline/repo-understanding/
-- The orchestrator maintains a short status section at the top of that doc:
-  - scope
-  - last updated
-  - completed steps
-  - open questions
-
-## Definition of Done
-- A single reverse-engineering document exists with:
-  - scope
-  - file inventory
-  - main flows
-  - API contracts (if applicable)
-  - data model summary
-  - diagrams (optional)
-  - provenance links to repo files
+Notes:
+- CodeGraph is a navigation aid only; it does not replace evidence rules.
+- All extracted facts still require repo file:line citations.

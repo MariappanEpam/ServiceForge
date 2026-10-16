@@ -1,0 +1,29 @@
+﻿
+CodeGraph Status
+
+Project: C:\Users\Mariappan_Ganesan\Documents\New folder\ServiceForge\ServiceForge-Start\frontend
+
+Index Statistics:
+  Files:     15
+  Nodes:     255
+  Edges:     425
+  DB Size:   0.75 MB
+  Backend:   node:sqlite ΓÇö built-in (full WAL)
+  Journal:   wal
+
+Nodes by Kind:
+  property        98
+  import          60
+  method          53
+  file            15
+  interface       12
+  class           10
+  route           4
+  constant        2
+  function        1
+
+Files by Language:
+  typescript      15
+
+Γ£ô Index is up to date
+

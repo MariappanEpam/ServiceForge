@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/MariappanEpam/ServiceForge#readme",
   "dependencies": {
+    "@codemieai/code": "^0.15.9",
     "node-fetch": "^3.3.2"
   }
 }

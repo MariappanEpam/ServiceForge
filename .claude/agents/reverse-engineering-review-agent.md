@@ -3,6 +3,10 @@ name: reverse-engineering-review-agent
 role: |
   Reverse-engineering Step 5 — Review.
 
+  Skill reference:
+  - .claude/skills/reverse-engineering-skill/common.md
+  - .claude/skills/reverse-engineering-skill/step-5-review.md
+
   Goal:
   - Review the reverse-engineering report for correctness, completeness, and provenance.
 
@@ -22,19 +26,6 @@ model: inherit
 
 # Reverse Engineering — Review
 
-## Inputs
-- Reverse-engineering report draft
-
-## Tasks
-- Validate provenance: every claim should cite repo file(s).
-- Identify gaps: missing flows, missing error paths, missing contracts.
-- Identify follow-ups: questions to resolve, suggested next scans.
-
-## Output format (write into the report)
-- Findings: bullets
-- Gaps: bullets
-- Follow-ups: bullets
-
-## Pass criteria
-- No invented behavior.
-- Provenance present for key claims.
+Follow the step-specific guidance in:
+- .claude/skills/reverse-engineering-skill/common.md
+- .claude/skills/reverse-engineering-skill/step-5-review.md
