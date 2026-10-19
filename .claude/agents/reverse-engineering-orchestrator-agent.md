@@ -14,7 +14,7 @@ role: |
   IMPORTANT:
   - This agent is ONLY an orchestrator.
   - It must NOT implement code changes.
-  - It must delegate each reverse-engineering step to specialized agents.
+  - It must delegate each reverse-engineering step to  specialized agents.
 
   Primary outcome:
   - Produce a clear, evidence-backed set of documents describing the current system:
@@ -45,6 +45,7 @@ This orchestrator remains responsible for:
 - Running the CodeGraph pre-hook (indexing) for the target scope before delegating steps 1–5.
 - Delegating steps 1–5 to the corresponding reverse-engineering agents.
 - Ensuring all outputs land under pipeline/repo-understanding/<scope-slug>/.
+- Running the CodeGraph context-savings report after Step 5 and recording its limitations with the report.
 
 ## Pre-hook: CodeGraph indexing (navigation aid)
 
@@ -62,3 +63,18 @@ Command (PowerShell):
 Notes:
 - CodeGraph is a navigation aid only; it does not replace evidence rules.
 - All extracted facts still require repo file:line citations.
+
+## Post-hook: estimated context savings
+
+After Steps 1–5 finish, run:
+- `node tools/codegraph/estimate-token-savings.mjs --scope <scope-slug>`
+
+The hook writes `token-savings-report.md` and `token-savings-report.json` under
+`pipeline/repo-understanding/<scope-slug>/codegraph/`.
+
+Interpretation rules:
+- Report this as **potential context avoided**, not actual billed savings or proven causation.
+- The proxy compares all source/config text in backend/, frontend/, and test-automation/ with the unique source/config files cited by reverse-engineering artifacts.
+- The estimator uses chars/4, can only see cited files (not uncited reads), and does not include CodeGraph prompt/interaction overhead.
+- Dollar estimates are omitted unless `CODEGRAPH_INPUT_USD_PER_MILLION` is explicitly configured.
+- Report index coverage, including a zero-file backend index, and never use CodeGraph output as evidence.

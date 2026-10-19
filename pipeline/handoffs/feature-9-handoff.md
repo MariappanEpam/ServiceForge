@@ -7,15 +7,16 @@
 | Field | Value |
 | Feature | 9 |
 | Title | Technician onboarding and management |
-| Current status | BA Orchestration Complete (Spec + Architecture + Design Review + Implementation Plan) |
-| Current owner | Critic Agent |
-| Last updated | 2026-10-11 |
+| Current status | Implementation plan refreshed; persistence confirmation resolved; OpenProject publication blocked in this session |
+| Current owner | Implementation Planner Agent |
+| Last updated | 2026-10-19 |
 
 ## Artifact links
 - Spec: pipeline/features/feature-9-technician-onboarding-and-management.md
 - Architecture design: pipeline/architecture/feature-9-architecture.md
 - Design review: pipeline/reviews/feature-9-review.md
 - Implementation plan: pipeline/implementation-plan/feature-9-implementation-plan.md
+- Repository persistence evidence: pipeline/repo-understanding/serviceforge-system-overview/technology-context.md; pipeline/repo-understanding/serviceforge-system-overview/persistence-entities.md; pipeline/repo-understanding/serviceforge-system-overview/c4-as-is/03-containers.md; pipeline/repo-understanding/serviceforge-system-overview/c4-as-is/04-components-backend.md
 
 ## Owner transitions
 
@@ -43,7 +44,17 @@
 - Status set to: Implementation Plan Complete
 - Owner set to: Critic Agent
 - Notes:
-  - Phase 0 discovery required: confirm technician persistence (MockDataStore vs SQLite).
+  - Original handoff noted a Phase 0 persistence question; repository evidence now resolves it to the root ServiceForge-Start Java 17/Spring Boot + Angular application using local SQLite/JDBC/Flyway.
+  - `ServiceForge-Migrated/` is a separate Java 21/React/Entra target and is explicitly excluded from this Feature 9 plan.
+  - Root backend evidence identifies `JdbcTechnicianRepository` and migration `V3__technicians_profile_fields.sql`; Feature 9 decisions specify reuse of the SQLite path and allow legacy age/area values to remain null.
+
+### Transition 5 — Implementation Planner → OpenProject publication
+- Status set to: Plan refreshed; tracker publication pending
+- Owner set to: Implementation Planner Agent / tracker integration
+- Notes:
+  - Refreshed the implementation plan with persistence decision, phased delivery, stories/tasks, dependencies, risks, and AC traceability.
+  - OpenProject MCP tools are not available in this session's tool set; create/find and description-update calls could not be made or verified.
+  - Existing work-package URLs below were already recorded in the prior handoff and are retained as historical references only; this session did not confirm their current existence or update their descriptions.
 
 ## Decisions / assumptions to carry forward
 - `age` stored as integer (not derived from DOB) per explicit assumption.
@@ -53,8 +64,8 @@
 ## Risks / blockers
 - Migration-safety risk: changing `Technician` model shape may break Feature 1 consumers.
   - Mitigation: additive fields only; update seeds; grep all consumers.
-- Persistence ambiguity: technicians may already be in SQLite.
-  - Mitigation: Phase 0 discovery in implementation plan.
+- Persistence ambiguity: **resolved**. The target is root `backend/` (Java 17/Spring Boot + Angular) with local SQLite/JDBC/Flyway, not `ServiceForge-Migrated/` (Java 21/React/Entra). Reuse the existing V3 technician profile schema/repository path; verify in the implementation checkout before code changes and do not duplicate migrations.
+- OpenProject publication: **blocked** because OpenProject MCP tools are unavailable in this session. Work-package ensure/update and live URL verification remain outstanding.
 
 ## Ready for Developer Agent
 - Do not add auth.
@@ -90,8 +101,8 @@
     - Evidence: No TLS/protocol references in architecture/review.
 
 - Testing requirements
-  - PASS: Implementation plan published to OpenProject via MCP and handoff includes EPIC/Story/Implementation Plan work package URLs (when local tracker is enabled).
-    - Evidence: See "OpenProject work items" section below.
+  - PASS (historical, 2026-10-11 record only): Prior critic recorded implementation-plan publication and listed EPIC/Story/Implementation Plan URLs.
+    - Current-run status: NOT VERIFIED/UPDATED; OpenProject MCP tools were unavailable on 2026-10-19. See the publication status below.
   - N/A (pre-dev): Tester stage produced evidence of UI + API tests and 100% pass rate.
   - N/A (pre-dev): Developer stage changes are invocable and validated (basic smoke test recorded).
 
@@ -114,6 +125,8 @@ Route to developer-orchestrator-agent.
 
 ## OpenProject work items
 
-- EPIC: http://localhost:8088/projects/serviceforge/work_packages/details/45/overview
-- Story: http://localhost:8088/projects/serviceforge/work_packages/details/46/overview
-- Implementation Plan: http://localhost:8088/projects/serviceforge/work_packages/47/activity
+- EPIC (previously recorded; not verified in this session): http://localhost:8088/projects/serviceforge/work_packages/details/45/overview
+- Story (previously recorded; not verified in this session): http://localhost:8088/projects/serviceforge/work_packages/details/46/overview
+- Implementation Plan (previously recorded; not verified or updated in this session): http://localhost:8088/projects/serviceforge/work_packages/47/activity
+
+Publication status for 2026-10-19: **NOT PUBLISHED/VERIFIED**. The required OpenProject MCP operations (`openproject_ensure_work_package` and `openproject_update_work_package_description`) were not exposed to this session. The full refreshed plan is available at `pipeline/implementation-plan/feature-9-implementation-plan.md` for publication once MCP is available.

@@ -24,3 +24,6 @@
 - If CodeGraph is available, generate/update its index for the target scope **before** Step 1.
 - Store exported snapshots/logs ONLY under: pipeline/repo-understanding/<scope-slug>/codegraph/
 - CodeGraph output is NOT evidence; all facts still require repo file:line citations.
+- After the reverse-engineering artifacts are complete, run `node tools/codegraph/estimate-token-savings.mjs --scope <scope-slug>` and retain its Markdown/JSON reports in that same codegraph folder.
+- Treat the result as a chars/4 proxy for potential context avoided, not actual model tokens, billed cost, or proven causal savings. It compares all source/config text in backend/, frontend/, and test-automation/ with unique source/config files cited by the generated RE Markdown; it cannot account for uncited reads or CodeGraph interaction overhead.
+- Dollar estimates are produced only when `CODEGRAPH_INPUT_USD_PER_MILLION` is explicitly configured. Report coverage gaps, particularly a CodeGraph index with zero supported files.

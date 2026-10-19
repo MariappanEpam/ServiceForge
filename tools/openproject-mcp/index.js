@@ -227,7 +227,7 @@ const server = new McpServer({
   version: '0.1.0',
 });
 
-server.tool(
+server.registerTool(
   'openproject_get_project',
   {
     title: 'Get OpenProject project',
@@ -248,7 +248,7 @@ server.tool(
   }
 );
 
-server.tool(
+server.registerTool(
   'openproject_list_work_packages',
   {
     title: 'List work packages',
@@ -279,7 +279,7 @@ server.tool(
   }
 );
 
-server.tool(
+server.registerTool(
   'openproject_ensure_work_package',
   {
     title: 'Ensure work package',
@@ -313,7 +313,37 @@ server.tool(
   }
 );
 
-server.tool(
+server.registerTool(
+  'openproject_create_work_package',
+  {
+    title: 'Create work package',
+    description: 'Create a work package in the configured OpenProject project (or an explicitly provided project).',
+    inputSchema: z.object({
+      subject: z.string().trim().min(1),
+      descriptionRaw: z.string().optional(),
+      // Default OpenProject type is Task (type 1).
+      typeHref: z.string().trim().min(1).default('/api/v3/types/1'),
+      projectHref: z.string().trim().min(1).optional(),
+    }),
+  },
+  async (args) => {
+    const subject = requireString(args?.subject, 'subject').trim();
+    const descriptionRaw = typeof args?.descriptionRaw === 'string' ? args.descriptionRaw : '';
+    const typeHref = requireHref(args?.typeHref || '/api/v3/types/1', 'typeHref');
+    const projectHref = args?.projectHref
+      ? requireHref(args.projectHref, 'projectHref')
+      : (await getProject())?._links?.self?.href;
+
+    if (!projectHref) {
+      throw new Error('Could not resolve the OpenProject project href');
+    }
+
+    const created = await createWorkPackage({ projectHref, typeHref, subject, descriptionRaw });
+    return { content: [{ type: 'text', text: JSON.stringify({ action: 'created', workPackage: created }, null, 2) }] };
+  }
+);
+
+server.registerTool(
   'openproject_update_work_package_description',
   {
     title: 'Update work package description',
@@ -331,7 +361,7 @@ server.tool(
   }
 );
 
-server.tool(
+server.registerTool(
   'openproject_add_comment',
   {
     title: 'Add work package comment',
@@ -349,7 +379,7 @@ server.tool(
   }
 );
 
-server.tool(
+server.registerTool(
   'openproject_attach_file',
   {
     title: 'Attach file to work package',

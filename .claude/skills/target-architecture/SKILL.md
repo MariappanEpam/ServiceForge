@@ -66,8 +66,15 @@ Update `ServiceForge-Migrated/pipeline/handoffs/feature-forward-engineering-hand
 - Risks, assumptions, and unresolved evidence gaps.
 - Readiness and ownership transfer to the architecture-design agent.
 
+## Forward orchestration continuation
+When the user requests the forward-engineering orchestration after adaptation, continue with the existing repo workflow without implementing source code:
+1. Create a feature-scoped architecture design under `ServiceForge-Migrated/pipeline/architecture-design/` from the approved specs and ADRs.
+2. Record the design review under `ServiceForge-Migrated/pipeline/design-review-logs/`; distinguish approval from unresolved decision gates.
+3. When review permits planning, create a phased implementation plan under `ServiceForge-Migrated/pipeline/implementation-plan/`. Put unresolved evidence or authorization decisions as explicit prerequisites; do not imply implementation readiness if they block it.
+4. Update the forward-engineering handoff with status, artifact links, risks, and next owner.
+
 ## Output and safety constraints
-- Write forward-engineering artifacts only under `ServiceForge-Migrated/pipeline/features/`, `ServiceForge-Migrated/pipeline/decisions/`, and `ServiceForge-Migrated/pipeline/handoffs/`.
+- Write forward-engineering artifacts only under `ServiceForge-Migrated/pipeline/features/`, `ServiceForge-Migrated/pipeline/decisions/`, `ServiceForge-Migrated/pipeline/handoffs/`, `ServiceForge-Migrated/pipeline/architecture-design/`, `ServiceForge-Migrated/pipeline/design-review-logs/`, and `ServiceForge-Migrated/pipeline/implementation-plan/`.
 - Do not modify application source code.
 - Do not overwrite reverse-engineering evidence.
 - Do not treat the target architecture as evidence for current-system behavior; label forward-looking decisions distinctly.

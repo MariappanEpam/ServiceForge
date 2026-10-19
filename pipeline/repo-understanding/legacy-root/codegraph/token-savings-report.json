@@ -1,0 +1,681 @@
+{
+  "version": 1,
+  "generatedAt": "2026-10-16T14:11:44.557Z",
+  "scope": "legacy-root",
+  "metric": "potential context avoided by targeted evidence selection (proxy)",
+  "method": "Compare chars/4 across source/config text in the three indexed folders against unique source/config files cited by generated reverse-engineering Markdown.",
+  "baseline": {
+    "fileCount": 119,
+    "chars": 636880,
+    "estimatedTokens": 159220,
+    "files": [
+      {
+        "path": "backend/pom.xml",
+        "chars": 2589,
+        "estimatedTokens": 647
+      },
+      {
+        "path": "backend/src/main/java/com/serviceforge/ServiceForgeApplication.java",
+        "chars": 334,
+        "estimatedTokens": 84
+      },
+      {
+        "path": "backend/src/main/java/com/serviceforge/controller/ApiExceptionHandler.java",
+        "chars": 2162,
+        "estimatedTokens": 541
+      },
+      {
+        "path": "backend/src/main/java/com/serviceforge/controller/JobController.java",
+        "chars": 1455,
+        "estimatedTokens": 364
+      },
+      {
+        "path": "backend/src/main/java/com/serviceforge/controller/JobPartsReservationController.java",
+        "chars": 2150,
+        "estimatedTokens": 538
+      },
+      {
+        "path": "backend/src/main/java/com/serviceforge/controller/PartsCatalogController.java",
+        "chars": 834,
+        "estimatedTokens": 209
+      },
+      {
+        "path": "backend/src/main/java/com/serviceforge/controller/PartsManagementController.java",
+        "chars": 2572,
+        "estimatedTokens": 643
+      },
+      {
+        "path": "backend/src/main/java/com/serviceforge/controller/TechnicianController.java",
+        "chars": 3758,
+        "estimatedTokens": 940
+      },
+      {
+        "path": "backend/src/main/java/com/serviceforge/data/DbSeedMode.java",
+        "chars": 460,
+        "estimatedTokens": 115
+      },
+      {
+        "path": "backend/src/main/java/com/serviceforge/data/DbSeeder.java",
+        "chars": 7751,
+        "estimatedTokens": 1938
+      },
+      {
+        "path": "backend/src/main/java/com/serviceforge/data/JdbcJobPartReservationRepository.java",
+        "chars": 3680,
+        "estimatedTokens": 920
+      },
+      {
+        "path": "backend/src/main/java/com/serviceforge/data/JdbcJobRepository.java",
+        "chars": 3268,
+        "estimatedTokens": 817
+      },
+      {
+        "path": "backend/src/main/java/com/serviceforge/data/JdbcPartRepository.java",
+        "chars": 1529,
+        "estimatedTokens": 382
+      },
+      {
+        "path": "backend/src/main/java/com/serviceforge/data/JdbcPartsInventoryGateway.java",
+        "chars": 857,
+        "estimatedTokens": 214
+      },
+      {
+        "path": "backend/src/main/java/com/serviceforge/data/JdbcPartsManagementRepository.java",
+        "chars": 3972,
+        "estimatedTokens": 993
+      },
+      {
+        "path": "backend/src/main/java/com/serviceforge/data/JdbcTechnicianRepository.java",
+        "chars": 5495,
+        "estimatedTokens": 1374
+      },
+      {
+        "path": "backend/src/main/java/com/serviceforge/data/MockDataStore.java",
+        "chars": 318,
+        "estimatedTokens": 80
+      },
+      {
+        "path": "backend/src/main/java/com/serviceforge/data/PartsInventoryGateway.java",
+        "chars": 181,
+        "estimatedTokens": 45
+      },
+      {
+        "path": "backend/src/main/java/com/serviceforge/dto/ApiError.java",
+        "chars": 1160,
+        "estimatedTokens": 290
+      },
+      {
+        "path": "backend/src/main/java/com/serviceforge/dto/CreateJobRequest.java",
+        "chars": 1050,
+        "estimatedTokens": 263
+      },
+      {
+        "path": "backend/src/main/java/com/serviceforge/dto/CreateReservationRequest.java",
+        "chars": 621,
+        "estimatedTokens": 155
+      },
+      {
+        "path": "backend/src/main/java/com/serviceforge/dto/JobDto.java",
+        "chars": 1227,
+        "estimatedTokens": 307
+      },
+      {
+        "path": "backend/src/main/java/com/serviceforge/dto/JobPartReservationDto.java",
+        "chars": 1760,
+        "estimatedTokens": 440
+      },
+      {
+        "path": "backend/src/main/java/com/serviceforge/dto/PartCreateRequest.java",
+        "chars": 1354,
+        "estimatedTokens": 339
+      },
+      {
+        "path": "backend/src/main/java/com/serviceforge/dto/PartDto.java",
+        "chars": 770,
+        "estimatedTokens": 193
+      },
+      {
+        "path": "backend/src/main/java/com/serviceforge/dto/PartInventoryDto.java",
+        "chars": 1220,
+        "estimatedTokens": 305
+      },
+      {
+        "path": "backend/src/main/java/com/serviceforge/dto/PartManagementDto.java",
+        "chars": 1227,
+        "estimatedTokens": 307
+      },
+      {
+        "path": "backend/src/main/java/com/serviceforge/dto/PartUpdateRequest.java",
+        "chars": 1110,
+        "estimatedTokens": 278
+      },
+      {
+        "path": "backend/src/main/java/com/serviceforge/dto/TechnicianDto.java",
+        "chars": 2785,
+        "estimatedTokens": 696
+      },
+      {
+        "path": "backend/src/main/java/com/serviceforge/dto/TechnicianUpsertRequest.java",
+        "chars": 2251,
+        "estimatedTokens": 563
+      },
+      {
+        "path": "backend/src/main/java/com/serviceforge/model/Job.java",
+        "chars": 1220,
+        "estimatedTokens": 305
+      },
+      {
+        "path": "backend/src/main/java/com/serviceforge/model/JobPartReservation.java",
+        "chars": 1829,
+        "estimatedTokens": 457
+      },
+      {
+        "path": "backend/src/main/java/com/serviceforge/model/Part.java",
+        "chars": 903,
+        "estimatedTokens": 226
+      },
+      {
+        "path": "backend/src/main/java/com/serviceforge/model/Technician.java",
+        "chars": 2761,
+        "estimatedTokens": 690
+      },
+      {
+        "path": "backend/src/main/java/com/serviceforge/service/ConflictException.java",
+        "chars": 171,
+        "estimatedTokens": 43
+      },
+      {
+        "path": "backend/src/main/java/com/serviceforge/service/JobBookingService.java",
+        "chars": 2433,
+        "estimatedTokens": 608
+      },
+      {
+        "path": "backend/src/main/java/com/serviceforge/service/JobPartsReservationService.java",
+        "chars": 4544,
+        "estimatedTokens": 1136
+      },
+      {
+        "path": "backend/src/main/java/com/serviceforge/service/NotFoundException.java",
+        "chars": 171,
+        "estimatedTokens": 43
+      },
+      {
+        "path": "backend/src/main/java/com/serviceforge/service/PartsCatalogService.java",
+        "chars": 762,
+        "estimatedTokens": 191
+      },
+      {
+        "path": "backend/src/main/java/com/serviceforge/service/PartsManagementService.java",
+        "chars": 3637,
+        "estimatedTokens": 909
+      },
+      {
+        "path": "backend/src/main/java/com/serviceforge/service/TechnicianService.java",
+        "chars": 3932,
+        "estimatedTokens": 983
+      },
+      {
+        "path": "backend/src/main/resources/application.yml",
+        "chars": 437,
+        "estimatedTokens": 109
+      },
+      {
+        "path": "backend/src/main/resources/db/migration/V1__init.sql",
+        "chars": 1304,
+        "estimatedTokens": 326
+      },
+      {
+        "path": "backend/src/main/resources/db/migration/V2__jobs_schedule_fields.sql",
+        "chars": 314,
+        "estimatedTokens": 79
+      },
+      {
+        "path": "backend/src/main/resources/db/migration/V3__technicians_profile_fields.sql",
+        "chars": 563,
+        "estimatedTokens": 141
+      },
+      {
+        "path": "backend/src/test/java/com/serviceforge/ServiceForgeApplicationTests.java",
+        "chars": 226,
+        "estimatedTokens": 57
+      },
+      {
+        "path": "backend/src/test/java/com/serviceforge/controller/JobPartsReservationControllerFeature8Test.java",
+        "chars": 2145,
+        "estimatedTokens": 536
+      },
+      {
+        "path": "backend/src/test/java/com/serviceforge/controller/PartsManagementControllerTest.java",
+        "chars": 4525,
+        "estimatedTokens": 1131
+      },
+      {
+        "path": "backend/src/test/java/com/serviceforge/data/FlywayMigrationSmokeTest.java",
+        "chars": 776,
+        "estimatedTokens": 194
+      },
+      {
+        "path": "backend/src/test/java/com/serviceforge/service/JobBookingServiceTest.java",
+        "chars": 1946,
+        "estimatedTokens": 487
+      },
+      {
+        "path": "backend/src/test/java/com/serviceforge/service/JobPartsReservationServiceTest.java",
+        "chars": 5236,
+        "estimatedTokens": 1309
+      },
+      {
+        "path": "backend/src/test/java/com/serviceforge/service/TechnicianServiceTest.java",
+        "chars": 1649,
+        "estimatedTokens": 412
+      },
+      {
+        "path": "frontend/.vscode/extensions.json",
+        "chars": 134,
+        "estimatedTokens": 34
+      },
+      {
+        "path": "frontend/.vscode/launch.json",
+        "chars": 490,
+        "estimatedTokens": 123
+      },
+      {
+        "path": "frontend/.vscode/tasks.json",
+        "chars": 980,
+        "estimatedTokens": 245
+      },
+      {
+        "path": "frontend/README.md",
+        "chars": 1102,
+        "estimatedTokens": 276
+      },
+      {
+        "path": "frontend/angular.json",
+        "chars": 3073,
+        "estimatedTokens": 768
+      },
+      {
+        "path": "frontend/package-lock.json",
+        "chars": 312863,
+        "estimatedTokens": 78216
+      },
+      {
+        "path": "frontend/package.json",
+        "chars": 1123,
+        "estimatedTokens": 281
+      },
+      {
+        "path": "frontend/proxy.conf.json",
+        "chars": 112,
+        "estimatedTokens": 28
+      },
+      {
+        "path": "frontend/src/app/app.component.html",
+        "chars": 577,
+        "estimatedTokens": 144
+      },
+      {
+        "path": "frontend/src/app/app.component.scss",
+        "chars": 664,
+        "estimatedTokens": 166
+      },
+      {
+        "path": "frontend/src/app/app.component.spec.ts",
+        "chars": 1143,
+        "estimatedTokens": 286
+      },
+      {
+        "path": "frontend/src/app/app.component.ts",
+        "chars": 391,
+        "estimatedTokens": 98
+      },
+      {
+        "path": "frontend/src/app/app.config.ts",
+        "chars": 315,
+        "estimatedTokens": 79
+      },
+      {
+        "path": "frontend/src/app/app.routes.ts",
+        "chars": 814,
+        "estimatedTokens": 204
+      },
+      {
+        "path": "frontend/src/app/job-parts-panel/job-parts-panel.component.html",
+        "chars": 2383,
+        "estimatedTokens": 596
+      },
+      {
+        "path": "frontend/src/app/job-parts-panel/job-parts-panel.component.scss",
+        "chars": 631,
+        "estimatedTokens": 158
+      },
+      {
+        "path": "frontend/src/app/job-parts-panel/job-parts-panel.component.ts",
+        "chars": 4012,
+        "estimatedTokens": 1003
+      },
+      {
+        "path": "frontend/src/app/pages/parts-reservations-page/parts-reservations-page.component.html",
+        "chars": 426,
+        "estimatedTokens": 107
+      },
+      {
+        "path": "frontend/src/app/pages/parts-reservations-page/parts-reservations-page.component.scss",
+        "chars": 321,
+        "estimatedTokens": 80
+      },
+      {
+        "path": "frontend/src/app/pages/parts-reservations-page/parts-reservations-page.component.ts",
+        "chars": 640,
+        "estimatedTokens": 160
+      },
+      {
+        "path": "frontend/src/app/pages/technicians-management-page/technicians-management-page.component.html",
+        "chars": 5507,
+        "estimatedTokens": 1377
+      },
+      {
+        "path": "frontend/src/app/pages/technicians-management-page/technicians-management-page.component.scss",
+        "chars": 2296,
+        "estimatedTokens": 574
+      },
+      {
+        "path": "frontend/src/app/pages/technicians-management-page/technicians-management-page.component.ts",
+        "chars": 6658,
+        "estimatedTokens": 1665
+      },
+      {
+        "path": "frontend/src/app/parts-management/parts-management.component.html",
+        "chars": 2820,
+        "estimatedTokens": 705
+      },
+      {
+        "path": "frontend/src/app/parts-management/parts-management.component.scss",
+        "chars": 1099,
+        "estimatedTokens": 275
+      },
+      {
+        "path": "frontend/src/app/parts-management/parts-management.component.spec.ts",
+        "chars": 2110,
+        "estimatedTokens": 528
+      },
+      {
+        "path": "frontend/src/app/parts-management/parts-management.component.ts",
+        "chars": 3633,
+        "estimatedTokens": 908
+      },
+      {
+        "path": "frontend/src/app/services/jobs-api.service.ts",
+        "chars": 978,
+        "estimatedTokens": 245
+      },
+      {
+        "path": "frontend/src/app/services/parts-api.service.ts",
+        "chars": 1723,
+        "estimatedTokens": 431
+      },
+      {
+        "path": "frontend/src/app/services/parts-reservations-api.service.ts",
+        "chars": 1580,
+        "estimatedTokens": 395
+      },
+      {
+        "path": "frontend/src/app/services/technicians-api.service.ts",
+        "chars": 1721,
+        "estimatedTokens": 430
+      },
+      {
+        "path": "frontend/src/app/technician-availability/technician-availability.component.html",
+        "chars": 1689,
+        "estimatedTokens": 422
+      },
+      {
+        "path": "frontend/src/app/technician-availability/technician-availability.component.scss",
+        "chars": 546,
+        "estimatedTokens": 137
+      },
+      {
+        "path": "frontend/src/app/technician-availability/technician-availability.component.ts",
+        "chars": 3004,
+        "estimatedTokens": 751
+      },
+      {
+        "path": "frontend/src/index.html",
+        "chars": 319,
+        "estimatedTokens": 80
+      },
+      {
+        "path": "frontend/src/main.ts",
+        "chars": 256,
+        "estimatedTokens": 64
+      },
+      {
+        "path": "frontend/src/styles.scss",
+        "chars": 81,
+        "estimatedTokens": 20
+      },
+      {
+        "path": "frontend/tsconfig.app.json",
+        "chars": 277,
+        "estimatedTokens": 69
+      },
+      {
+        "path": "frontend/tsconfig.json",
+        "chars": 889,
+        "estimatedTokens": 222
+      },
+      {
+        "path": "frontend/tsconfig.spec.json",
+        "chars": 287,
+        "estimatedTokens": 72
+      },
+      {
+        "path": "test-automation/.config/dotnet-tools.json",
+        "chars": 209,
+        "estimatedTokens": 52
+      },
+      {
+        "path": "test-automation/README.md",
+        "chars": 1037,
+        "estimatedTokens": 259
+      },
+      {
+        "path": "test-automation/src/ServiceForge.Tests.Api/Feature2PartsReservationUiTests.cs",
+        "chars": 2740,
+        "estimatedTokens": 685
+      },
+      {
+        "path": "test-automation/src/ServiceForge.Tests.Api/Feature7PartsInventoryApiTests.cs",
+        "chars": 3060,
+        "estimatedTokens": 765
+      },
+      {
+        "path": "test-automation/src/ServiceForge.Tests.Api/Feature7PartsInventoryUiTests.cs",
+        "chars": 1925,
+        "estimatedTokens": 481
+      },
+      {
+        "path": "test-automation/src/ServiceForge.Tests.Api/TestConfig.cs",
+        "chars": 824,
+        "estimatedTokens": 206
+      },
+      {
+        "path": "test-automation/src/ServiceForge.Tests.Api/UiTestBase.cs",
+        "chars": 3459,
+        "estimatedTokens": 865
+      },
+      {
+        "path": "test-automation/src/ServiceForge.Tests.Api/UnitTest1.cs",
+        "chars": 3310,
+        "estimatedTokens": 828
+      },
+      {
+        "path": "test-automation/src/test-execution/feature-2-parts-reservation/20261007-154557-ServiceForge.Tests.Api.Feature2PartsReservationUiTests.ReservePart_ShouldCreateReservation_WhenValidInput.html",
+        "chars": 7435,
+        "estimatedTokens": 1859
+      },
+      {
+        "path": "test-automation/src/test-execution/feature-2-parts-reservation/20261007-154728-ServiceForge.Tests.Api.Feature2PartsReservationUiTests.ReservePart_ShouldCreateReservation_WhenValidInput.html",
+        "chars": 7435,
+        "estimatedTokens": 1859
+      },
+      {
+        "path": "test-automation/src/test-execution/feature-2-parts-reservation/20261007-154812-ServiceForge.Tests.Api.Feature2PartsReservationUiTests.ReservePart_ShouldCreateReservation_WhenValidInput.html",
+        "chars": 7435,
+        "estimatedTokens": 1859
+      },
+      {
+        "path": "test-automation/src/test-execution/feature-2-parts-reservation/20261007-172024-ServiceForge.Tests.Api.Feature2PartsReservationUiTests.ReservePart_ShouldCreateReservation_WhenValidInput.html",
+        "chars": 7435,
+        "estimatedTokens": 1859
+      },
+      {
+        "path": "test-automation/src/test-execution/feature-2-parts-reservation/20261007-174429-ServiceForge.Tests.Api.Feature2PartsReservationUiTests.ReservePart_ShouldCreateReservation_WhenValidInput.html",
+        "chars": 5990,
+        "estimatedTokens": 1498
+      },
+      {
+        "path": "test-automation/src/test-execution/feature-2-parts-reservation/20261007-174623-ServiceForge.Tests.Api.Feature2PartsReservationUiTests.ReservePart_ShouldCreateReservation_WhenValidInput.html",
+        "chars": 5990,
+        "estimatedTokens": 1498
+      },
+      {
+        "path": "test-automation/src/test-execution/feature-2-parts-reservation/20261007-175251-ServiceForge.Tests.Api.Feature2PartsReservationUiTests.ReservePart_ShouldCreateReservation_WhenValidInput.html",
+        "chars": 6581,
+        "estimatedTokens": 1645
+      },
+      {
+        "path": "test-automation/src/test-execution/feature-2-parts-reservation/20261007-175923-ServiceForge.Tests.Api.Feature2PartsReservationUiTests.ReservePart_ShouldCreateReservation_WhenValidInput.html",
+        "chars": 9695,
+        "estimatedTokens": 2424
+      },
+      {
+        "path": "test-automation/src/test-execution/feature-2-parts-reservation/20261007-181453-ServiceForge.Tests.Api.Feature2PartsReservationUiTests.ReservePart_ShouldCreateReservation_WhenValidInput.html",
+        "chars": 10065,
+        "estimatedTokens": 2516
+      },
+      {
+        "path": "test-automation/src/test-execution/feature-2-parts-reservation/20261008-060519-ServiceForge.Tests.Api.Feature7PartsInventoryUiTests.ManageParts_CreateEditDelete_ShouldWork.html",
+        "chars": 6899,
+        "estimatedTokens": 1725
+      },
+      {
+        "path": "test-automation/src/test-execution/feature-2-parts-reservation/20261008-061145-ServiceForge.Tests.Api.Feature7PartsInventoryUiTests.ManageParts_CreateEditDelete_ShouldWork.html",
+        "chars": 6899,
+        "estimatedTokens": 1725
+      },
+      {
+        "path": "test-automation/src/test-execution/feature-2-parts-reservation/20261008-073752-ServiceForge.Tests.Api.Feature7PartsInventoryUiTests.ManageParts_CreateEditDelete_ShouldWork.html",
+        "chars": 6899,
+        "estimatedTokens": 1725
+      },
+      {
+        "path": "test-automation/src/test-execution/feature-2-parts-reservation/20261008-074817-ServiceForge.Tests.Api.Feature7PartsInventoryUiTests.ManageParts_CreateEditDelete_ShouldWork.html",
+        "chars": 7278,
+        "estimatedTokens": 1820
+      },
+      {
+        "path": "test-automation/src/test-execution/feature-2-parts-reservation/20261008-105359-ServiceForge.Tests.Api.Feature7PartsInventoryUiTests.ManageParts_CreateEditDelete_ShouldWork.html",
+        "chars": 7787,
+        "estimatedTokens": 1947
+      },
+      {
+        "path": "test-automation/src/test-execution/feature-2-parts-reservation/20261008-105439-ServiceForge.Tests.Api.Feature7PartsInventoryUiTests.ManageParts_CreateEditDelete_ShouldWork.html",
+        "chars": 8214,
+        "estimatedTokens": 2054
+      },
+      {
+        "path": "test-automation/src/test-execution/feature-2-parts-reservation/20261008-111344-ServiceForge.Tests.Api.Feature7PartsInventoryUiTests.ManageParts_CreateEditDelete_ShouldWork.html",
+        "chars": 8682,
+        "estimatedTokens": 2171
+      },
+      {
+        "path": "test-automation/src/test-execution/feature-2-parts-reservation/20261011-150604-ServiceForge.Tests.Api.Feature2PartsReservationUiTests.ReservePart_ShouldCreateReservation_WhenValidInput.html",
+        "chars": 6872,
+        "estimatedTokens": 1718
+      },
+      {
+        "path": "test-automation/src/test-execution/feature-2-parts-reservation/20261011-150622-ServiceForge.Tests.Api.Feature7PartsInventoryUiTests.ManageParts_CreateEditDelete_ShouldWork.html",
+        "chars": 10603,
+        "estimatedTokens": 2651
+      },
+      {
+        "path": "test-automation/src/test-execution/feature-2-parts-reservation/20261011-151228-ServiceForge.Tests.Api.Feature7PartsInventoryUiTests.ManageParts_CreateEditDelete_ShouldWork.html",
+        "chars": 11071,
+        "estimatedTokens": 2768
+      }
+    ]
+  },
+  "evidenceReferenced": {
+    "fileCount": 7,
+    "chars": 11647,
+    "estimatedTokens": 2912,
+    "files": [
+      {
+        "path": "backend/pom.xml",
+        "chars": 2589,
+        "estimatedTokens": 647
+      },
+      {
+        "path": "backend/src/main/java/com/serviceforge/ServiceForgeApplication.java",
+        "chars": 334,
+        "estimatedTokens": 84
+      },
+      {
+        "path": "backend/src/main/java/com/serviceforge/controller/JobController.java",
+        "chars": 1455,
+        "estimatedTokens": 364
+      },
+      {
+        "path": "frontend/src/app/app.routes.ts",
+        "chars": 814,
+        "estimatedTokens": 204
+      },
+      {
+        "path": "frontend/src/main.ts",
+        "chars": 256,
+        "estimatedTokens": 64
+      },
+      {
+        "path": "test-automation/src/ServiceForge.Tests.Api/Feature2PartsReservationUiTests.cs",
+        "chars": 2740,
+        "estimatedTokens": 685
+      },
+      {
+        "path": "test-automation/src/ServiceForge.Tests.Api/UiTestBase.cs",
+        "chars": 3459,
+        "estimatedTokens": 865
+      }
+    ]
+  },
+  "estimatedPotentialTokensAvoided": 156308,
+  "estimatedPotentialReductionPercent": 98.17,
+  "pricing": {
+    "inputUsdPerMillionTokens": null,
+    "estimatedPotentialUsdAvoided": null
+  },
+  "codegraphIndex": {
+    "backend": {
+      "status": "reported",
+      "indexedFiles": 0,
+      "hasNoFilesMessage": false
+    },
+    "frontend": {
+      "status": "reported",
+      "indexedFiles": 15,
+      "hasNoFilesMessage": false
+    },
+    "test-automation": {
+      "status": "reported",
+      "indexedFiles": 84,
+      "hasNoFilesMessage": false
+    }
+  },
+  "limitations": [
+    "This is an estimate of broad source-context avoided, not actual prompt tokens, provider billing, or a causal A/B comparison.",
+    "Cited files are a lower-bound proxy for evidence inspected; files read but not cited are not counted.",
+    "Some cited content may not have been sent to the model, and this estimate does not subtract the CodeGraph snapshot or interaction overhead.",
+    "The backend CodeGraph index may report zero supported files; source citations remain the evidence authority.",
+    "Dollar values are omitted unless CODEGRAPH_INPUT_USD_PER_MILLION or --usd-per-million is explicitly provided."
+  ]
+}

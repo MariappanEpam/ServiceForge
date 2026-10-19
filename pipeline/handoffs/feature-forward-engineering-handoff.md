@@ -1,7 +1,7 @@
 # Forward engineering handoff — ServiceForge (target stack)
 
 Status: NOT STARTED
-Owner: adr-adapter-agent
+Owner: reverse-engineering-to-forward-engineering-adapter-agent
 Updated: 2026-10-14
 
 ## Target stack

@@ -2,12 +2,14 @@
 CodeGraph Status
 
 Project: C:\Users\Mariappan_Ganesan\Documents\New folder\ServiceForge\ServiceForge-Start\test-automation
+ΓÜá The last index run never finished (killed mid-index?) ΓÇö the index is truncated. Re-run "codegraph index".
+ΓÜá 15,373 references from an interrupted run are awaiting resolution ΓÇö some callers/impact edges are missing. Run "codegraph sync" to resolve them.
 
 Index Statistics:
   Files:     84
   Nodes:     33,135
-  Edges:     1,15,334
-  DB Size:   121.77 MB
+  Edges:     1,08,170
+  DB Size:   121.65 MB
   Backend:   node:sqlite ΓÇö built-in (full WAL)
   Journal:   wal
 
@@ -31,4 +33,7 @@ Files by Language:
   csharp          6
 
 Γ£ô Index is up to date
+
+ΓÜá Index was built by an earlier version; re-index to pick up this engine's improvements.
+Γä╣ Run "codegraph index" (full rebuild) or "codegraph sync"
 

@@ -1,7 +1,7 @@
 ---
 name: implementation-planner-agent
 description: Turns a approved architecture into a planned roadmap for implementation as EPIC/User stories file. Use this agent whenever someone says "implement planner for the design". Do not use it to write code.
-tools: Read, Grep, Glob, Write, Edit, openproject_ensure_work_package
+tools: Read, Grep, Glob, Write, Edit, openproject_ensure_work_package, openproject_create_work_package
 model: inherit
 handoffs:
   - agent: ba-orchestrator-agent

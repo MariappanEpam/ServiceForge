@@ -25,10 +25,13 @@ From repo root:
 ## Tools
 - `openproject_get_project`
 - `openproject_list_work_packages`
+- `openproject_create_work_package`
 - `openproject_ensure_work_package`
 - `openproject_update_work_package_description`
 - `openproject_add_comment`
 - `openproject_attach_file`
+
+`openproject_create_work_package` always creates a new work package; it does not search for or reuse a matching subject. It accepts `subject`, optional `descriptionRaw`, optional `typeHref` (defaults to Task, `/api/v3/types/1`), and optional `projectHref` (defaults to the configured project).
 
 Notes:
 - Auth uses OpenProject API v3 Basic auth: username `apikey`, password = token.

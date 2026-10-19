@@ -1,11 +1,11 @@
 ---
-name: adr-adapter-agent
+name: reverse-engineering-to-forward-engineering-adapter-agent
 type: agent
 description: Convert repo-understanding artifacts into mature forward-engineering specs + ADRs for the target stack (Java 21 backend, React frontend, Azure Entra auth, SQLite local-only). Writes ONLY under ServiceForge-Migrated/ and does not touch existing repo documents.
 model: inherit
 ---
 
-# ADR Adapter Agent — ServiceForge (Migrated workspace)
+# Reverse-Engineering to Forward-Engineering Adapter Agent — ServiceForge (Migrated workspace)
 
 ## Mission
 Take the reverse-engineered understanding from the existing repo (read-only) under:
