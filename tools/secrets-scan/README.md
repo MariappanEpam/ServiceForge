@@ -2,11 +2,13 @@
 
 Purpose: block accidental secret commits by scanning **proposed file write content** before it lands on disk.
 
-This is designed to be invoked from a **PreToolUse** hook (tooling-specific) that runs before any write/edit tool executes.
+The project registers a real Claude Code **PreToolUse** command hook in `.claude/settings.json`. It runs before supported file mutation tools execute and denies the tool call if proposed content contains likely secrets or cannot be inspected.
 
 ## Scanner
 
-- Script: `tools/secrets-scan/scan-content.js`
+- Hook: `tools/secrets-scan/pretooluse-hook.js`
+- Scanner: `tools/secrets-scan/scan-content.js`
+- Covered tools: `Write`, `Edit`, `MultiEdit`, and `NotebookEdit`
 - Input: a file path + a temp file containing the proposed content
 - Output:
   - stdout: single-line JSON `{ ok, path, findings }`
@@ -16,19 +18,11 @@ This is designed to be invoked from a **PreToolUse** hook (tooling-specific) tha
   - `2` secrets detected (block)
   - `3` invalid usage
 
-## Hook wiring (concept)
+## Verify the hook contract
 
-Your agent runtime must:
-1) Intercept write/edit tool calls in `PreToolUse`
-2) Serialize the proposed content to a temp file
-3) Run the scanner
-4) If exit code is `2`, **block** the write
+Run `node --test tools/secrets-scan/test-pretooluse-hook.js` to exercise planted secret payloads, verify the Claude Code deny response, and confirm a denied write does not reach disk.
 
-Example (pseudo):
-- on PreToolUse for `Write`/`Edit`:
-  - write payload to temp
-  - `node tools/secrets-scan/scan-content.js --path <target> --content-file <temp>`
-  - if exit code != 0: abort tool execution
+For a clean proposed payload, the hook exits successfully without a deny response. Invalid hook input or an unrecognized mutation payload is denied closed.
 
 ## Notes
 - This is heuristic scanning, not a full replacement for gitleaks/trufflehog.

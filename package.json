@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "test:secrets-hook": "node --test tools/secrets-scan/test-pretooluse-hook.js",
     "openproject:sync": "node tools/local-tracker/openproject-sync.mjs",
     "tracker:up": "docker compose -f tools/local-tracker/docker-compose.yml up -d",
     "tracker:down": "docker compose -f tools/local-tracker/docker-compose.yml down",

@@ -33,20 +33,6 @@ function failUsage(msg) {
   process.exit(3);
 }
 
-const targetPath = readArg('--path');
-const contentFile = readArg('--content-file');
-
-if (!targetPath || !contentFile) {
-  failUsage('Missing required args');
-}
-
-let content;
-try {
-  content = fs.readFileSync(contentFile, 'utf8');
-} catch (e) {
-  failUsage(`Unable to read content file: ${String(e && e.message ? e.message : e)}`);
-}
-
 // Heuristic patterns (keep conservative; avoid false positives where possible)
 const patterns = [
   { id: 'aws_access_key_id', re: /\bAKIA[0-9A-Z]{16}\b/g },
@@ -63,33 +49,45 @@ const patterns = [
   { id: 'azure_storage_conn', re: /\bDefaultEndpointsProtocol=https;AccountName=[^;]+;AccountKey=[^;]+;EndpointSuffix=core\.windows\.net\b/gi },
 ];
 
-const findings = [];
-for (const p of patterns) {
-  const matches = content.match(p.re);
-  if (matches && matches.length) {
-    findings.push({ id: p.id, count: matches.length });
+function scanContent(targetPath, content) {
+  const findings = [];
+  for (const p of patterns) {
+    const matches = content.match(p.re);
+    if (matches && matches.length) {
+      findings.push({ id: p.id, count: matches.length });
+    }
   }
+
+  const blocked = findings.length > 0;
+
+  return { ok: !blocked, path: targetPath, findings };
 }
 
-// Allowlist: ignore obvious placeholders
-const placeholderRe = /\b(?:changeme|change_me|your[_-]?token|your[_-]?key|example|dummy|placeholder)\b/i;
-const hasOnlyPlaceholders = findings.length > 0 && placeholderRe.test(content);
+module.exports = { scanContent };
 
-const blocked = findings.length > 0 && !hasOnlyPlaceholders;
+if (require.main === module) {
+  const targetPath = readArg('--path');
+  const contentFile = readArg('--content-file');
 
-const result = {
-  ok: !blocked,
-  path: targetPath,
-  findings,
-};
+  if (!targetPath || !contentFile) {
+    failUsage('Missing required args');
+  }
 
-// stdout: machine-readable summary for hook runner
-process.stdout.write(`${JSON.stringify(result)}\n`);
+  let content;
+  try {
+    content = fs.readFileSync(contentFile, 'utf8');
+  } catch (e) {
+    failUsage(`Unable to read content file: ${String(e && e.message ? e.message : e)}`);
+  }
 
-if (blocked) {
-  process.stderr.write(`[secrets-scan] BLOCKED write to ${targetPath}: potential secrets detected: ${findings.map(f => f.id).join(', ')}\n`);
-  process.exit(2);
+  const result = scanContent(targetPath, content);
+  process.stdout.write(`${JSON.stringify(result)}\n`);
+
+  if (!result.ok) {
+    process.stderr.write(`[secrets-scan] BLOCKED write to ${targetPath}: potential secrets detected: ${result.findings.map(f => f.id).join(', ')}\n`);
+    process.exit(2);
+  }
+
+  process.stderr.write(`[secrets-scan] OK: ${targetPath}\n`);
+  process.exit(0);
 }
-
-process.stderr.write(`[secrets-scan] OK: ${targetPath}\n`);
-process.exit(0);
