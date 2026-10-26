@@ -23,4 +23,19 @@ public class PersistenceConfig {
         }
         return inMemory;
     }
+
+    // ETSTCC-13074: same mode logic as above; the feedback store follows the persistence mode.
+    @Bean
+    @Primary
+    public FeedbackRepository feedbackRepository(
+            PersistenceProperties props,
+            SqliteFeedbackRepository sqlite,
+            InMemoryFeedbackRepository inMemory
+    ) {
+        String mode = props.getPersistence() == null ? "memory" : props.getPersistence().trim().toLowerCase();
+        if (mode.equals("sqlite")) {
+            return sqlite;
+        }
+        return inMemory;
+    }
 }
