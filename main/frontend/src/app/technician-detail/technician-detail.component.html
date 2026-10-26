@@ -14,6 +14,15 @@
   <div *ngIf="technician" class="detail">
     <p><strong>Status:</strong> {{ technician.status || 'ACTIVE' }}</p>
 
+    <p *ngIf="ratingSummary && ratingSummary.feedbackCount > 0" class="rating-summary">
+      Customer rating: {{ ratingSummary.averageRating | number:'1.1-1' }} / 5
+      ({{ ratingSummary.feedbackCount }} {{ ratingSummary.feedbackCount === 1 ? 'rating' : 'ratings' }})
+      <app-star-rating [value]="ratingSummary.averageRating ?? 0" [readonly]="true"
+                       [label]="'Average rating ' + (ratingSummary.averageRating | number:'1.1-1') + ' out of 5'"></app-star-rating>
+    </p>
+    <p *ngIf="ratingSummary && ratingSummary.feedbackCount === 0" class="rating-summary">No ratings yet</p>
+    <p *ngIf="ratingSummaryUnavailable" class="rating-summary muted">Ratings unavailable</p>
+
     <div class="form">
       <label>Name <input [(ngModel)]="edit.name" /></label>
       <label>Trade <input [(ngModel)]="edit.trade" /></label>

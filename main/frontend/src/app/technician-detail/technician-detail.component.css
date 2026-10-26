@@ -10,3 +10,5 @@
 .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; word-break: break-all; }
 .hint { color: #666; font-size: 12px; }
 .detail p { margin: 6px 0; }
+.rating-summary { display: flex; gap: 8px; align-items: center; }
+.muted { color: #666; }

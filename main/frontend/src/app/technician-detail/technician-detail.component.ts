@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { TechnicianService } from '../services/technician.service';
+import { FeedbackService } from '../services/feedback.service';
 import { Technician, UpdateTechnicianRequest } from '../models/technician.model';
+import { FeedbackSummary } from '../models/feedback.model';
 
 @Component({
   selector: 'app-technician-detail',
@@ -23,11 +25,16 @@ export class TechnicianDetailComponent {
   lastInviteToken: string | null = null;
   errorMessage = '';
 
-  constructor(private technicianService: TechnicianService) {}
+  ratingSummary: FeedbackSummary | null = null;
+  ratingSummaryUnavailable = false;
+
+  constructor(private technicianService: TechnicianService, private feedbackService: FeedbackService) {}
 
   load(): void {
     this.errorMessage = '';
     this.lastInviteToken = null;
+    this.ratingSummary = null;
+    this.ratingSummaryUnavailable = false;
 
     const id = Number(this.technicianIdInput);
     if (!id || isNaN(id)) {
@@ -45,6 +52,11 @@ export class TechnicianDetailComponent {
           email: t.email || '',
           phone: t.phone || ''
         };
+        // Rating summary is non-blocking: a failure never affects the technician view.
+        this.feedbackService.getTechnicianSummary(t.id).subscribe({
+          next: (summary) => this.ratingSummary = summary,
+          error: () => this.ratingSummaryUnavailable = true
+        });
       },
       error: (err) => {
         this.technician = null;
