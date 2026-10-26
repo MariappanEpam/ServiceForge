@@ -1,0 +1,41 @@
+<div class="panel">
+  <h3>Client Feedback</h3>
+
+  <form (ngSubmit)="submit()" novalidate>
+    <div class="field">
+      <label for="feedback-job-id">Job ID</label>
+      <input id="feedback-job-id" name="jobIdInput" [(ngModel)]="form.jobIdInput" placeholder="e.g. 4" autocomplete="off" />
+      <div *ngIf="errors.jobId" class="error" role="alert">{{ errors.jobId }}</div>
+    </div>
+
+    <div class="field">
+      <span id="feedback-rating-label">Rating</span>
+      <app-star-rating [(value)]="form.rating" label="Rating"></app-star-rating>
+      <div *ngIf="errors.rating" class="error" role="alert">{{ errors.rating }}</div>
+    </div>
+
+    <div class="field">
+      <label for="feedback-comment">Comment (optional)</label>
+      <textarea id="feedback-comment" name="comment" rows="4" [(ngModel)]="form.comment"></textarea>
+      <div class="counter" [class.over]="commentTooLong">{{ form.comment.length }} / {{ maxCommentLength }}</div>
+      <div *ngIf="errors.comment" class="error" role="alert">{{ errors.comment }}</div>
+    </div>
+
+    <div class="field consent">
+      <p class="notice">
+        Your comment may contain personal data. It is stored with your job reference only to
+        evaluate technician service quality. Please do not include names, emails or phone numbers.
+      </p>
+      <label>
+        <input type="checkbox" name="consent" [(ngModel)]="form.consent" />
+        I consent to sharing this feedback
+      </label>
+      <div *ngIf="errors.consent" class="error" role="alert">{{ errors.consent }}</div>
+    </div>
+
+    <button type="submit" [disabled]="submitting || commentTooLong">Submit feedback</button>
+  </form>
+
+  <div *ngIf="successMessage" class="success" role="status">{{ successMessage }}</div>
+  <div *ngIf="errorMessage" class="error" role="alert">{{ errorMessage }}</div>
+</div>

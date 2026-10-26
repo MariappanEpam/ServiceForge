@@ -1,0 +1,11 @@
+.panel { margin-top: 12px; padding: 12px; border: 1px solid #ddd; border-radius: 6px; }
+.field { margin: 10px 0; }
+.field label, .field span { display: block; margin-bottom: 4px; }
+.field input[type="text"], .field input:not([type]) { width: 160px; }
+.field textarea { width: 100%; max-width: 480px; box-sizing: border-box; }
+.consent label { display: flex; gap: 6px; align-items: center; }
+.notice { color: #666; font-size: 12px; margin: 0 0 6px; }
+.counter { font-size: 12px; color: #666; }
+.counter.over { color: #b00020; }
+.error { color: #b00020; margin: 6px 0; }
+.success { color: #1b6e2d; margin: 8px 0; }

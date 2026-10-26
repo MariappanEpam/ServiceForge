@@ -9,6 +9,8 @@ import { PartsComponent } from './parts/parts.component';
 import { PartsService } from './services/parts.service';
 import { TechnicianManagementComponent } from './technician-management/technician-management.component';
 import { TechnicianDetailComponent } from './technician-detail/technician-detail.component';
+import { FeedbackComponent } from './feedback/feedback.component';
+import { StarRatingComponent } from './star-rating/star-rating.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +19,8 @@ import { TechnicianDetailComponent } from './technician-detail/technician-detail
     ,PartsComponent
     ,TechnicianManagementComponent
     ,TechnicianDetailComponent
+    ,FeedbackComponent
+    ,StarRatingComponent
   ],
   imports: [
     BrowserModule,
