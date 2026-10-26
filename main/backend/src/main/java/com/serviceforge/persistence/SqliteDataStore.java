@@ -27,7 +27,8 @@ public class SqliteDataStore {
             SqliteSchemaInitializer schemaInitializer,
             SqliteSequenceService sequenceService,
             SqliteBootstrapper bootstrapper,
-            PersistenceProperties props
+            PersistenceProperties props,
+            SqliteMigrationRunner migrationRunner
     ) {
         this.connectionFactory = connectionFactory;
         this.schemaInitializer = schemaInitializer;
@@ -38,6 +39,11 @@ public class SqliteDataStore {
         // Initialize schema + seed on startup
         try (Connection c = open()) {
             schemaInitializer.ensureSchema(c);
+            // ETSTCC-13074: versioned migrations only in sqlite mode (memory mode must never abort on migration)
+            String mode = props.getPersistence() == null ? "memory" : props.getPersistence().trim().toLowerCase();
+            if (mode.equals("sqlite")) {
+                migrationRunner.migrate(props.getSqlitePath());
+            }
             bootstrapper.seedIfEmpty(c, sequenceService);
         } catch (Exception e) {
             throw new IllegalStateException("Failed to initialize SQLite datastore", e);
