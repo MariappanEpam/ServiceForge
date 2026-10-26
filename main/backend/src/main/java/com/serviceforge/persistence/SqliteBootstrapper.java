@@ -49,6 +49,12 @@ public class SqliteBootstrapper {
                         now.withHour(10).withMinute(0),
                         now.withHour(12).withMinute(0),
                         JobStatus.SCHEDULED));
+                // ETSTCC-13074: one COMPLETED job (id 4, technician 3) so feedback can be demoed.
+                // Seeded only when the jobs table is empty; existing databases do not receive it.
+                insertJob(c, seq, new Job(null, 3L, "Example Customer Ltd",
+                        now.withHour(9).withMinute(0),
+                        now.withHour(10).withMinute(0),
+                        JobStatus.COMPLETED));
             }
 
             boolean hasInventory;

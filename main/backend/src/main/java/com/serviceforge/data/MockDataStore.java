@@ -60,6 +60,12 @@ public class MockDataStore {
         jobs.add(new Job(nextJobId(), 2L, "Globex", LocalDateTime.now().withHour(10).withMinute(0).withSecond(0).withNano(0),
                 LocalDateTime.now().withHour(12).withMinute(0).withSecond(0).withNano(0),
                 JobStatus.SCHEDULED));
+
+        // ETSTCC-13074: one COMPLETED job (id 4, technician 3 who has no other job) so feedback can be demoed.
+        jobs.add(new Job(nextJobId(), 3L, "Example Customer Ltd",
+                LocalDateTime.now().withHour(9).withMinute(0).withSecond(0).withNano(0),
+                LocalDateTime.now().withHour(10).withMinute(0).withSecond(0).withNano(0),
+                JobStatus.COMPLETED));
     }
 
     public List<Technician> getAllTechnicians() {
@@ -146,5 +152,11 @@ public class MockDataStore {
         jobs.add(new Job(nextJobId(), 2L, "Globex", baseDate.withHour(10).withMinute(0).withSecond(0).withNano(0),
                 baseDate.withHour(12).withMinute(0).withSecond(0).withNano(0),
                 JobStatus.SCHEDULED));
+
+        // ETSTCC-13074: same COMPLETED demo job as in seed() (id 4, technician 3).
+        jobs.add(new Job(nextJobId(), 3L, "Example Customer Ltd",
+                baseDate.withHour(9).withMinute(0).withSecond(0).withNano(0),
+                baseDate.withHour(10).withMinute(0).withSecond(0).withNano(0),
+                JobStatus.COMPLETED));
     }
 }
