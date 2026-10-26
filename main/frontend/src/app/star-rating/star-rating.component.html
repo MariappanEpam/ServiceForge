@@ -1,0 +1,15 @@
+<div *ngIf="!readonly" class="stars" role="radiogroup" [attr.aria-label]="label || 'Rating'"
+     (keydown)="onKeydown($event)" (mouseleave)="hoverValue = null">
+  <span *ngFor="let n of stars" #star class="star" role="radio"
+        [class.filled]="filled(n)"
+        [attr.aria-checked]="value === n"
+        [attr.aria-label]="n + ' out of 5'"
+        [attr.tabindex]="tabIndexFor(n)"
+        (click)="select(n)" (mouseenter)="hoverValue = n">&#9733;</span>
+</div>
+
+<div *ngIf="readonly" class="stars readonly" role="img" [attr.aria-label]="label || (value + ' out of 5')">
+  <span *ngFor="let n of stars" class="star" aria-hidden="true" [class.filled]="filled(n)">&#9733;</span>
+</div>
+
+<span class="sr-only" aria-live="polite">{{ liveMessage }}</span>

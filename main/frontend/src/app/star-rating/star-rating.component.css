@@ -1,0 +1,6 @@
+.stars { display: inline-flex; gap: 4px; }
+.star { font-size: 28px; line-height: 1; color: #c8c8c8; cursor: pointer; user-select: none; }
+.star.filled { color: #f5a623; }
+.star:focus-visible { outline: 2px solid #1a73e8; outline-offset: 2px; border-radius: 2px; }
+.readonly .star { font-size: 18px; cursor: default; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
