@@ -32,3 +32,4 @@ frontend/.angular/
 /frontend
 /main  
 /test-execution
+main/frontend/coverage/
